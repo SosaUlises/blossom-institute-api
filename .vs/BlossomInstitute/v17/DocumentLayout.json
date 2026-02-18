@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4E35F4-0EA9-4ECE-9D70-5AEE6DEFDEBF}|BlossomInstitute.Persistence\\BlossomInstitute.Persistence.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.persistence\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4E35F4-0EA9-4ECE-9D70-5AEE6DEFDEBF}|BlossomInstitute.Persistence\\BlossomInstitute.Persistence.csproj|solutionrelative:blossominstitute.persistence\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{644113D9-D3D4-49CC-A348-E0E0ECB5A712}|BlossomInstitute.External\\BlossomInstitute.External.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.external\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{644113D9-D3D4-49CC-A348-E0E0ECB5A712}|BlossomInstitute.External\\BlossomInstitute.External.csproj|solutionrelative:blossominstitute.external\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{644113D9-D3D4-49CC-A348-E0E0ECB5A712}|BlossomInstitute.External\\BlossomInstitute.External.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.external\\gettokenjwt\\gettokenjwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{644113D9-D3D4-49CC-A348-E0E0ECB5A712}|BlossomInstitute.External\\BlossomInstitute.External.csproj|solutionrelative:blossominstitute.external\\gettokenjwt\\gettokenjwt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4E35F4-0EA9-4ECE-9D70-5AEE6DEFDEBF}|BlossomInstitute.Persistence\\BlossomInstitute.Persistence.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.persistence\\seed\\identitydataseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4E35F4-0EA9-4ECE-9D70-5AEE6DEFDEBF}|BlossomInstitute.Persistence\\BlossomInstitute.Persistence.csproj|solutionrelative:blossominstitute.persistence\\seed\\identitydataseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B4E35F4-0EA9-4ECE-9D70-5AEE6DEFDEBF}|BlossomInstitute.Persistence\\BlossomInstitute.Persistence.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.persistence\\database\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B4E35F4-0EA9-4ECE-9D70-5AEE6DEFDEBF}|BlossomInstitute.Persistence\\BlossomInstitute.Persistence.csproj|solutionrelative:blossominstitute.persistence\\database\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,11 +30,76 @@
       "DocumentGroups": [
         {
           "DockedHeight": 422,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InjeccionDependenciaService.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Persistence\\InjeccionDependenciaService.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Persistence\\InjeccionDependenciaService.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Persistence\\InjeccionDependenciaService.cs",
+              "RelativeToolTip": "BlossomInstitute.Persistence\\InjeccionDependenciaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T18:02:05.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InjeccionDependenciaService.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.External\\InjeccionDependenciaService.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.External\\InjeccionDependenciaService.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.External\\InjeccionDependenciaService.cs",
+              "RelativeToolTip": "BlossomInstitute.External\\InjeccionDependenciaService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T18:02:02.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DataBaseService.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Persistence\\DataBase\\DataBaseService.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Persistence\\DataBase\\DataBaseService.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Persistence\\DataBase\\DataBaseService.cs",
+              "RelativeToolTip": "BlossomInstitute.Persistence\\DataBase\\DataBaseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T17:53:41.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IdentityDataSeed.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Persistence\\Seed\\IdentityDataSeed.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Persistence\\Seed\\IdentityDataSeed.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Persistence\\Seed\\IdentityDataSeed.cs",
+              "RelativeToolTip": "BlossomInstitute.Persistence\\Seed\\IdentityDataSeed.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T17:53:39.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetTokenJWT.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.External\\GetTokenJWT\\GetTokenJWT.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.External\\GetTokenJWT\\GetTokenJWT.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.External\\GetTokenJWT\\GetTokenJWT.cs",
+              "RelativeToolTip": "BlossomInstitute.External\\GetTokenJWT\\GetTokenJWT.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowCkAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T17:51:49.041Z",
+              "EditorCaption": ""
             }
           ]
         },
