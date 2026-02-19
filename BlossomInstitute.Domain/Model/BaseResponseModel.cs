@@ -1,0 +1,11 @@
+﻿namespace BlossomInstitute.Domain.Model
+{
+    public class BaseResponseModel
+    {
+        public string Message { get; set; }
+        public bool Success { get; set; }
+        public int StatusCode { get; set; }
+        public dynamic Data { get; set; }
+
+    }
+}

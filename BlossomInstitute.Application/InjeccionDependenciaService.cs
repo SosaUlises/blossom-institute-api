@@ -1,9 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BlossomInstitute.Application.DataBase.Login.Command;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BlossomInstitute.Application
 {
@@ -11,7 +7,10 @@ namespace BlossomInstitute.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+            // Login
+            services.AddTransient<ILoginCommand, LoginCommand>();
+
             return services;
         }
-        }
+    }
 }
