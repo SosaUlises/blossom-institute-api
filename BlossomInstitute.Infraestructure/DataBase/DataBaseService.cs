@@ -1,5 +1,7 @@
 ﻿using BlossomInstitute.Application.DataBase;
+using BlossomInstitute.Domain.Entidades.Profesor;
 using BlossomInstitute.Domain.Entidades.Usuario;
+using BlossomInstitute.Infraestructure.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +15,20 @@ namespace BlossomInstitute.Infraestructure.DataBase
         {
         }
 
+        public DbSet<ProfesorEntity> Profesores { get; set; }
+
         public async Task<bool> SaveAsync(CancellationToken ct = default)
             => await base.SaveChangesAsync(ct) > 0;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            EntityConfiguration(modelBuilder);
+        }
+
+        private void EntityConfiguration(ModelBuilder modelBuilder)
+        {
+            new ProfesorConfiguration(modelBuilder.Entity<ProfesorEntity>());
         }
     }
 }

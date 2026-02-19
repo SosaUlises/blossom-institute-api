@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using BlossomInstitute.Domain.Entidades.Profesor;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace BlossomInstitute.Domain.Entidades.Usuario
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public long Dni { get; set; }
+
+        public ProfesorEntity? Profesor { get; set; }
     }
 }
