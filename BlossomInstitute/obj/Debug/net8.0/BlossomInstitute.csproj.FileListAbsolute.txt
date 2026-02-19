@@ -193,3 +193,4 @@ C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute\obj\Debug\net8.0\r
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute\obj\Debug\net8.0\BlossomInstitute.pdb
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute\obj\Debug\net8.0\BlossomInstitute.genruntimeconfig.cache
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute\obj\Debug\net8.0\ref\BlossomInstitute.dll
+C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute\bin\Debug\net8.0\FluentValidation.dll

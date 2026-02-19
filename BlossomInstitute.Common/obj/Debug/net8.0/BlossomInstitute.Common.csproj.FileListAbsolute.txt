@@ -13,3 +13,6 @@ C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Common\obj\Debug\n
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Common\obj\Debug\net8.0\BlossomInstitute.Common.pdb
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Common\obj\Debug\net8.0\BlossomInstitute.Common.genruntimeconfig.cache
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Common\obj\Debug\net8.0\ref\BlossomInstitute.Common.dll
+C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Common\bin\Debug\net8.0\BlossomInstitute.Domain.dll
+C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Common\bin\Debug\net8.0\BlossomInstitute.Domain.pdb
+C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Common\obj\Debug\net8.0\BlossomI.21B76E0B.Up2Date

@@ -1,5 +1,5 @@
 ﻿using BlossomInstitute.Application.DataBase.Login.Command;
-using BlossomInstitute.Application.Features;
+using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
