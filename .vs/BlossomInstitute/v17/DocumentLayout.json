@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|solutionrelative:blossominstitute\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.infraestructure\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|solutionrelative:blossominstitute.infraestructure\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|solutionrelative:blossominstitute\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.infraestructure\\email\\smtpemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|solutionrelative:blossominstitute.infraestructure\\email\\smtpemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.infraestructure\\seed\\identitydataseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|solutionrelative:blossominstitute.infraestructure\\seed\\identitydataseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.infraestructure\\email\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|solutionrelative:blossominstitute.infraestructure\\email\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.infraestructure\\database\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|solutionrelative:blossominstitute.infraestructure\\database\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.application\\external\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\external\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 422,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,54 +34,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IdentityDataSeed.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Infraestructure\\Seed\\IdentityDataSeed.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Infraestructure\\Seed\\IdentityDataSeed.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Infraestructure\\Seed\\IdentityDataSeed.cs",
-              "RelativeToolTip": "BlossomInstitute.Infraestructure\\Seed\\IdentityDataSeed.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T02:11:58.889Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DataBaseService.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Infraestructure\\DataBase\\DataBaseService.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Infraestructure\\DataBase\\DataBaseService.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Infraestructure\\DataBase\\DataBaseService.cs",
-              "RelativeToolTip": "BlossomInstitute.Infraestructure\\DataBase\\DataBaseService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T02:11:51.896Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "InjeccionDependenciaService.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute\\InjeccionDependenciaService.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute\\InjeccionDependenciaService.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute\\InjeccionDependenciaService.cs",
-              "RelativeToolTip": "BlossomInstitute\\InjeccionDependenciaService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCUAAABNAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Infraestructure\\InjeccionDependenciaService.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Infraestructure\\InjeccionDependenciaService.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Infraestructure\\InjeccionDependenciaService.cs",
+              "RelativeToolTip": "BlossomInstitute.Infraestructure\\InjeccionDependenciaService.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAgwEYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T02:08:45.851Z",
+              "WhenOpened": "2026-02-19T16:32:22.663Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute\\Program.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute\\Program.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute\\Program.cs",
-              "RelativeToolTip": "BlossomInstitute\\Program.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABIAAAADAAAAAAAAAA==",
+              "Title": "SmtpEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Infraestructure\\Email\\SmtpEmailService.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Infraestructure\\Email\\SmtpEmailService.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Infraestructure\\Email\\SmtpEmailService.cs",
+              "RelativeToolTip": "BlossomInstitute.Infraestructure\\Email\\SmtpEmailService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowCEAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T02:08:30.126Z",
+              "WhenOpened": "2026-02-19T16:31:24.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmailSettings.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Infraestructure\\Email\\EmailSettings.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Infraestructure\\Email\\EmailSettings.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Infraestructure\\Email\\EmailSettings.cs",
+              "RelativeToolTip": "BlossomInstitute.Infraestructure\\Email\\EmailSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T16:30:53.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Application\\External\\IEmailService.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Application\\External\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.Application\\External\\IEmailService.cs",
+              "RelativeToolTip": "BlossomInstitute.Application\\External\\IEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T16:30:13.935Z",
               "EditorCaption": ""
             }
           ]

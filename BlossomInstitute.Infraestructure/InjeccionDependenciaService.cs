@@ -2,6 +2,7 @@
 using BlossomInstitute.Application.External;
 using BlossomInstitute.Domain.Entidades.Usuario;
 using BlossomInstitute.Infraestructure.DataBase;
+using BlossomInstitute.Infraestructure.Email;
 using BlossomInstitute.Infraestructure.GetTokenJWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -81,10 +82,18 @@ namespace BlossomInstitute.Infraestructure
 
             });
 
+            // Email config
+            var emailSection = configuration.GetSection("Email");
+            var host = emailSection["Host"];
+            if (string.IsNullOrWhiteSpace(host))
+                throw new InvalidOperationException("Email:Host no configurado");
 
-            // Servicios JWT
+
+            // Servicios
 
             services.AddScoped<IGetTokenJWTService, GetTokenJWTService>();
+            services.Configure<EmailSettings>(configuration.GetSection("Email"));
+            services.AddScoped<IEmailService, SmtpEmailService>();
 
             return services;
         }
