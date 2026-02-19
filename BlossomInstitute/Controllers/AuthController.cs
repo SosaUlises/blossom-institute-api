@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.DataBase.Login.Command;
+using BlossomInstitute.Application.DataBase.Password.ForgotPassword;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -30,6 +31,21 @@ namespace BlossomInstitute.Controllers
             var resultado = await loginCommand.Execute(model);
 
             return StatusCode(resultado.StatusCode, resultado);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword(
+           [FromBody] ForgotPasswordModel model,
+           [FromServices] IForgotPasswordCommand command,
+           [FromServices] IValidator<ForgotPasswordModel> validator)
+        {
+            var validationResult = await validator.ValidateAsync(model);
+            if (!validationResult.IsValid)
+                return BadRequest(ResponseApiService.Response(400, validationResult.Errors));
+
+            var result = await command.Execute(model);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }
