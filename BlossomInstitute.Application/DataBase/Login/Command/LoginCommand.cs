@@ -1,5 +1,5 @@
 ﻿using BlossomInstitute.Application.External;
-using BlossomInstitute.Application.Features;
+using BlossomInstitute.Common.Features;
 using BlossomInstitute.Domain.Entidades.Usuario;
 using BlossomInstitute.Domain.Model;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +37,9 @@ namespace BlossomInstitute.Application.DataBase.Login.Command
             if (usuario == null)
                 return ResponseApiService.Response(StatusCodes.Status401Unauthorized, "Usuario o contraseña incorrectos");
 
+            if (!usuario.Activo)
+                return ResponseApiService.Response(StatusCodes.Status403Forbidden, "Usuario inactivo");
+
             var result = await _signInManager.CheckPasswordSignInAsync(usuario, model.Password, lockoutOnFailure: true);
 
             if (result.IsLockedOut)
@@ -53,16 +56,17 @@ namespace BlossomInstitute.Application.DataBase.Login.Command
 
             return ResponseApiService.Response(StatusCodes.Status200OK, new
             {
-                Token = token,
-                Usuario = new
+                token,
+                usuario = new
                 {
                     usuario.Id,
                     usuario.Email,
                     usuario.Nombre,
                     usuario.Apellido,
-                    Rol = roles
+                    roles
                 }
             }, "Login exitoso");
+
         }
 
     }

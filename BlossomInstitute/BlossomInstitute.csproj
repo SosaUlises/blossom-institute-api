@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.22" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.24" />
@@ -27,13 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Blossom.Infraestructure\BlossomInstitute.Infraestructure.csproj" />
     <ProjectReference Include="..\BlossomInstitute.Application\BlossomInstitute.Application.csproj" />
     <ProjectReference Include="..\BlossomInstitute.Common\BlossomInstitute.Common.csproj" />
+    <ProjectReference Include="..\BlossomInstitute.Infraestructure\BlossomInstitute.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>
