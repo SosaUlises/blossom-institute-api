@@ -31,10 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Blossom.Infraestructure\BlossomInstitute.Infraestructure.csproj" />
     <ProjectReference Include="..\BlossomInstitute.Application\BlossomInstitute.Application.csproj" />
     <ProjectReference Include="..\BlossomInstitute.Common\BlossomInstitute.Common.csproj" />
-    <ProjectReference Include="..\BlossomInstitute.External\BlossomInstitute.External.csproj" />
-    <ProjectReference Include="..\BlossomInstitute.Persistence\BlossomInstitute.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

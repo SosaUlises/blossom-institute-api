@@ -1,8 +1,7 @@
 using BlossomInstitute;
 using BlossomInstitute.Application;
 using BlossomInstitute.Common;
-using BlossomInstitute.External;
-using BlossomInstitute.Persistence;
+using BlossomInstitute.Infraestructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +13,7 @@ builder.Services
     .AddWebApi()
     .AddCommon()
     .AddApplication()
-    .AddExternal(builder.Configuration)
-    .AddPersistence(builder.Configuration);
+    .AddInfraestructure(builder.Configuration);
 
 
 builder.Services.AddEndpointsApiExplorer();
