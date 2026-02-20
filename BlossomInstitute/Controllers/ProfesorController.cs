@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.DataBase.Profesor.Command.CreateProfesor;
+using BlossomInstitute.Application.DataBase.Profesor.Command.UpdateProfesor;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -7,10 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace BlossomInstitute.Controllers
 {
     [Route("api/v1/profesores")]
+    [Authorize(Roles = "Administrador")]
     [ApiController]
     public class ProfesorController : ControllerBase
     {
-        [Authorize(Roles = "Administrador")]
+
         [HttpPost]
         public async Task<IActionResult> Create(
              [FromBody] CreateProfesorModel model,
@@ -26,6 +28,21 @@ namespace BlossomInstitute.Controllers
             }
 
             var result = await createProfesorCommand.Execute(model);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPut("{userId:int}")]
+        public async Task<IActionResult> Update(
+            [FromRoute] int userId,
+            [FromBody] UpdateProfesorModel model,
+            [FromServices] IUpdateProfesorCommand command,
+            [FromServices] IValidator<UpdateProfesorModel> validator)
+        {
+            if (userId <= 0) return BadRequest(ResponseApiService.Response(400, "Id inválido"));
+            var vr = await validator.ValidateAsync(model);
+            if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
+
+            var result = await command.Execute(userId, model);
             return StatusCode(result.StatusCode, result);
         }
     }
