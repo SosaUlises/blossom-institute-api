@@ -107,6 +107,22 @@
   },
   {
     "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/profesores/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
     "Method": "Deactivate",
     "RelativePath": "api/v1/profesores/{userId}/desactivar",
     "HttpMethod": "PATCH",
