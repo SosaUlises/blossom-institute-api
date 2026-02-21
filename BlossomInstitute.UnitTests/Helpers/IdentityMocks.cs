@@ -8,7 +8,7 @@ using Moq;
 
 namespace BlossomInstitute.UnitTests.Helpers
 {
-    public class IdentityMocks
+    public static class IdentityMocks
     {
         public static Mock<UserManager<UsuarioEntity>> MockUserManager()
         {

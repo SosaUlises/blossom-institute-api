@@ -1,3 +1,5 @@
+C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Application\bin\Debug\net8.0\xunit.abstractions.dll
+C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Application\bin\Debug\net8.0\xunit.runner.visualstudio.testadapter.dll
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Application\bin\Debug\net8.0\BlossomInstitute.Application.deps.json
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Application\bin\Debug\net8.0\BlossomInstitute.Application.runtimeconfig.json
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Application\bin\Debug\net8.0\BlossomInstitute.Application.dll
