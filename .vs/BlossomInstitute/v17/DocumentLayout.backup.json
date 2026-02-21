@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{54AB5A08-71D4-47E9-99BD-81CC2EB47D38}|BlossomInstitute.UnitTests\\BlossomInstitute.UnitTests.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.unittests\\auth\\resetpasswordcommandtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54AB5A08-71D4-47E9-99BD-81CC2EB47D38}|BlossomInstitute.UnitTests\\BlossomInstitute.UnitTests.csproj|solutionrelative:blossominstitute.unittests\\auth\\resetpasswordcommandtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{54AB5A08-71D4-47E9-99BD-81CC2EB47D38}|BlossomInstitute.UnitTests\\BlossomInstitute.UnitTests.csproj|c:\\users\\ulipv\\source\\repos\\blossominstitute\\blossominstitute.unittests\\auth\\forgotpasswordcommandtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{54AB5A08-71D4-47E9-99BD-81CC2EB47D38}|BlossomInstitute.UnitTests\\BlossomInstitute.UnitTests.csproj|solutionrelative:blossominstitute.unittests\\auth\\forgotpasswordcommandtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -23,6 +27,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ResetPasswordCommandTests.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.UnitTests\\Auth\\ResetPasswordCommandTests.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.UnitTests\\Auth\\ResetPasswordCommandTests.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.UnitTests\\Auth\\ResetPasswordCommandTests.cs",
+              "RelativeToolTip": "BlossomInstitute.UnitTests\\Auth\\ResetPasswordCommandTests.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowBQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T17:49:41.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ForgotPasswordCommandTests.cs",
               "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\BlossomInstitute\\BlossomInstitute.UnitTests\\Auth\\ForgotPasswordCommandTests.cs",
               "RelativeDocumentMoniker": "BlossomInstitute.UnitTests\\Auth\\ForgotPasswordCommandTests.cs",
