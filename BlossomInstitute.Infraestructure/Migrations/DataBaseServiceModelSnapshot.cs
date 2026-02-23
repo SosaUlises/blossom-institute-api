@@ -22,6 +22,16 @@ namespace BlossomInstitute.Infraestructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Alumno.AlumnoEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Alumnos", (string)null);
+                });
+
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Profesor.ProfesorEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -245,6 +255,17 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Alumno.AlumnoEntity", b =>
+                {
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Usuario.UsuarioEntity", "Usuario")
+                        .WithOne("Alumno")
+                        .HasForeignKey("BlossomInstitute.Domain.Entidades.Alumno.AlumnoEntity", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Profesor.ProfesorEntity", b =>
                 {
                     b.HasOne("BlossomInstitute.Domain.Entidades.Usuario.UsuarioEntity", "Usuario")
@@ -309,6 +330,8 @@ namespace BlossomInstitute.Infraestructure.Migrations
 
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Usuario.UsuarioEntity", b =>
                 {
+                    b.Navigation("Alumno");
+
                     b.Navigation("Profesor");
                 });
 #pragma warning restore 612, 618

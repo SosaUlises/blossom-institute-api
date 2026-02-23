@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "Method": "Create",
+    "RelativePath": "api/v1/alumnos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BlossomInstitute.Application.DataBase.Alumno.Command.CreateAlumno.CreateAlumnoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.AuthController",
     "Method": "ForgotPassword",
     "RelativePath": "api/v1/auth/forgot-password",

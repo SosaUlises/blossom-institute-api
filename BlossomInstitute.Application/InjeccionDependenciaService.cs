@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.Configuration;
+using BlossomInstitute.Application.DataBase.Alumno.Command.CreateAlumno;
 using BlossomInstitute.Application.DataBase.Login.Command;
 using BlossomInstitute.Application.DataBase.Password.Command.ForgotPassword;
 using BlossomInstitute.Application.DataBase.Password.Command.ResetPassword;
@@ -7,6 +8,7 @@ using BlossomInstitute.Application.DataBase.Profesor.Command.DeleteProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Command.UpdateProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetAllProfesores;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetById;
+using BlossomInstitute.Application.Validator.Alumno;
 using BlossomInstitute.Application.Validator.Login;
 using BlossomInstitute.Application.Validator.Password;
 using BlossomInstitute.Application.Validator.Profesor;
@@ -35,12 +37,17 @@ namespace BlossomInstitute.Application
             services.AddTransient<IGetAllProfesoresQuery, GetAllProfesoresQuery>();
             services.AddTransient<IGetProfesorByIdQuery, GetProfesorByIdQuery>();
 
+            // Alumno
+            services.AddTransient<ICreateAlumnoCommand, CreateAlumnoCommand>();
+
+
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
             services.AddScoped<IValidator<ForgotPasswordModel>, ForgotPasswordValidator>();
             services.AddScoped<IValidator<ResetPasswordModel>, ResetPasswordValidator>();
             services.AddScoped<IValidator<CreateProfesorModel>, CreateProfesorValidator>();
             services.AddScoped<IValidator<UpdateProfesorModel>, UpdateProfesorValidator>();
+            services.AddScoped<IValidator<CreateAlumnoModel>, CreateAlumnoValidator>();
 
 
             return services;
