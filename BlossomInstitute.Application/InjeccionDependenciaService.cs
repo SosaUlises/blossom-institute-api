@@ -1,5 +1,6 @@
 ﻿using BlossomInstitute.Application.Configuration;
 using BlossomInstitute.Application.DataBase.Alumno.Command.CreateAlumno;
+using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
 using BlossomInstitute.Application.DataBase.Login.Command;
 using BlossomInstitute.Application.DataBase.Password.Command.ForgotPassword;
@@ -41,6 +42,7 @@ namespace BlossomInstitute.Application
             // Alumno
             services.AddTransient<ICreateAlumnoCommand, CreateAlumnoCommand>();
             services.AddTransient<IUpdateAlumnoCommand, UpdateAlumnoCommand>();
+            services.AddTransient<IDesactivarAlumnoCommand, DesactivarAlumnoCommand>();
 
 
             // Validators
