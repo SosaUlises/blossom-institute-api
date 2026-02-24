@@ -64,6 +64,22 @@
   },
   {
     "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/alumnos/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
     "Method": "Deactivate",
     "RelativePath": "api/v1/alumnos/{userId}/desactivar",
     "HttpMethod": "PATCH",

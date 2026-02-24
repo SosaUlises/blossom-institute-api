@@ -2,6 +2,7 @@
 using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
+using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -74,5 +75,14 @@ namespace BlossomInstitute.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
+        [HttpGet("{userId:int}")]
+        public async Task<IActionResult> GetById(
+            [FromRoute] int userId,
+            [FromServices] IGetAlumnoByIdQuery query)
+        {
+            if (userId <= 0) return BadRequest(ResponseApiService.Response(400, "Id inválido"));
+            var result = await query.Execute(userId);
+            return StatusCode(result.StatusCode, result);
+        }
     }
 }
