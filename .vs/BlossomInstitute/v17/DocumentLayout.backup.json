@@ -18,24 +18,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 422,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AlumnoController.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\AlumnoController.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute\\Controllers\\AlumnoController.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\AlumnoController.cs",
-              "RelativeToolTip": "BlossomInstitute\\Controllers\\AlumnoController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAgwC4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T01:52:20.234Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -45,9 +32,22 @@
               "RelativeDocumentMoniker": "BlossomInstitute\\Controllers\\ProfesorController.cs",
               "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\ProfesorController.cs",
               "RelativeToolTip": "BlossomInstitute\\Controllers\\ProfesorController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAowDMAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAIwFYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T01:52:14.637Z",
+              "WhenOpened": "2026-02-24T02:15:02.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AlumnoController.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\AlumnoController.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute\\Controllers\\AlumnoController.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\AlumnoController.cs",
+              "RelativeToolTip": "BlossomInstitute\\Controllers\\AlumnoController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowE4AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-24T02:15:01.584Z",
               "EditorCaption": ""
             }
           ]
