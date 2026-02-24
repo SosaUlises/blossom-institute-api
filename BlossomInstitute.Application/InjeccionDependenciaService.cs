@@ -50,6 +50,7 @@ namespace BlossomInstitute.Application
             services.AddScoped<IValidator<CreateProfesorModel>, CreateProfesorValidator>();
             services.AddScoped<IValidator<UpdateProfesorModel>, UpdateProfesorValidator>();
             services.AddScoped<IValidator<CreateAlumnoModel>, CreateAlumnoValidator>();
+            services.AddScoped<IValidator<UpdateAlumnoModel>, UpdateAlumnoValidator>();
 
 
             return services;
