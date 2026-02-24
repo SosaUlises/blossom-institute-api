@@ -1,5 +1,7 @@
 ﻿using BlossomInstitute.Application.Configuration;
 using BlossomInstitute.Application.DataBase.Alumno.Command.CreateAlumno;
+using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
+using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
 using BlossomInstitute.Application.DataBase.Login.Command;
 using BlossomInstitute.Application.DataBase.Password.Command.ForgotPassword;
 using BlossomInstitute.Application.DataBase.Password.Command.ResetPassword;
@@ -39,6 +41,8 @@ namespace BlossomInstitute.Application
 
             // Alumno
             services.AddTransient<ICreateAlumnoCommand, CreateAlumnoCommand>();
+            services.AddTransient<IUpdateAlumnoCommand, UpdateAlumnoCommand>();
+            services.AddTransient<IDesactivarAlumnoCommand, DesactivarAlumnoCommand>();
 
 
             // Validators
@@ -48,6 +52,7 @@ namespace BlossomInstitute.Application
             services.AddScoped<IValidator<CreateProfesorModel>, CreateProfesorValidator>();
             services.AddScoped<IValidator<UpdateProfesorModel>, UpdateProfesorValidator>();
             services.AddScoped<IValidator<CreateAlumnoModel>, CreateAlumnoValidator>();
+            services.AddScoped<IValidator<UpdateAlumnoModel>, UpdateAlumnoValidator>();
 
 
             return services;

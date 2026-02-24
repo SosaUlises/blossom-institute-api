@@ -1,4 +1,6 @@
 ﻿using BlossomInstitute.Application.DataBase.Alumno.Command.CreateAlumno;
+using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
+using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -29,6 +31,32 @@ namespace BlossomInstitute.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
+        [HttpPut("{userId:int}")]
+        public async Task<IActionResult> Update(
+            [FromRoute] int userId,
+            [FromBody] UpdateAlumnoModel model,
+            [FromServices] IUpdateAlumnoCommand command,
+            [FromServices] IValidator<UpdateAlumnoModel> validator)
+        {
+            if (userId <= 0) return BadRequest(ResponseApiService.Response(400, "Id inválido"));
+            var vr = await validator.ValidateAsync(model);
+            if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
+
+            var result = await command.Execute(userId, model);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPatch("{userId:int}/desactivar")]
+        public async Task<IActionResult> Deactivate(
+         int userId,
+         [FromServices] IDesactivarAlumnoCommand command)
+        {
+            if (userId <= 0)
+                return BadRequest(ResponseApiService.Response(StatusCodes.Status400BadRequest, "Id inválido"));
+
+            var result = await command.Execute(userId);
+            return StatusCode(result.StatusCode, result);
+        }
 
     }
 }
