@@ -37,6 +37,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "Method": "Deactivate",
+    "RelativePath": "api/v1/alumnos/{userId}/desactivar",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.AuthController",
     "Method": "ForgotPassword",
     "RelativePath": "api/v1/auth/forgot-password",
