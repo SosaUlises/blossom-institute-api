@@ -17,6 +17,32 @@
   },
   {
     "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/alumnos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
     "Method": "Update",
     "RelativePath": "api/v1/alumnos/{userId}",
     "HttpMethod": "PUT",
