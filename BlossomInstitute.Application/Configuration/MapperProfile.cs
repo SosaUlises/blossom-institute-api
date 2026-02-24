@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetAllProfesores;
 using BlossomInstitute.Domain.Entidades.Usuario;
 
@@ -10,6 +11,10 @@ namespace BlossomInstitute.Application.Configuration
         {
             // Profesor
             CreateMap<UsuarioEntity, GetProfesorModel>()
+              .ForMember(d => d.Telefono, opt => opt.MapFrom(s => s.PhoneNumber));
+
+            // Alumno
+            CreateMap<UsuarioEntity, GetAlumnoModel>()
               .ForMember(d => d.Telefono, opt => opt.MapFrom(s => s.PhoneNumber));
         }
     }
