@@ -40,8 +40,4 @@
     <ProjectReference Include="..\BlossomInstitute.Domain\BlossomInstitute.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DataBase\Alumno\Queries\" />
-  </ItemGroup>
-
 </Project>
