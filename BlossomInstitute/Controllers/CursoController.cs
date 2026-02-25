@@ -1,4 +1,5 @@
-﻿using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
+﻿using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
 using BlossomInstitute.Common.Features;
@@ -49,6 +50,18 @@ namespace BlossomInstitute.Controllers
         [FromServices] IDesactivateCursoCommand command)
         {
             if (cursoId <= 0) return BadRequest(ResponseApiService.Response(400, "Id inválido"));
+
+            var result = await command.Execute(cursoId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPut("{cursoId:int}/activar")]
+        public async Task<IActionResult> Activate(
+        [FromRoute] int cursoId,
+        [FromServices] IActivateCursoCommand command)
+        {
+            if (cursoId <= 0)
+                return BadRequest(ResponseApiService.Response(400, "Id inválido"));
 
             var result = await command.Execute(cursoId);
             return StatusCode(result.StatusCode, result);

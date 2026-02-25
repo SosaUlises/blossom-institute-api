@@ -181,6 +181,22 @@
   },
   {
     "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "Method": "Activate",
+    "RelativePath": "api/v1/cursos/{cursoId}/activar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.CursosController",
     "Method": "Desactivate",
     "RelativePath": "api/v1/cursos/{cursoId}/desactivar",
     "HttpMethod": "PUT",
