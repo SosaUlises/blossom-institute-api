@@ -3,6 +3,7 @@ using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
+using BlossomInstitute.Application.DataBase.Curso.Queries.GetAllCursos;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -77,6 +78,19 @@ namespace BlossomInstitute.Controllers
                 return BadRequest(ResponseApiService.Response(400, "Id inválido"));
 
             var result = await command.Execute(cursoId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll(
+        [FromServices] IGetAllCursosQuery query,
+        [FromQuery] int pageNumber = 1,
+        [FromQuery] int pageSize = 10,
+        [FromQuery] string? search = null,
+        [FromQuery] int? anio = null,
+        [FromQuery] int? estado = null)
+        {
+            var result = await query.Execute(pageNumber, pageSize, search, anio, estado);
             return StatusCode(result.StatusCode, result);
         }
     }
