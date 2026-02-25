@@ -4,6 +4,7 @@ using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
+using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
@@ -57,6 +58,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<ICreateCursoCommand, CreateCursoCommand>();
             services.AddTransient<IUpdateCursoCommand, UpdateCursoCommand>();
             services.AddTransient<IDesactivateCursoCommand, DesactivateCursoCommand>();
+            services.AddTransient<IActivateCursoCommand, ActivateCursoCommand>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
