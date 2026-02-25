@@ -4,6 +4,11 @@ using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
+using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
 using BlossomInstitute.Application.DataBase.Login.Command;
 using BlossomInstitute.Application.DataBase.Password.Command.ForgotPassword;
 using BlossomInstitute.Application.DataBase.Password.Command.ResetPassword;
@@ -13,6 +18,7 @@ using BlossomInstitute.Application.DataBase.Profesor.Command.UpdateProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetAllProfesores;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetById;
 using BlossomInstitute.Application.Validator.Alumno;
+using BlossomInstitute.Application.Validator.Curso;
 using BlossomInstitute.Application.Validator.Login;
 using BlossomInstitute.Application.Validator.Password;
 using BlossomInstitute.Application.Validator.Profesor;
@@ -48,6 +54,13 @@ namespace BlossomInstitute.Application
             services.AddTransient<IGetAllAlumnosQuery, GetAllAlumnosQuery>();
             services.AddTransient<IGetAlumnoByIdQuery, GetAlumnoByIdQuery>();
 
+            // Curso
+
+            services.AddTransient<ICreateCursoCommand, CreateCursoCommand>();
+            services.AddTransient<IUpdateCursoCommand, UpdateCursoCommand>();
+            services.AddTransient<IDesactivateCursoCommand, DesactivateCursoCommand>();
+            services.AddTransient<IActivateCursoCommand, ActivateCursoCommand>();
+            services.AddTransient<IArchiveCursoCommand, ArchiveCursoCommand>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
@@ -57,6 +70,10 @@ namespace BlossomInstitute.Application
             services.AddScoped<IValidator<UpdateProfesorModel>, UpdateProfesorValidator>();
             services.AddScoped<IValidator<CreateAlumnoModel>, CreateAlumnoValidator>();
             services.AddScoped<IValidator<UpdateAlumnoModel>, UpdateAlumnoValidator>();
+            services.AddScoped<IValidator<CreateCursoModel>, CreateCursoValidator>();
+            services.AddScoped<IValidator<CreateCursoHorarioModel>, CreateCursoHorarioValidator>();
+            services.AddScoped<IValidator<UpdateCursoModel>, UpdateCursoValidator>();
+            services.AddScoped<IValidator<UpdateCursoHorarioModel>, UpdateCursoHorarioValidator>();
 
 
             return services;

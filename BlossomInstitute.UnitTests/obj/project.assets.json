@@ -2082,8 +2082,7 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
           "System.IdentityModel.Tokens.Jwt": "8.14.0",
           "X.PagedList": "10.5.9",
-          "X.PagedList.EF": "10.5.9",
-          "xunit": "2.6.6"
+          "X.PagedList.EF": "10.5.9"
         },
         "compile": {
           "bin/placeholder/BlossomInstitute.Application.dll": {}
@@ -2108,8 +2107,7 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
           "System.IdentityModel.Tokens.Jwt": "8.14.0",
           "X.PagedList": "10.5.9",
-          "X.PagedList.EF": "10.5.9",
-          "xunit": "2.6.6"
+          "X.PagedList.EF": "10.5.9"
         },
         "compile": {
           "bin/placeholder/BlossomInstitute.Common.dll": {}
@@ -2133,8 +2131,7 @@
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
           "System.IdentityModel.Tokens.Jwt": "8.14.0",
           "X.PagedList": "10.5.9",
-          "X.PagedList.EF": "10.5.9",
-          "xunit": "2.6.6"
+          "X.PagedList.EF": "10.5.9"
         },
         "compile": {
           "bin/placeholder/BlossomInstitute.Domain.dll": {}
@@ -2153,8 +2150,7 @@
           "BlossomInstitute.Domain": "1.0.0",
           "FluentValidation": "12.1.1",
           "X.PagedList": "10.5.9",
-          "X.PagedList.EF": "10.5.9",
-          "xunit": "2.6.6"
+          "X.PagedList.EF": "10.5.9"
         },
         "compile": {
           "bin/placeholder/BlossomInstitute.Infraestructure.dll": {}

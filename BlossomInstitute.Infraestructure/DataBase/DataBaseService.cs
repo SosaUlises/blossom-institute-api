@@ -1,5 +1,6 @@
 ﻿using BlossomInstitute.Application.DataBase;
 using BlossomInstitute.Domain.Entidades.Alumno;
+using BlossomInstitute.Domain.Entidades.Curso;
 using BlossomInstitute.Domain.Entidades.Profesor;
 using BlossomInstitute.Domain.Entidades.Usuario;
 using BlossomInstitute.Infraestructure.Configuration;
@@ -19,6 +20,10 @@ namespace BlossomInstitute.Infraestructure.DataBase
 
         public DbSet<ProfesorEntity> Profesores { get; set; }
         public DbSet<AlumnoEntity> Alumnos { get; set; }
+        public DbSet<CursoEntity> Cursos { get; set; }
+        public DbSet<CursoHorarioEntity> CursoHorarios { get; set; }
+        public DbSet<CursoProfesorEntity> CursoProfesores { get; set; }
+        public DbSet<MatriculaEntity> Matriculas { get; set; }
 
         // Identity (solo lectura para queries)
         public IQueryable<UsuarioEntity> Usuarios => Users.AsNoTracking();
@@ -41,6 +46,10 @@ namespace BlossomInstitute.Infraestructure.DataBase
         {
             new ProfesorConfiguration(modelBuilder.Entity<ProfesorEntity>());
             new AlumnoConfiguration(modelBuilder.Entity<AlumnoEntity>());
+            new CursoConfiguration(modelBuilder.Entity<CursoEntity>());
+            new MatriculaConfiguration(modelBuilder.Entity<MatriculaEntity>());
+            new CursoHorarioConfiguration(modelBuilder.Entity<CursoHorarioEntity>());
+            new CursoProfesorConfiguration(modelBuilder.Entity<CursoProfesorEntity>());
         }
 
     }
