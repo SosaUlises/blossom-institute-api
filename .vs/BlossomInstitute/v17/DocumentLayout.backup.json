@@ -9,14 +9,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\validator\\curso\\updatecursovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\validator\\curso\\updatecursovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\validator\\curso\\updatecursohorariovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\validator\\curso\\updatecursohorariovalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -40,9 +32,9 @@
               "RelativeDocumentMoniker": "BlossomInstitute\\Controllers\\CursoController.cs",
               "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\CursoController.cs",
               "RelativeToolTip": "BlossomInstitute\\Controllers\\CursoController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAowB4AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAgwC0AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T16:55:28.97Z",
+              "WhenOpened": "2026-02-25T17:02:06.986Z",
               "EditorCaption": ""
             },
             {
@@ -53,35 +45,9 @@
               "RelativeDocumentMoniker": "BlossomInstitute.Application\\InjeccionDependenciaService.cs",
               "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\InjeccionDependenciaService.cs",
               "RelativeToolTip": "BlossomInstitute.Application\\InjeccionDependenciaService.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAgwD4AAABbAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwDgAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T16:54:31.274Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UpdateCursoHorarioValidator.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\Validator\\Curso\\UpdateCursoHorarioValidator.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\Validator\\Curso\\UpdateCursoHorarioValidator.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\Validator\\Curso\\UpdateCursoHorarioValidator.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\Validator\\Curso\\UpdateCursoHorarioValidator.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBwAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T16:54:02.677Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UpdateCursoValidator.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\Validator\\Curso\\UpdateCursoValidator.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\Validator\\Curso\\UpdateCursoValidator.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\Validator\\Curso\\UpdateCursoValidator.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\Validator\\Curso\\UpdateCursoValidator.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAgwAcAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T16:53:16.754Z",
+              "WhenOpened": "2026-02-25T17:01:24.355Z",
               "EditorCaption": ""
             }
           ]
