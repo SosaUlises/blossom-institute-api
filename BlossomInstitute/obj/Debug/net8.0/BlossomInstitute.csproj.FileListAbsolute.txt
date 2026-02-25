@@ -205,8 +205,6 @@ C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute\obj\Debug\net8.0\B
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute\obj\Debug\net8.0\ref\BlossomInstitute.dll
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\appsettings.json
-C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\xunit.abstractions.dll
-C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\xunit.runner.visualstudio.testadapter.dll
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\BlossomInstitute.staticwebassets.endpoints.json
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\BlossomInstitute.exe
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\BlossomInstitute.deps.json
@@ -294,9 +292,6 @@ C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\System.Windows.Extensions.dll
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\X.PagedList.dll
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\X.PagedList.EF.dll
-C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\xunit.assert.dll
-C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\xunit.core.dll
-C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\xunit.execution.dotnet.dll
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll

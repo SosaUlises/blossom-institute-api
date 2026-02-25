@@ -20,8 +20,6 @@ C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Application\obj\De
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Application\obj\Debug\net8.0\BlossomInstitute.Application.pdb
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Application\obj\Debug\net8.0\BlossomInstitute.Application.genruntimeconfig.cache
 C:\Users\ulipv\source\repos\BlossomInstitute\BlossomInstitute.Application\obj\Debug\net8.0\ref\BlossomInstitute.Application.dll
-C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute.Application\bin\Debug\net8.0\xunit.abstractions.dll
-C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute.Application\bin\Debug\net8.0\xunit.runner.visualstudio.testadapter.dll
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute.Application\bin\Debug\net8.0\BlossomInstitute.Application.deps.json
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute.Application\bin\Debug\net8.0\BlossomInstitute.Application.runtimeconfig.json
 C:\Users\ulipv\Source\Repos\blossom-institute-api\BlossomInstitute.Application\bin\Debug\net8.0\BlossomInstitute.Application.dll

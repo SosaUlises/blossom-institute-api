@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vqSH3yNMZwg=",
+  "dgSpecHash": "MGxgtqUH0VU=",
   "success": true,
   "projectFilePath": "C:\\Users\\ulipv\\Source\\Repos\\blossom-institute-api\\BlossomInstitute.Common\\BlossomInstitute.Common.csproj",
   "expectedPackageFiles": [
@@ -115,15 +115,7 @@
     "C:\\Users\\ulipv\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\ulipv\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\ulipv\\.nuget\\packages\\x.pagedlist\\10.5.9\\x.pagedlist.10.5.9.nupkg.sha512",
-    "C:\\Users\\ulipv\\.nuget\\packages\\x.pagedlist.ef\\10.5.9\\x.pagedlist.ef.10.5.9.nupkg.sha512",
-    "C:\\Users\\ulipv\\.nuget\\packages\\xunit\\2.6.6\\xunit.2.6.6.nupkg.sha512",
-    "C:\\Users\\ulipv\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
-    "C:\\Users\\ulipv\\.nuget\\packages\\xunit.analyzers\\1.10.0\\xunit.analyzers.1.10.0.nupkg.sha512",
-    "C:\\Users\\ulipv\\.nuget\\packages\\xunit.assert\\2.6.6\\xunit.assert.2.6.6.nupkg.sha512",
-    "C:\\Users\\ulipv\\.nuget\\packages\\xunit.core\\2.6.6\\xunit.core.2.6.6.nupkg.sha512",
-    "C:\\Users\\ulipv\\.nuget\\packages\\xunit.extensibility.core\\2.6.6\\xunit.extensibility.core.2.6.6.nupkg.sha512",
-    "C:\\Users\\ulipv\\.nuget\\packages\\xunit.extensibility.execution\\2.6.6\\xunit.extensibility.execution.2.6.6.nupkg.sha512",
-    "C:\\Users\\ulipv\\.nuget\\packages\\xunit.runner.visualstudio\\3.1.5\\xunit.runner.visualstudio.3.1.5.nupkg.sha512"
+    "C:\\Users\\ulipv\\.nuget\\packages\\x.pagedlist.ef\\10.5.9\\x.pagedlist.ef.10.5.9.nupkg.sha512"
   ],
   "logs": []
 }
