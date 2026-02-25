@@ -9,6 +9,10 @@ using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
+using BlossomInstitute.Application.DataBase.Curso.Queries.GetAllCursos;
+using BlossomInstitute.Application.DataBase.Curso.Queries.GetCursoById;
+using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Alumno;
+using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Profesor;
 using BlossomInstitute.Application.DataBase.Login.Command;
 using BlossomInstitute.Application.DataBase.Password.Command.ForgotPassword;
 using BlossomInstitute.Application.DataBase.Password.Command.ResetPassword;
@@ -61,6 +65,10 @@ namespace BlossomInstitute.Application
             services.AddTransient<IDesactivateCursoCommand, DesactivateCursoCommand>();
             services.AddTransient<IActivateCursoCommand, ActivateCursoCommand>();
             services.AddTransient<IArchiveCursoCommand, ArchiveCursoCommand>();
+            services.AddTransient<IGetAllCursosQuery, GetAllCursosQuery>();
+            services.AddTransient<IGetCursoByIdQuery, GetCursoByIdQuery>();
+            services.AddTransient<IGetMyCursosProfesorQuery, GetMyCursosProfesorQuery>();
+            services.AddTransient<IGetMyCursosAlumnoQuery, GetMyCursosAlumnoQuery>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
