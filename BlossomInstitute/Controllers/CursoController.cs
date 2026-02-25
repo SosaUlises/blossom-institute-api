@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -22,6 +23,22 @@ namespace BlossomInstitute.Controllers
                 return BadRequest(ResponseApiService.Response(400, vr.Errors));
 
             var result = await command.Execute(model);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPut("{cursoId:int}")]
+        public async Task<IActionResult> Update(
+        [FromRoute] int cursoId,
+        [FromBody] UpdateCursoModel model,
+        [FromServices] IUpdateCursoCommand command,
+        [FromServices] IValidator<UpdateCursoModel> validator)
+        {
+            if (cursoId <= 0) return BadRequest(ResponseApiService.Response(400, "Id inválido"));
+
+            var vr = await validator.ValidateAsync(model);
+            if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
+
+            var result = await command.Execute(cursoId, model);
             return StatusCode(result.StatusCode, result);
         }
     }
