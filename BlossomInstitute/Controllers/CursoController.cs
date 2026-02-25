@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
@@ -59,6 +60,18 @@ namespace BlossomInstitute.Controllers
         public async Task<IActionResult> Activate(
         [FromRoute] int cursoId,
         [FromServices] IActivateCursoCommand command)
+        {
+            if (cursoId <= 0)
+                return BadRequest(ResponseApiService.Response(400, "Id inválido"));
+
+            var result = await command.Execute(cursoId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPut("{cursoId:int}/archivar")]
+        public async Task<IActionResult> Archive(
+        [FromRoute] int cursoId,
+        [FromServices] IArchiveCursoCommand command)
         {
             if (cursoId <= 0)
                 return BadRequest(ResponseApiService.Response(400, "Id inválido"));
