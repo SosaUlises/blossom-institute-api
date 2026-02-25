@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Domain.Entidades.Alumno;
+using BlossomInstitute.Domain.Entidades.Curso;
 using BlossomInstitute.Domain.Entidades.Profesor;
 using BlossomInstitute.Domain.Entidades.Usuario;
 using Microsoft.AspNetCore.Identity;
@@ -11,6 +12,10 @@ namespace BlossomInstitute.Application.DataBase
     {
         DbSet<ProfesorEntity> Profesores { get; set; }
         DbSet<AlumnoEntity> Alumnos { get; set; }
+        DbSet<CursoEntity> Cursos { get; set; }
+        DbSet<CursoHorarioEntity> CursoHorarios { get; set; }
+        DbSet<CursoProfesorEntity> CursoProfesores { get; set; }
+        DbSet<MatriculaEntity> Matriculas { get; set; }
 
         // Identity (solo lectura para queries)
         IQueryable<UsuarioEntity> Usuarios { get; }
