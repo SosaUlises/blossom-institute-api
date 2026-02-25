@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\curso\\commands\\createcurso\\createcursomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\curso\\commands\\createcurso\\createcursomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\curso\\commands\\createcurso\\createcursohorariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\curso\\commands\\createcurso\\createcursohorariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\curso\\commands\\createcurso\\createcursocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\curso\\commands\\createcurso\\createcursocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\curso\\commands\\createcurso\\icreatecursocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\curso\\commands\\createcurso\\icreatecursocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute\\controllers\\cursocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|solutionrelative:blossominstitute\\controllers\\cursocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 422,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,54 +22,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ICreateCursoCommand.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\ICreateCursoCommand.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\ICreateCursoCommand.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\ICreateCursoCommand.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\ICreateCursoCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T16:21:41.473Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CreateCursoCommand.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoCommand.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoCommand.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoCommand.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T16:21:34.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CreateCursoHorarioModel.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoHorarioModel.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoHorarioModel.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoHorarioModel.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoHorarioModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T16:16:12.011Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CreateCursoModel.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoModel.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoModel.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoModel.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Curso\\Commands\\CreateCurso\\CreateCursoModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAlAAAAAAAAAA==",
+              "Title": "CursoController.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\CursoController.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute\\Controllers\\CursoController.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\CursoController.cs",
+              "RelativeToolTip": "BlossomInstitute\\Controllers\\CursoController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-25T16:16:00.386Z",
+              "WhenOpened": "2026-02-25T16:27:48.832Z",
               "EditorCaption": ""
             }
           ]

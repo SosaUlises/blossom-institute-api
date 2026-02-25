@@ -143,6 +143,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "Method": "Create",
+    "RelativePath": "api/v1/cursos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso.CreateCursoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
     "Method": "Create",
     "RelativePath": "api/v1/profesores",

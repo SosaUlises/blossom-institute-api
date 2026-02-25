@@ -32,6 +32,94 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.ToTable("Alumnos", (string)null);
                 });
 
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.CursoEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Anio")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Anio", "Nombre");
+
+                    b.ToTable("Cursos", (string)null);
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.CursoHorarioEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CursoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Dia")
+                        .HasColumnType("integer");
+
+                    b.Property<TimeOnly>("HoraFin")
+                        .HasColumnType("time without time zone");
+
+                    b.Property<TimeOnly>("HoraInicio")
+                        .HasColumnType("time without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CursoId", "Dia", "HoraInicio")
+                        .IsUnique();
+
+                    b.ToTable("CursoHorarios", (string)null);
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.CursoProfesorEntity", b =>
+                {
+                    b.Property<int>("CursoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ProfesorId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("CursoId", "ProfesorId");
+
+                    b.HasIndex("ProfesorId");
+
+                    b.ToTable("CursoProfesores", (string)null);
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.MatriculaEntity", b =>
+                {
+                    b.Property<int>("CursoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("AlumnoId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("CursoId", "AlumnoId");
+
+                    b.HasIndex("AlumnoId");
+
+                    b.ToTable("Matriculas", (string)null);
+                });
+
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Profesor.ProfesorEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -266,6 +354,55 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.CursoHorarioEntity", b =>
+                {
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Curso.CursoEntity", "Curso")
+                        .WithMany("Horarios")
+                        .HasForeignKey("CursoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Curso");
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.CursoProfesorEntity", b =>
+                {
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Curso.CursoEntity", "Curso")
+                        .WithMany("Profesores")
+                        .HasForeignKey("CursoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Profesor.ProfesorEntity", "Profesor")
+                        .WithMany()
+                        .HasForeignKey("ProfesorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Curso");
+
+                    b.Navigation("Profesor");
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.MatriculaEntity", b =>
+                {
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Alumno.AlumnoEntity", "Alumno")
+                        .WithMany()
+                        .HasForeignKey("AlumnoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Curso.CursoEntity", "Curso")
+                        .WithMany("Matriculas")
+                        .HasForeignKey("CursoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Alumno");
+
+                    b.Navigation("Curso");
+                });
+
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Profesor.ProfesorEntity", b =>
                 {
                     b.HasOne("BlossomInstitute.Domain.Entidades.Usuario.UsuarioEntity", "Usuario")
@@ -326,6 +463,15 @@ namespace BlossomInstitute.Infraestructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.CursoEntity", b =>
+                {
+                    b.Navigation("Horarios");
+
+                    b.Navigation("Matriculas");
+
+                    b.Navigation("Profesores");
                 });
 
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Usuario.UsuarioEntity", b =>

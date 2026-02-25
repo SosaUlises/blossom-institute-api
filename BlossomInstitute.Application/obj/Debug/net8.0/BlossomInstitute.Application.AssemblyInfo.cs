@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlossomInstitute.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec1732349ff9e82dbfd9c469b14aefb7f648d833")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+247321eaa42070a81b53d26783ba3797c543877e")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlossomInstitute.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlossomInstitute.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
