@@ -5,6 +5,7 @@ using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
 using BlossomInstitute.Application.DataBase.Login.Command;
 using BlossomInstitute.Application.DataBase.Password.Command.ForgotPassword;
@@ -55,6 +56,7 @@ namespace BlossomInstitute.Application
 
             services.AddTransient<ICreateCursoCommand, CreateCursoCommand>();
             services.AddTransient<IUpdateCursoCommand, UpdateCursoCommand>();
+            services.AddTransient<IDesactivateCursoCommand, DesactivateCursoCommand>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
