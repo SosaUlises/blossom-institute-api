@@ -6,6 +6,7 @@ using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarAlumnos;
 using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
@@ -73,6 +74,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<IGetMyCursosAlumnoQuery, GetMyCursosAlumnoQuery>();
             services.AddTransient<IAssignProfesoresToCursoCommand, AssignProfesoresToCursoCommand>();
             services.AddTransient<IRemoveProfesorFromCursoCommand, RemoveProfesorFromCursoCommand>();
+            services.AddTransient<IMatricularAlumnosCommand, MatricularAlumnosCommand>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
@@ -87,6 +89,7 @@ namespace BlossomInstitute.Application
             services.AddScoped<IValidator<UpdateCursoModel>, UpdateCursoValidator>();
             services.AddScoped<IValidator<UpdateCursoHorarioModel>, UpdateCursoHorarioValidator>();
             services.AddScoped<IValidator<AssignProfesoresToCursoModel>, AssignProfesoresValidator>();
+            services.AddScoped<IValidator<MatricularAlumnosModel>, MatricularAlumnosValidator>();
 
 
             return services;
