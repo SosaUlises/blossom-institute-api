@@ -6,9 +6,10 @@ using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
-using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesor.Command;
+using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.RemoveProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetAllCursos;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetCursoById;
@@ -70,7 +71,8 @@ namespace BlossomInstitute.Application
             services.AddTransient<IGetCursoByIdQuery, GetCursoByIdQuery>();
             services.AddTransient<IGetMyCursosProfesorQuery, GetMyCursosProfesorQuery>();
             services.AddTransient<IGetMyCursosAlumnoQuery, GetMyCursosAlumnoQuery>();
-            services.AddTransient<IAssignProfesoresCommand, AssignProfesoresCommand>();
+            services.AddTransient<IAssignProfesoresToCursoCommand, AssignProfesoresToCursoCommand>();
+            services.AddTransient<IRemoveProfesorFromCursoCommand, RemoveProfesorFromCursoCommand>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
@@ -84,7 +86,7 @@ namespace BlossomInstitute.Application
             services.AddScoped<IValidator<CreateCursoHorarioModel>, CreateCursoHorarioValidator>();
             services.AddScoped<IValidator<UpdateCursoModel>, UpdateCursoValidator>();
             services.AddScoped<IValidator<UpdateCursoHorarioModel>, UpdateCursoHorarioValidator>();
-            services.AddScoped<IValidator<AssignProfesoresModel>, AssignProfesoresValidator>();
+            services.AddScoped<IValidator<AssignProfesoresToCursoModel>, AssignProfesoresValidator>();
 
 
             return services;

@@ -294,7 +294,28 @@
       },
       {
         "Name": "model",
-        "Type": "BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesor.Command.AssignProfesoresModel",
+        "Type": "BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores.AssignProfesoresToCursoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "Method": "RemoveProfesor",
+    "RelativePath": "api/v1/cursos/{id}/profesores/{profesorId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "profesorId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

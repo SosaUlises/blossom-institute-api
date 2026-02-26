@@ -1,9 +1,9 @@
-﻿using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesor.Command;
+﻿using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores;
 using FluentValidation;
 
 namespace BlossomInstitute.Application.Validator.Curso
 {
-    public class AssignProfesoresValidator : AbstractValidator<AssignProfesoresModel>
+    public class AssignProfesoresValidator : AbstractValidator<AssignProfesoresToCursoModel>
     {
         public AssignProfesoresValidator()
         {

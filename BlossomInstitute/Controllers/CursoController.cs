@@ -1,8 +1,9 @@
 ﻿using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
-using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesor.Command;
+using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.RemoveProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetAllCursos;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetCursoById;
@@ -110,15 +111,26 @@ namespace BlossomInstitute.Controllers
         [HttpPost("{id:int}/profesores")]
         public async Task<IActionResult> AssignProfesores(
             [FromRoute] int id,
-            [FromBody] AssignProfesoresModel model,
-            [FromServices] IAssignProfesoresCommand command,
-            [FromServices] IValidator<AssignProfesoresModel> validator,
+            [FromBody] AssignProfesoresToCursoModel model,
+            [FromServices] IAssignProfesoresToCursoCommand command,
+            [FromServices] IValidator<AssignProfesoresToCursoModel> validator,
             CancellationToken ct)
         {
             var vr = await validator.ValidateAsync(model, ct);
             if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
 
             var result = await command.Execute(id, model, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpDelete("{id:int}/profesores/{profesorId:int}")]
+        public async Task<IActionResult> RemoveProfesor(
+            [FromRoute] int id,
+            [FromRoute] int profesorId,
+            [FromServices] IRemoveProfesorFromCursoCommand command,
+            CancellationToken ct)
+        {
+            var result = await command.Execute(id, profesorId, ct);
             return StatusCode(result.StatusCode, result);
         }
     }

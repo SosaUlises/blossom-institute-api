@@ -489,21 +489,53 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AssignProfesoresModel"
+                "$ref": "#/components/schemas/AssignProfesoresToCursoModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AssignProfesoresModel"
+                "$ref": "#/components/schemas/AssignProfesoresToCursoModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AssignProfesoresModel"
+                "$ref": "#/components/schemas/AssignProfesoresToCursoModel"
               }
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{id}/profesores/{profesorId}": {
+      "delete": {
+        "tags": [
+          "Cursos"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "profesorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -778,7 +810,7 @@
   },
   "components": {
     "schemas": {
-      "AssignProfesoresModel": {
+      "AssignProfesoresToCursoModel": {
         "type": "object",
         "properties": {
           "profesorIds": {
