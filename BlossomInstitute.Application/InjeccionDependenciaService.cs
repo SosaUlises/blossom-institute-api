@@ -6,6 +6,7 @@ using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesor.Command;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
@@ -69,6 +70,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<IGetCursoByIdQuery, GetCursoByIdQuery>();
             services.AddTransient<IGetMyCursosProfesorQuery, GetMyCursosProfesorQuery>();
             services.AddTransient<IGetMyCursosAlumnoQuery, GetMyCursosAlumnoQuery>();
+            services.AddTransient<IAssignProfesoresCommand, AssignProfesoresCommand>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
