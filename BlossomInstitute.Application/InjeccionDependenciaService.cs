@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.Configuration;
+using BlossomInstitute.Application.DataBase.Alumno.Command.ActivarAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.CreateAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
@@ -61,6 +62,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<IDesactivarAlumnoCommand, DesactivarAlumnoCommand>();
             services.AddTransient<IGetAllAlumnosQuery, GetAllAlumnosQuery>();
             services.AddTransient<IGetAlumnoByIdQuery, GetAlumnoByIdQuery>();
+            services.AddTransient<IActivarAlumnoCommand, ActivarAlumnoCommand>();
 
             // Curso
 

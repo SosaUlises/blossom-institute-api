@@ -160,6 +160,29 @@
         }
       }
     },
+    "/api/v1/alumnos/{userId}/activar": {
+      "patch": {
+        "tags": [
+          "Alumno"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/auth/login": {
       "post": {
         "tags": [
