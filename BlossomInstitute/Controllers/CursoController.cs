@@ -1,5 +1,6 @@
 ﻿using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesor.Command;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
@@ -102,6 +103,22 @@ namespace BlossomInstitute.Controllers
         {
             if (cursoId <= 0) return BadRequest(ResponseApiService.Response(400, "Id inválido"));
             var result = await query.Execute(cursoId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+
+        [HttpPost("{id:int}/profesores")]
+        public async Task<IActionResult> AssignProfesores(
+            [FromRoute] int id,
+            [FromBody] AssignProfesoresModel model,
+            [FromServices] IAssignProfesoresCommand command,
+            [FromServices] IValidator<AssignProfesoresModel> validator,
+            CancellationToken ct)
+        {
+            var vr = await validator.ValidateAsync(model, ct);
+            if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
+
+            var result = await command.Execute(id, model, ct);
             return StatusCode(result.StatusCode, result);
         }
     }

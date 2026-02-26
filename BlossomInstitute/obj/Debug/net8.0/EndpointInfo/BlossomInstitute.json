@@ -469,6 +469,48 @@
         }
       }
     },
+    "/api/v1/cursos/{id}/profesores": {
+      "post": {
+        "tags": [
+          "Cursos"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignProfesoresModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignProfesoresModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignProfesoresModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/me/cursos/profesor": {
       "get": {
         "tags": [
@@ -736,6 +778,20 @@
   },
   "components": {
     "schemas": {
+      "AssignProfesoresModel": {
+        "type": "object",
+        "properties": {
+          "profesorIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateAlumnoModel": {
         "type": "object",
         "properties": {
