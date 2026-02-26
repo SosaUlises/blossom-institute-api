@@ -22,6 +22,8 @@ namespace BlossomInstitute.Application.DataBase.Curso.Queries.GetCursoById
             var curso = await _db.Cursos
                 .AsNoTracking()
                 .Include(c => c.Horarios)
+                .Include(c => c.Profesores)
+                .Include(c => c.Matriculas)
                 .FirstOrDefaultAsync(c => c.Id == cursoId);
 
             if (curso == null)
