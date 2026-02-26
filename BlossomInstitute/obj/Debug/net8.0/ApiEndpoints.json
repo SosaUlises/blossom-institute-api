@@ -302,6 +302,27 @@
   },
   {
     "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "Method": "RemoveAlumno",
+    "RelativePath": "api/v1/cursos/{id}/alumnos/{alumnoId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "alumnoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.CursosController",
     "Method": "AssignProfesores",
     "RelativePath": "api/v1/cursos/{id}/profesores",
     "HttpMethod": "POST",

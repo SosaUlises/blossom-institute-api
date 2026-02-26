@@ -4,6 +4,7 @@ using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarAlumnos;
 using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.RemoveAlumno;
 using BlossomInstitute.Application.DataBase.Curso.Commands.RemoveProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetAllCursos;
@@ -147,6 +148,17 @@ namespace BlossomInstitute.Controllers
             if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
 
             var result = await command.Execute(id, model, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpDelete("{id:int}/alumnos/{alumnoId:int}")]
+        public async Task<IActionResult> RemoveAlumno(
+            [FromRoute] int id,
+            [FromRoute] int alumnoId,
+            [FromServices] IRemoveAlumnoFromCursoCommand command,
+            CancellationToken ct)
+        {
+            var result = await command.Execute(id, alumnoId, ct);
             return StatusCode(result.StatusCode, result);
         }
     }

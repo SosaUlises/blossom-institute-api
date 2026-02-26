@@ -10,6 +10,7 @@ using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarAlumnos;
 using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.RemoveAlumno;
 using BlossomInstitute.Application.DataBase.Curso.Commands.RemoveProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetAllCursos;
@@ -75,6 +76,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<IAssignProfesoresToCursoCommand, AssignProfesoresToCursoCommand>();
             services.AddTransient<IRemoveProfesorFromCursoCommand, RemoveProfesorFromCursoCommand>();
             services.AddTransient<IMatricularAlumnosCommand, MatricularAlumnosCommand>();
+            services.AddTransient<IRemoveAlumnoFromCursoCommand, RemoveAlumnoFromCursoCommand>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
