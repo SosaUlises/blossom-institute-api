@@ -21,6 +21,7 @@ using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Profesor;
 using BlossomInstitute.Application.DataBase.Login.Command;
 using BlossomInstitute.Application.DataBase.Password.Command.ForgotPassword;
 using BlossomInstitute.Application.DataBase.Password.Command.ResetPassword;
+using BlossomInstitute.Application.DataBase.Profesor.Command.ActivarProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Command.CreateProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Command.DeleteProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Command.UpdateProfesor;
@@ -55,6 +56,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<IDesactivarProfesorCommand, DesactivarProfesorCommand>();
             services.AddTransient<IGetAllProfesoresQuery, GetAllProfesoresQuery>();
             services.AddTransient<IGetProfesorByIdQuery, GetProfesorByIdQuery>();
+            services.AddTransient<IActivarProfesorCommand, ActivarProfesorCommand>();
 
             // Alumno
             services.AddTransient<ICreateAlumnoCommand, CreateAlumnoCommand>();
