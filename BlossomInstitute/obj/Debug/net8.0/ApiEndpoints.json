@@ -80,6 +80,22 @@
   },
   {
     "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "Method": "Activate",
+    "RelativePath": "api/v1/alumnos/{userId}/activar",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
     "Method": "Deactivate",
     "RelativePath": "api/v1/alumnos/{userId}/desactivar",
     "HttpMethod": "PATCH",
@@ -280,6 +296,90 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "Method": "MatricularAlumnos",
+    "RelativePath": "api/v1/cursos/{id}/alumnos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BlossomInstitute.Application.DataBase.Curso.Commands.AsignarAlumnos.MatricularAlumnosModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "Method": "RemoveAlumno",
+    "RelativePath": "api/v1/cursos/{id}/alumnos/{alumnoId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "alumnoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "Method": "AssignProfesores",
+    "RelativePath": "api/v1/cursos/{id}/profesores",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores.AssignProfesoresToCursoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "Method": "RemoveProfesor",
+    "RelativePath": "api/v1/cursos/{id}/profesores/{profesorId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "profesorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.MeController",
     "Method": "GetMyCursosAlumno",
     "RelativePath": "api/v1/me/cursos/alumno",
@@ -419,6 +519,22 @@
     "Method": "GetById",
     "RelativePath": "api/v1/profesores/{userId}",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
+    "Method": "Activate",
+    "RelativePath": "api/v1/profesores/{userId}/activar",
+    "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
     "Parameters": [

@@ -1,4 +1,5 @@
-﻿using BlossomInstitute.Application.DataBase.Alumno.Command.CreateAlumno;
+﻿using BlossomInstitute.Application.DataBase.Alumno.Command.ActivarAlumno;
+using BlossomInstitute.Application.DataBase.Alumno.Command.CreateAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
@@ -50,8 +51,20 @@ namespace BlossomInstitute.Controllers
 
         [HttpPatch("{userId:int}/desactivar")]
         public async Task<IActionResult> Deactivate(
-         int userId,
+         [FromRoute] int userId,
          [FromServices] IDesactivarAlumnoCommand command)
+        {
+            if (userId <= 0)
+                return BadRequest(ResponseApiService.Response(StatusCodes.Status400BadRequest, "Id inválido"));
+
+            var result = await command.Execute(userId);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPatch("{userId:int}/activar")]
+        public async Task<IActionResult> Activate(
+         [FromRoute] int userId,
+         [FromServices] IActivarAlumnoCommand command)
         {
             if (userId <= 0)
                 return BadRequest(ResponseApiService.Response(StatusCodes.Status400BadRequest, "Id inválido"));

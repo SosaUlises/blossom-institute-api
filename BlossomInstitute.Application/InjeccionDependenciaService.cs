@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.Configuration;
+using BlossomInstitute.Application.DataBase.Alumno.Command.ActivarAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.CreateAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
@@ -6,8 +7,12 @@ using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarAlumnos;
+using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.RemoveAlumno;
+using BlossomInstitute.Application.DataBase.Curso.Commands.RemoveProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetAllCursos;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetCursoById;
@@ -16,6 +21,7 @@ using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Profesor;
 using BlossomInstitute.Application.DataBase.Login.Command;
 using BlossomInstitute.Application.DataBase.Password.Command.ForgotPassword;
 using BlossomInstitute.Application.DataBase.Password.Command.ResetPassword;
+using BlossomInstitute.Application.DataBase.Profesor.Command.ActivarProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Command.CreateProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Command.DeleteProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Command.UpdateProfesor;
@@ -50,6 +56,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<IDesactivarProfesorCommand, DesactivarProfesorCommand>();
             services.AddTransient<IGetAllProfesoresQuery, GetAllProfesoresQuery>();
             services.AddTransient<IGetProfesorByIdQuery, GetProfesorByIdQuery>();
+            services.AddTransient<IActivarProfesorCommand, ActivarProfesorCommand>();
 
             // Alumno
             services.AddTransient<ICreateAlumnoCommand, CreateAlumnoCommand>();
@@ -57,6 +64,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<IDesactivarAlumnoCommand, DesactivarAlumnoCommand>();
             services.AddTransient<IGetAllAlumnosQuery, GetAllAlumnosQuery>();
             services.AddTransient<IGetAlumnoByIdQuery, GetAlumnoByIdQuery>();
+            services.AddTransient<IActivarAlumnoCommand, ActivarAlumnoCommand>();
 
             // Curso
 
@@ -69,6 +77,10 @@ namespace BlossomInstitute.Application
             services.AddTransient<IGetCursoByIdQuery, GetCursoByIdQuery>();
             services.AddTransient<IGetMyCursosProfesorQuery, GetMyCursosProfesorQuery>();
             services.AddTransient<IGetMyCursosAlumnoQuery, GetMyCursosAlumnoQuery>();
+            services.AddTransient<IAssignProfesoresToCursoCommand, AssignProfesoresToCursoCommand>();
+            services.AddTransient<IRemoveProfesorFromCursoCommand, RemoveProfesorFromCursoCommand>();
+            services.AddTransient<IMatricularAlumnosCommand, MatricularAlumnosCommand>();
+            services.AddTransient<IRemoveAlumnoFromCursoCommand, RemoveAlumnoFromCursoCommand>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
@@ -82,6 +94,8 @@ namespace BlossomInstitute.Application
             services.AddScoped<IValidator<CreateCursoHorarioModel>, CreateCursoHorarioValidator>();
             services.AddScoped<IValidator<UpdateCursoModel>, UpdateCursoValidator>();
             services.AddScoped<IValidator<UpdateCursoHorarioModel>, UpdateCursoHorarioValidator>();
+            services.AddScoped<IValidator<AssignProfesoresToCursoModel>, AssignProfesoresValidator>();
+            services.AddScoped<IValidator<MatricularAlumnosModel>, MatricularAlumnosValidator>();
 
 
             return services;
