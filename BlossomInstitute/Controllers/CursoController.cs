@@ -1,5 +1,6 @@
 ﻿using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
+using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarAlumnos;
 using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.CreateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.DesactivarCurso;
@@ -131,6 +132,21 @@ namespace BlossomInstitute.Controllers
             CancellationToken ct)
         {
             var result = await command.Execute(id, profesorId, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPost("{id:int}/alumnos")]
+        public async Task<IActionResult> MatricularAlumnos(
+            [FromRoute] int id,
+            [FromBody] MatricularAlumnosModel model,
+            [FromServices] IMatricularAlumnosCommand command,
+            [FromServices] IValidator<MatricularAlumnosModel> validator,
+            CancellationToken ct)
+        {
+            var vr = await validator.ValidateAsync(model, ct);
+            if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
+
+            var result = await command.Execute(id, model, ct);
             return StatusCode(result.StatusCode, result);
         }
     }
