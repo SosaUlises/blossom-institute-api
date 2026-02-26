@@ -1,5 +1,6 @@
 ﻿using BlossomInstitute.Application.DataBase;
 using BlossomInstitute.Domain.Entidades.Alumno;
+using BlossomInstitute.Domain.Entidades.Clase;
 using BlossomInstitute.Domain.Entidades.Curso;
 using BlossomInstitute.Domain.Entidades.Profesor;
 using BlossomInstitute.Domain.Entidades.Usuario;
@@ -18,6 +19,8 @@ namespace BlossomInstitute.Infraestructure.DataBase
         {
         }
 
+        public DbSet<ClaseEntity> Clases { get; set; }
+        public DbSet<AsistenciaEntity> Asistencias { get; set; }
         public DbSet<ProfesorEntity> Profesores { get; set; }
         public DbSet<AlumnoEntity> Alumnos { get; set; }
         public DbSet<CursoEntity> Cursos { get; set; }
