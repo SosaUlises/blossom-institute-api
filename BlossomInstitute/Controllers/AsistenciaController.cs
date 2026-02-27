@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.DataBase.Asistencia.Command.TomarAsistencia;
+using BlossomInstitute.Application.DataBase.Asistencia.Queries.GetAsistenciasByAlumno;
 using BlossomInstitute.Application.DataBase.Clase.Command;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
@@ -7,13 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlossomInstitute.Controllers
 {
-    [Route("api/v1/cursos/{cursoId:int}/clases")]
+    [Route("api/v1/cursos/{cursoId:int}")]
     [ApiController]
     [Authorize(Roles = "Administrador,Profesor")]
     public class AsistenciasController : ControllerBase
     {
         
-        [HttpPut("{fecha}/asistencias")]
+        [HttpPut("clases/{fecha}/asistencias")]
         public async Task<IActionResult> TomarAsistencia(
             [FromRoute] int cursoId,
             [FromRoute] string fecha,
@@ -36,7 +37,7 @@ namespace BlossomInstitute.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
-        [HttpPatch("{fecha}/cancelar")]
+        [HttpPatch("clases/{fecha}/cancelar")]
         public async Task<IActionResult> CancelarClase(
             [FromRoute] int cursoId,
             [FromRoute] string fecha,
@@ -52,5 +53,45 @@ namespace BlossomInstitute.Controllers
             var result = await command.Execute(cursoId, date, ct);
             return StatusCode(result.StatusCode, result);
         }
+
+        [HttpGet("alumnos/{alumnoId:int}/asistencias")]
+        public async Task<IActionResult> GetAsistenciasByAlumno(
+            [FromRoute] int alumnoId,
+            [FromRoute] int cursoId,
+            [FromQuery] string? from,
+            [FromQuery] string? to,
+            [FromServices] IGetAsistenciasByAlumnoQuery query,
+            CancellationToken ct = default)
+        {
+            if (alumnoId <= 0)
+                return BadRequest(ResponseApiService.Response(400, "AlumnoId inválido"));
+
+            if (cursoId <= 0)
+                return BadRequest(ResponseApiService.Response(400, "cursoId es obligatorio"));
+
+            DateOnly? fromDate = null;
+            DateOnly? toDate = null;
+
+            if (!string.IsNullOrWhiteSpace(from))
+            {
+                if (!DateOnly.TryParse(from, out var d))
+                    return BadRequest(ResponseApiService.Response(400, "from inválido. Formato esperado: yyyy-MM-dd"));
+                fromDate = d;
+            }
+
+            if (!string.IsNullOrWhiteSpace(to))
+            {
+                if (!DateOnly.TryParse(to, out var d))
+                    return BadRequest(ResponseApiService.Response(400, "to inválido. Formato esperado: yyyy-MM-dd"));
+                toDate = d;
+            }
+
+            if (fromDate.HasValue && toDate.HasValue && fromDate > toDate)
+                return BadRequest(ResponseApiService.Response(400, "El rango de fechas es inválido (from > to)"));
+
+            var result = await query.Execute(alumnoId, cursoId, fromDate, toDate, ct);
+            return StatusCode(result.StatusCode, result);
+        }
     }
 }
+
