@@ -42,6 +42,37 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlossomInstitute.Controllers.AsistenciasController",
+    "Method": "GetAsistenciasByAlumno",
+    "RelativePath": "api/v1/alumnos/{alumnoId}/asistencias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "alumnoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "from",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "to",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
     "Method": "Update",
     "RelativePath": "api/v1/alumnos/{userId}",
