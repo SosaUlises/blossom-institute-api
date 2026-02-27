@@ -280,6 +280,42 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlossomInstitute.Controllers.ClaseController",
+    "Method": "GetClasesByCurso",
+    "RelativePath": "api/v1/cursos/{cursoId}/clases",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "from",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "to",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.AsistenciasController",
     "Method": "TomarAsistencia",
     "RelativePath": "api/v1/cursos/{cursoId}/clases/{fecha}/asistencias",
