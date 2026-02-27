@@ -42,37 +42,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AsistenciasController",
-    "Method": "GetAsistenciasByAlumno",
-    "RelativePath": "api/v1/alumnos/{alumnoId}/asistencias",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "alumnoId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "cursoId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "from",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "to",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
     "Method": "Update",
     "RelativePath": "api/v1/alumnos/{userId}",
@@ -295,6 +264,37 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlossomInstitute.Controllers.AsistenciasController",
+    "Method": "GetAsistenciasByAlumno",
+    "RelativePath": "api/v1/cursos/{cursoId}/alumnos/{alumnoId}/asistencias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "alumnoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "from",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "to",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.CursosController",
     "Method": "Archive",
     "RelativePath": "api/v1/cursos/{cursoId}/archivar",
@@ -510,6 +510,42 @@
         "Name": "profesorId",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.MeController",
+    "Method": "GetMisAsistencias",
+    "RelativePath": "api/v1/me/asistencias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "from",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "to",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

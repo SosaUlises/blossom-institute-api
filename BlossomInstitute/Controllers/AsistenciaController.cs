@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlossomInstitute.Controllers
 {
-    [Route("api/v1")]
+    [Route("api/v1/cursos/{cursoId:int}")]
     [ApiController]
     [Authorize(Roles = "Administrador,Profesor")]
     public class AsistenciasController : ControllerBase
     {
         
-        [HttpPut("cursos/{cursoId:int}/clases/{fecha}/asistencias")]
+        [HttpPut("clases/{fecha}/asistencias")]
         public async Task<IActionResult> TomarAsistencia(
             [FromRoute] int cursoId,
             [FromRoute] string fecha,
@@ -37,7 +37,7 @@ namespace BlossomInstitute.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
-        [HttpPatch("cursos/{cursoId:int}/clases/{fecha}/cancelar")]
+        [HttpPatch("clases/{fecha}/cancelar")]
         public async Task<IActionResult> CancelarClase(
             [FromRoute] int cursoId,
             [FromRoute] string fecha,
@@ -57,7 +57,7 @@ namespace BlossomInstitute.Controllers
         [HttpGet("alumnos/{alumnoId:int}/asistencias")]
         public async Task<IActionResult> GetAsistenciasByAlumno(
             [FromRoute] int alumnoId,
-            [FromQuery] int cursoId,
+            [FromRoute] int cursoId,
             [FromQuery] string? from,
             [FromQuery] string? to,
             [FromServices] IGetAsistenciasByAlumnoQuery query,

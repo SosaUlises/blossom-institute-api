@@ -8,6 +8,7 @@ using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
 using BlossomInstitute.Application.DataBase.Asistencia.Command.TomarAsistencia;
 using BlossomInstitute.Application.DataBase.Asistencia.Queries.GetAsistenciasByAlumno;
 using BlossomInstitute.Application.DataBase.Asistencia.Queries.GetAsistenciasByClase;
+using BlossomInstitute.Application.DataBase.Asistencia.Queries.GetMisAsistencias;
 using BlossomInstitute.Application.DataBase.Clase.Command;
 using BlossomInstitute.Application.DataBase.Clase.Queries.GetClasesByCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
@@ -92,6 +93,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<ITomarAsistenciaCommand, TomarAsistenciaCommand>();
             services.AddTransient<IGetAsistenciasByClaseQuery, GetAsistenciasByClaseQuery>();
             services.AddTransient<IGetAsistenciasByAlumnoQuery, GetAsistenciasByAlumnoQuery>();
+            services.AddTransient<IGetMisAsistenciasQuery, GetMisAsistenciasQuery>();
 
             // Clase
             services.AddTransient<ICancelarClaseCommand, CancelarClaseCommand>();
