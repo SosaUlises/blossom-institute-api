@@ -342,6 +342,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlossomInstitute.Controllers.ClaseController",
+    "Method": "GetAsistenciasByFecha",
+    "RelativePath": "api/v1/cursos/{cursoId}/clases/{fecha}/asistencias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "fecha",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.AsistenciasController",
     "Method": "CancelarClase",
     "RelativePath": "api/v1/cursos/{cursoId}/clases/{fecha}/cancelar",

@@ -1,4 +1,5 @@
-﻿using BlossomInstitute.Application.DataBase.Clase.Queries.GetClasesByCurso;
+﻿using BlossomInstitute.Application.DataBase.Asistencia.Queries.GetAsistenciasByClase;
+using BlossomInstitute.Application.DataBase.Clase.Queries.GetClasesByCurso;
 using BlossomInstitute.Common.Features;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -46,6 +47,23 @@ namespace BlossomInstitute.Controllers
             if (pageSize > 200) pageSize = 200;
 
             var result = await query.Execute(cursoId, fromDate, toDate, pageNumber, pageSize, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("{fecha}/asistencias")]
+        public async Task<IActionResult> GetAsistenciasByFecha(
+            [FromRoute] int cursoId,
+            [FromRoute] string fecha,
+            [FromServices] IGetAsistenciasByClaseQuery query,
+            CancellationToken ct = default)
+        {
+            if (cursoId <= 0)
+                return BadRequest(ResponseApiService.Response(400, "CursoId inválido"));
+
+            if (!DateOnly.TryParse(fecha, out var date))
+                return BadRequest(ResponseApiService.Response(400, "Fecha inválida. Formato esperado: yyyy-MM-dd"));
+
+            var result = await query.Execute(cursoId, date, ct);
             return StatusCode(result.StatusCode, result);
         }
 
