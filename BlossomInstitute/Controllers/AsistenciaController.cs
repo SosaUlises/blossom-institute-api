@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.DataBase.Asistencia.Command.TomarAsistencia;
+using BlossomInstitute.Application.DataBase.Clase.Command;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -32,6 +33,23 @@ namespace BlossomInstitute.Controllers
                 return BadRequest(ResponseApiService.Response(400, vr.Errors));
 
             var result = await command.Execute(cursoId, date, model, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPatch("{fecha}/cancelar")]
+        public async Task<IActionResult> CancelarClase(
+            [FromRoute] int cursoId,
+            [FromRoute] string fecha,
+            [FromServices] ICancelarClaseCommand command,
+            CancellationToken ct)
+        {
+            if (cursoId <= 0)
+                return BadRequest(ResponseApiService.Response(400, "CursoId inválido"));
+
+            if (!DateOnly.TryParse(fecha, out var date))
+                return BadRequest(ResponseApiService.Response(400, "Fecha inválida. Formato esperado: yyyy-MM-dd"));
+
+            var result = await command.Execute(cursoId, date, ct);
             return StatusCode(result.StatusCode, result);
         }
     }
