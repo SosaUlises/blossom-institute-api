@@ -32,6 +32,59 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.ToTable("Alumnos", (string)null);
                 });
 
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Clase.AsistenciaEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AlumnoId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ClaseId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AlumnoId");
+
+                    b.HasIndex("ClaseId");
+
+                    b.ToTable("Asistencias");
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Clase.ClaseEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CursoId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("integer");
+
+                    b.Property<DateOnly>("Fecha")
+                        .HasColumnType("date");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CursoId");
+
+                    b.ToTable("Clases");
+                });
+
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.CursoEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -354,6 +407,36 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Clase.AsistenciaEntity", b =>
+                {
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Alumno.AlumnoEntity", "Alumno")
+                        .WithMany()
+                        .HasForeignKey("AlumnoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Clase.ClaseEntity", "Clase")
+                        .WithMany("Asistencias")
+                        .HasForeignKey("ClaseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Alumno");
+
+                    b.Navigation("Clase");
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Clase.ClaseEntity", b =>
+                {
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Curso.CursoEntity", "Curso")
+                        .WithMany("Clases")
+                        .HasForeignKey("CursoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Curso");
+                });
+
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.CursoHorarioEntity", b =>
                 {
                     b.HasOne("BlossomInstitute.Domain.Entidades.Curso.CursoEntity", "Curso")
@@ -465,8 +548,15 @@ namespace BlossomInstitute.Infraestructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Clase.ClaseEntity", b =>
+                {
+                    b.Navigation("Asistencias");
+                });
+
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Curso.CursoEntity", b =>
                 {
+                    b.Navigation("Clases");
+
                     b.Navigation("Horarios");
 
                     b.Navigation("Matriculas");

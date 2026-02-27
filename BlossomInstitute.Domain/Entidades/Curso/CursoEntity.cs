@@ -1,4 +1,6 @@
-﻿namespace BlossomInstitute.Domain.Entidades.Curso
+﻿using BlossomInstitute.Domain.Entidades.Clase;
+
+namespace BlossomInstitute.Domain.Entidades.Curso
 {
     public class CursoEntity
     {
@@ -11,5 +13,6 @@
         public List<CursoHorarioEntity> Horarios { get; set; } = new();
         public List<CursoProfesorEntity> Profesores { get; set; } = new();
         public List<MatriculaEntity> Matriculas { get; set; } = new();
+        public ICollection<ClaseEntity> Clases { get; set; }
     }
 }

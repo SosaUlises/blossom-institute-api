@@ -5,6 +5,8 @@ using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
 using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
+using BlossomInstitute.Application.DataBase.Asistencia.Command.TomarAsistencia;
+using BlossomInstitute.Application.DataBase.Clase.Command;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ArchivarCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.AsignarAlumnos;
@@ -28,6 +30,7 @@ using BlossomInstitute.Application.DataBase.Profesor.Command.UpdateProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetAllProfesores;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetById;
 using BlossomInstitute.Application.Validator.Alumno;
+using BlossomInstitute.Application.Validator.Asistencia;
 using BlossomInstitute.Application.Validator.Curso;
 using BlossomInstitute.Application.Validator.Login;
 using BlossomInstitute.Application.Validator.Password;
@@ -82,6 +85,13 @@ namespace BlossomInstitute.Application
             services.AddTransient<IMatricularAlumnosCommand, MatricularAlumnosCommand>();
             services.AddTransient<IRemoveAlumnoFromCursoCommand, RemoveAlumnoFromCursoCommand>();
 
+            // Asistencia
+            services.AddTransient<ITomarAsistenciaCommand, TomarAsistenciaCommand>();
+
+            // Clase
+            services.AddTransient<ICancelarClaseCommand, CancelarClaseCommand>();
+
+
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
             services.AddScoped<IValidator<ForgotPasswordModel>, ForgotPasswordValidator>();
@@ -96,6 +106,7 @@ namespace BlossomInstitute.Application
             services.AddScoped<IValidator<UpdateCursoHorarioModel>, UpdateCursoHorarioValidator>();
             services.AddScoped<IValidator<AssignProfesoresToCursoModel>, AssignProfesoresValidator>();
             services.AddScoped<IValidator<MatricularAlumnosModel>, MatricularAlumnosValidator>();
+            services.AddScoped<IValidator<TomarAsistenciaModel>, TomarAsistenciaValidator>();
 
 
             return services;
