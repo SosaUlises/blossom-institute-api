@@ -4,6 +4,7 @@ namespace BlossomInstitute.Domain.Entidades.Clase
 {
     public class AsistenciaEntity
     {
+        public int Id { get; set; }
         public int ClaseId { get; set; }
         public ClaseEntity Clase { get; set; } = default!;
 
