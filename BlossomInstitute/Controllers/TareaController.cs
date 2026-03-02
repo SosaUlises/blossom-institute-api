@@ -1,4 +1,5 @@
-﻿using BlossomInstitute.Application.DataBase.Tarea.Commands.CreateTarea;
+﻿using BlossomInstitute.Application.DataBase.Tarea.Commands.ArchivarTarea;
+using BlossomInstitute.Application.DataBase.Tarea.Commands.CreateTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
@@ -47,6 +48,17 @@ namespace BlossomInstitute.Controllers
             if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
 
             var result = await command.Execute(cursoId, tareaId, GetUserId(), model, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPatch("{tareaId:int}/archivar")]
+        public async Task<IActionResult> Archivar(
+            [FromRoute] int cursoId,
+            [FromRoute] int tareaId,
+            [FromServices] IArchivarTareaCommand command,
+            CancellationToken ct)
+        {
+            var result = await command.Execute(cursoId, tareaId, GetUserId(), ct);
             return StatusCode(result.StatusCode, result);
         }
 
