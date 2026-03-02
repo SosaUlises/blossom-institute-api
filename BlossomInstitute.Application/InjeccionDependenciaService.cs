@@ -33,6 +33,7 @@ using BlossomInstitute.Application.DataBase.Profesor.Command.DeleteProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Command.UpdateProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetAllProfesores;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetById;
+using BlossomInstitute.Application.DataBase.Tarea.Commands.ArchivarTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.CreateTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea;
 using BlossomInstitute.Application.Validator.Alumno;
@@ -106,6 +107,7 @@ namespace BlossomInstitute.Application
 
             services.AddTransient<ICreateTareaCommand, CreateTareaCommand>();
             services.AddTransient<IUpdateTareaCommand, UpdateTareaCommand>();
+            services.AddTransient<IArchivarTareaCommand, ArchivarTareaCommand>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
