@@ -36,6 +36,8 @@ using BlossomInstitute.Application.DataBase.Profesor.Queries.GetById;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.ArchivarTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.CreateTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea;
+using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasByCurso;
+using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasById;
 using BlossomInstitute.Application.Validator.Alumno;
 using BlossomInstitute.Application.Validator.Asistencia;
 using BlossomInstitute.Application.Validator.Curso;
@@ -108,6 +110,8 @@ namespace BlossomInstitute.Application
             services.AddTransient<ICreateTareaCommand, CreateTareaCommand>();
             services.AddTransient<IUpdateTareaCommand, UpdateTareaCommand>();
             services.AddTransient<IArchivarTareaCommand, ArchivarTareaCommand>();
+            services.AddTransient<IGetTareaByIdQuery, GetTareaByIdQuery>();
+            services.AddTransient<IGetTareasByCursoQuery, GetTareasByCursoQuery>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
