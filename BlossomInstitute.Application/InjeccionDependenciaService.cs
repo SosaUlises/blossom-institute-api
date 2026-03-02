@@ -33,12 +33,18 @@ using BlossomInstitute.Application.DataBase.Profesor.Command.DeleteProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Command.UpdateProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetAllProfesores;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetById;
+using BlossomInstitute.Application.DataBase.Tarea.Commands.ArchivarTarea;
+using BlossomInstitute.Application.DataBase.Tarea.Commands.CreateTarea;
+using BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea;
+using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasByCurso;
+using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasById;
 using BlossomInstitute.Application.Validator.Alumno;
 using BlossomInstitute.Application.Validator.Asistencia;
 using BlossomInstitute.Application.Validator.Curso;
 using BlossomInstitute.Application.Validator.Login;
 using BlossomInstitute.Application.Validator.Password;
 using BlossomInstitute.Application.Validator.Profesor;
+using BlossomInstitute.Application.Validator.Tarea;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -99,6 +105,13 @@ namespace BlossomInstitute.Application
             services.AddTransient<ICancelarClaseCommand, CancelarClaseCommand>();
             services.AddTransient<IGetClasesByCursoQuery, GetClasesByCursoQuery>();
 
+            // Tarea
+
+            services.AddTransient<ICreateTareaCommand, CreateTareaCommand>();
+            services.AddTransient<IUpdateTareaCommand, UpdateTareaCommand>();
+            services.AddTransient<IArchivarTareaCommand, ArchivarTareaCommand>();
+            services.AddTransient<IGetTareaByIdQuery, GetTareaByIdQuery>();
+            services.AddTransient<IGetTareasByCursoQuery, GetTareasByCursoQuery>();
 
             // Validators
             services.AddScoped<IValidator<LoginModel>, LoginValidator>();
@@ -115,6 +128,8 @@ namespace BlossomInstitute.Application
             services.AddScoped<IValidator<AssignProfesoresToCursoModel>, AssignProfesoresValidator>();
             services.AddScoped<IValidator<MatricularAlumnosModel>, MatricularAlumnosValidator>();
             services.AddScoped<IValidator<TomarAsistenciaModel>, TomarAsistenciaValidator>();
+            services.AddScoped<IValidator<CreateTareaModel>, CreateTareaValidator>();
+            services.AddScoped<IValidator<UpdateTareaModel>, UpdateTareaValidator>();
 
 
             return services;
