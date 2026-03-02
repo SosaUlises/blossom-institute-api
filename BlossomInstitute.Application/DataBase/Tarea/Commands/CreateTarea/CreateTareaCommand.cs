@@ -50,7 +50,7 @@ namespace BlossomInstitute.Application.DataBase.Tarea.Commands.CreateTarea
                 Titulo = model.Titulo.Trim(),
                 Consigna = model.Consigna?.Trim(),
                 FechaEntregaUtc = model.FechaEntregaUtc,
-                Estado = EstadoTarea.Publicada,
+                Estado = model.Estado,
                 CreatedAtUtc = DateTime.UtcNow
             };
 

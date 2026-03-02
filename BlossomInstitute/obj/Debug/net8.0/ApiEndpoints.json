@@ -452,6 +452,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlossomInstitute.Controllers.TareaController",
+    "Method": "Update",
+    "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tareaId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea.UpdateTareaModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.CursosController",
     "Method": "MatricularAlumnos",
     "RelativePath": "api/v1/cursos/{id}/alumnos",

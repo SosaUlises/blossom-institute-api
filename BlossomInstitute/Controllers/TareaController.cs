@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.DataBase.Tarea.Commands.CreateTarea;
+using BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -30,6 +31,22 @@ namespace BlossomInstitute.Controllers
             if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
 
             var result = await command.Execute(cursoId, GetUserId(), model, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPut("{tareaId:int}")]
+        public async Task<IActionResult> Update(
+            [FromRoute] int cursoId,
+            [FromRoute] int tareaId,
+            [FromBody] UpdateTareaModel model,
+            [FromServices] IUpdateTareaCommand command,
+            [FromServices] IValidator<UpdateTareaModel> validator,
+            CancellationToken ct)
+        {
+            var vr = await validator.ValidateAsync(model, ct);
+            if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
+
+            var result = await command.Execute(cursoId, tareaId, GetUserId(), model, ct);
             return StatusCode(result.StatusCode, result);
         }
 
