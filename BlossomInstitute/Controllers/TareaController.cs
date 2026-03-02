@@ -1,7 +1,10 @@
 ﻿using BlossomInstitute.Application.DataBase.Tarea.Commands.ArchivarTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.CreateTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea;
+using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasByCurso;
+using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasById;
 using BlossomInstitute.Common.Features;
+using BlossomInstitute.Domain.Entidades.Tarea;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -59,6 +62,30 @@ namespace BlossomInstitute.Controllers
             CancellationToken ct)
         {
             var result = await command.Execute(cursoId, tareaId, GetUserId(), ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll(
+            [FromServices] IGetTareasByCursoQuery query,
+            [FromRoute] int cursoId,
+            [FromQuery] EstadoTarea? estado,
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 20,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(cursoId, estado, pageNumber, pageSize, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("{tareaId:int}")]
+        public async Task<IActionResult> GetById(
+            [FromRoute] int cursoId,
+            [FromRoute] int tareaId,
+            [FromServices] IGetTareaByIdQuery query,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(cursoId, tareaId, ct);
             return StatusCode(result.StatusCode, result);
         }
 

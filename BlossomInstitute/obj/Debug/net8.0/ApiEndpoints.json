@@ -453,6 +453,37 @@
   },
   {
     "ContainingType": "BlossomInstitute.Controllers.TareaController",
+    "Method": "GetAll",
+    "RelativePath": "api/v1/cursos/{cursoId}/tareas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "estado",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.TareaController",
     "Method": "Update",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}",
     "HttpMethod": "PUT",
@@ -472,6 +503,48 @@
       {
         "Name": "model",
         "Type": "BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea.UpdateTareaModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.TareaController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tareaId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.TareaController",
+    "Method": "Archivar",
+    "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}/archivar",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tareaId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
