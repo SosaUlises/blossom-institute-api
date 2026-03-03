@@ -53,9 +53,6 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
             if (tarea.Estado != EstadoTarea.Publicada)
                 return ResponseApiService.Response(StatusCodes.Status409Conflict, "La tarea no está publicada");
 
-            if (tarea.Curso.Estado != EstadoCurso.Activo)
-                return ResponseApiService.Response(StatusCodes.Status409Conflict, "El curso no se encuentra activo");
-
             // Validar matricula
             var estaMatriculado = await _db.Matriculas
                 .AsNoTracking()
