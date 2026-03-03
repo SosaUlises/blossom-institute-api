@@ -46,11 +46,10 @@ namespace BlossomInstitute.Infraestructure.Configuration
                 .HasForeignKey(a => a.EntregaId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // 1 feedback vigente
-            b.HasOne(x => x.Feedback)
-                .WithOne(f => f.Entrega)
-                .HasForeignKey<FeedbackEntregaEntity>(f => f.EntregaId)
-                .OnDelete(DeleteBehavior.Cascade);
+            b.HasMany(x => x.Feedbacks)
+                 .WithOne(f => f.Entrega)
+                 .HasForeignKey(f => f.EntregaId)
+                 .OnDelete(DeleteBehavior.Cascade);
 
             b.HasIndex(x => new { x.TareaId, x.Estado });
         }

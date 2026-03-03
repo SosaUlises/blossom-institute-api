@@ -23,7 +23,6 @@ namespace BlossomInstitute.Domain.Entidades.Entrega
 
         public List<EntregaAdjuntoEntity> Adjuntos { get; set; } = new();
 
-        // 1 feedback vigente 
-        public FeedbackEntregaEntity? Feedback { get; set; }
+        public List<FeedbackEntregaEntity> Feedbacks { get; set; } = new();
     }
 }

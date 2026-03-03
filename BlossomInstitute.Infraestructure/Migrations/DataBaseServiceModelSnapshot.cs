@@ -268,6 +268,9 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.Property<int>("EntregaId")
                         .HasColumnType("integer");
 
+                    b.Property<bool>("EsVigente")
+                        .HasColumnType("boolean");
+
                     b.Property<int>("Estado")
                         .HasColumnType("integer");
 
@@ -281,7 +284,10 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("EntregaId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("\"EsVigente\" = true");
+
+                    b.HasIndex("EntregaId", "EsVigente");
 
                     b.ToTable("EntregaFeedbacks", (string)null);
                 });
@@ -706,8 +712,8 @@ namespace BlossomInstitute.Infraestructure.Migrations
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Entrega.FeedbackEntregaEntity", b =>
                 {
                     b.HasOne("BlossomInstitute.Domain.Entidades.Entrega.EntregaEntity", "Entrega")
-                        .WithOne("Feedback")
-                        .HasForeignKey("BlossomInstitute.Domain.Entidades.Entrega.FeedbackEntregaEntity", "EntregaId")
+                        .WithMany("Feedbacks")
+                        .HasForeignKey("EntregaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -826,7 +832,7 @@ namespace BlossomInstitute.Infraestructure.Migrations
                 {
                     b.Navigation("Adjuntos");
 
-                    b.Navigation("Feedback");
+                    b.Navigation("Feedbacks");
                 });
 
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Tarea.TareaEntity", b =>
