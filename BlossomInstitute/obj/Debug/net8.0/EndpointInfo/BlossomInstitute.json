@@ -854,7 +854,7 @@
     "/api/v1/tareas/{tareaId}/mi-entrega": {
       "put": {
         "tags": [
-          "EntregasAlumno"
+          "Entregas"
         ],
         "parameters": [
           {
@@ -882,6 +882,66 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/UpsertEntregaAlumnoModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{cursoId}/tareas/{tareaId}/entregas/{alumnoId}/feedbacks": {
+      "post": {
+        "tags": [
+          "Entregas"
+        ],
+        "parameters": [
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "tareaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "alumnoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFeedbackEntregaModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFeedbackEntregaModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFeedbackEntregaModel"
               }
             }
           }
@@ -1529,6 +1589,32 @@
         },
         "additionalProperties": false
       },
+      "CreateFeedbackEntregaModel": {
+        "type": "object",
+        "properties": {
+          "comentario": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "$ref": "#/components/schemas/EstadoCorreccion"
+          },
+          "nota": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "archivoCorregidoUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "archivoCorregidoNombre": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateProfesorModel": {
         "type": "object",
         "properties": {
@@ -1609,6 +1695,15 @@
         "enum": [
           1,
           2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "EstadoCorreccion": {
+        "enum": [
+          1,
+          2,
+          3
         ],
         "type": "integer",
         "format": "int32"
