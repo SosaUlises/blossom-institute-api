@@ -28,6 +28,7 @@ using BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedbackEntr
 using BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaAlumno;
 using BlossomInstitute.Application.DataBase.Entregas.Queries.GetEntregasByTarea;
 using BlossomInstitute.Application.DataBase.Entregas.Queries.GetEntregasDetail;
+using BlossomInstitute.Application.DataBase.Entregas.Queries.GetFeedbacksByEntrega;
 using BlossomInstitute.Application.DataBase.Login.Command;
 using BlossomInstitute.Application.DataBase.Password.Command.ForgotPassword;
 using BlossomInstitute.Application.DataBase.Password.Command.ResetPassword;
@@ -122,6 +123,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<ICreateFeedbackEntregaCommand, CreateFeedbackEntregaCommand>();
             services.AddTransient<IGetEntregasByTareaQuery, GetEntregasByTareaQuery>();
             services.AddTransient<IGetEntregaDetailQuery, GetEntregaDetailQuery>();
+            services.AddTransient<IGetFeedbacksByEntregaQuery, GetFeedbacksByEntregaQuery>();
 
 
             // Validators
