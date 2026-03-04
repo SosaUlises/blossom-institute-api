@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Application.DataBase.Entregas.Queries.Alumno.GetMiEntregaByTarea;
+using BlossomInstitute.Application.DataBase.Entregas.Queries.Alumno.GetMisEntregasByCurso;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -25,5 +26,18 @@ namespace BlossomInstitute.Controllers
             var result = await query.Execute(tareaId, GetUserId(), ct);
             return StatusCode(result.StatusCode, result);
         }
+
+        [HttpGet("cursos/{cursoId:int}/entregas")]
+        public async Task<IActionResult> GetMisEntregasByCurso(
+            [FromServices] IGetMisEntregasByCursoQuery query,
+            CancellationToken ct,
+            [FromRoute] int cursoId,
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 10)
+        {
+            var result = await query.Execute(cursoId, GetUserId(), pageNumber, pageSize, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
     }
 }
