@@ -24,6 +24,7 @@ using BlossomInstitute.Application.DataBase.Curso.Queries.GetAllCursos;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetCursoById;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Alumno;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Profesor;
+using BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedbackEntrega;
 using BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaAlumno;
 using BlossomInstitute.Application.DataBase.Login.Command;
 using BlossomInstitute.Application.DataBase.Password.Command.ForgotPassword;
@@ -116,6 +117,7 @@ namespace BlossomInstitute.Application
 
             // Entrega
             services.AddTransient<IUpsertEntregaAlumnoCommand, UpsertEntregaAlumnoCommand>();
+            services.AddTransient<ICreateFeedbackEntregaCommand, CreateFeedbackEntregaCommand>();
 
 
             // Validators
@@ -137,6 +139,7 @@ namespace BlossomInstitute.Application
             services.AddScoped<IValidator<UpdateTareaModel>, UpdateTareaValidator>();
             services.AddScoped<IValidator<UpsertEntregaAdjuntoModel>, UpsertEntregaAdjuntoValidator>();
             services.AddScoped<IValidator<UpsertEntregaAlumnoModel>, UpsertEntregaAlumnoValidator>();
+            services.AddScoped<IValidator<CreateFeedbackEntregaModel>, CreateFeedbackEntregaValidator>();
 
 
             return services;
