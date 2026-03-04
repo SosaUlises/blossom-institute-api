@@ -1156,6 +1156,29 @@
         }
       }
     },
+    "/api/v1/me/tareas/{tareaId}/entrega": {
+      "get": {
+        "tags": [
+          "MeEntregas"
+        ],
+        "parameters": [
+          {
+            "name": "tareaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/profesores": {
       "post": {
         "tags": [

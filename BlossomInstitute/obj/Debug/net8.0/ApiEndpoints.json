@@ -862,6 +862,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlossomInstitute.Controllers.MeEntregasController",
+    "Method": "GetMiEntregaByTarea",
+    "RelativePath": "api/v1/me/tareas/{tareaId}/entrega",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tareaId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
     "Method": "Create",
     "RelativePath": "api/v1/profesores",
