@@ -27,6 +27,7 @@ using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Profesor;
 using BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedbackEntrega;
 using BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaAlumno;
 using BlossomInstitute.Application.DataBase.Entregas.Queries.Alumno.GetMiEntregaByTarea;
+using BlossomInstitute.Application.DataBase.Entregas.Queries.Alumno.GetMisEntregasByCurso;
 using BlossomInstitute.Application.DataBase.Entregas.Queries.GetEntregasByTarea;
 using BlossomInstitute.Application.DataBase.Entregas.Queries.GetEntregasDetail;
 using BlossomInstitute.Application.DataBase.Entregas.Queries.GetFeedbacksByEntrega;
@@ -126,6 +127,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<IGetEntregaDetailQuery, GetEntregaDetailQuery>();
             services.AddTransient<IGetFeedbacksByEntregaQuery, GetFeedbacksByEntregaQuery>();
             services.AddTransient<IGetMiEntregaByTareaQuery, GetMiEntregaByTareaQuery>();
+            services.AddTransient<IGetMisEntregasByCursoQuery, GetMisEntregasByCursoQuery>();
 
 
             // Validators
