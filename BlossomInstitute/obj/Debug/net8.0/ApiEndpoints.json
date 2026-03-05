@@ -552,7 +552,7 @@
   },
   {
     "ContainingType": "BlossomInstitute.Controllers.ProfesorEntregasController",
-    "Method": "GetByTarea",
+    "Method": "GetEntregasByTarea",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}/entregas",
     "HttpMethod": "GET",
     "IsController": true,
@@ -581,6 +581,26 @@
       {
         "Name": "search",
         "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "estadoEntrega",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "estadoFeedback",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pendienteCorreccion",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "soloConAdjuntos",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
       }
     ],
