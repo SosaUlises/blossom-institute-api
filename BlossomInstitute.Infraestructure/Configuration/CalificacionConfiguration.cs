@@ -64,6 +64,9 @@ namespace BlossomInstitute.Infraestructure.Configuration
                 .OnDelete(DeleteBehavior.SetNull);
 
             entity.HasIndex(x => new { x.CursoId, x.AlumnoId, x.Archivado });
+
+            entity.HasIndex(x => new { x.CursoId, x.AlumnoId, x.TareaId, x.EntregaId, x.Archivado })
+            .IsUnique();
         }
     }
 }

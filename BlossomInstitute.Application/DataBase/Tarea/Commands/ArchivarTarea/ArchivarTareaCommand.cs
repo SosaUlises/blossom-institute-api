@@ -2,6 +2,7 @@
 using BlossomInstitute.Domain.Entidades.Tarea;
 using BlossomInstitute.Domain.Entidades.Usuario;
 using BlossomInstitute.Domain.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,29 +21,64 @@ namespace BlossomInstitute.Application.DataBase.Tarea.Commands.ArchivarTarea
 
         public async Task<BaseResponseModel> Execute(int cursoId, int tareaId, int profesorUserId, CancellationToken ct = default)
         {
-            if (cursoId <= 0) return ResponseApiService.Response(400, "CursoId inválido");
-            if (tareaId <= 0) return ResponseApiService.Response(400, "TareaId inválido");
+            if (cursoId <= 0)
+                return ResponseApiService.Response(StatusCodes.Status400BadRequest, "CursoId inválido");
+
+            if (tareaId <= 0)
+                return ResponseApiService.Response(StatusCodes.Status400BadRequest, "TareaId inválido");
 
             var user = await _userManager.FindByIdAsync(profesorUserId.ToString());
-            if (user == null || !user.Activo) return ResponseApiService.Response(403, "Usuario inválido o inactivo");
-            if (!await _userManager.IsInRoleAsync(user, "Profesor")) return ResponseApiService.Response(403, "Acceso denegado");
+            if (user == null || !user.Activo)
+                return ResponseApiService.Response(StatusCodes.Status403Forbidden, "Usuario inválido o inactivo");
+
+            if (!await _userManager.IsInRoleAsync(user, "Profesor"))
+                return ResponseApiService.Response(StatusCodes.Status403Forbidden, "Acceso denegado");
 
             var profesorAsignado = await _db.CursoProfesores.AsNoTracking()
                 .AnyAsync(x => x.CursoId == cursoId && x.ProfesorId == profesorUserId, ct);
-            if (!profesorAsignado)
-                return ResponseApiService.Response(403, "No estás asignado a este curso");
 
-            var tarea = await _db.Tareas.FirstOrDefaultAsync(t => t.Id == tareaId && t.CursoId == cursoId, ct);
-            if (tarea == null) return ResponseApiService.Response(404, "Tarea no encontrada");
+            if (!profesorAsignado)
+                return ResponseApiService.Response(StatusCodes.Status403Forbidden, "No estás asignado a este curso");
+
+            var tarea = await _db.Tareas
+                .FirstOrDefaultAsync(t => t.Id == tareaId && t.CursoId == cursoId, ct);
+
+            if (tarea == null)
+                return ResponseApiService.Response(StatusCodes.Status404NotFound, "Tarea no encontrada");
 
             if (tarea.Estado == EstadoTarea.Archivada)
-                return ResponseApiService.Response(400, "La tarea ya está archivada");
+                return ResponseApiService.Response(StatusCodes.Status400BadRequest, "La tarea ya está archivada");
 
-            tarea.Estado = EstadoTarea.Archivada;
-            tarea.UpdatedAtUtc = DateTime.UtcNow;
+            await using var tx = await _db.BeginTransactionAsync(ct);
 
-            await _db.SaveAsync(ct);
-            return ResponseApiService.Response(200, "Tarea archivada correctamente");
+            try
+            {
+                tarea.Estado = EstadoTarea.Archivada;
+                tarea.UpdatedAtUtc = DateTime.UtcNow;
+
+                // Archivar calificaciones asociadas a la tarea
+                await _db.Calificaciones
+                    .Where(c => c.TareaId == tareaId && !c.Archivado)
+                    .ExecuteUpdateAsync(s => s
+                        .SetProperty(x => x.Archivado, true)
+                        .SetProperty(x => x.UpdatedAtUtc, DateTime.UtcNow), ct);
+
+                var ok = await _db.SaveAsync(ct);
+                if (!ok)
+                {
+                    await tx.RollbackAsync(ct);
+                    return ResponseApiService.Response(StatusCodes.Status500InternalServerError, "No se pudo archivar la tarea");
+                }
+
+                await tx.CommitAsync(ct);
+
+                return ResponseApiService.Response(StatusCodes.Status200OK, "Tarea archivada correctamente");
+            }
+            catch
+            {
+                await tx.RollbackAsync(ct);
+                throw;
+            }
         }
     }
 }
