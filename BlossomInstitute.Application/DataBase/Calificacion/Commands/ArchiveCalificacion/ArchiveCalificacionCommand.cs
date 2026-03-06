@@ -1,0 +1,67 @@
+﻿using BlossomInstitute.Common.Features;
+using BlossomInstitute.Domain.Entidades.Usuario;
+using BlossomInstitute.Domain.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
+namespace BlossomInstitute.Application.DataBase.Calificacion.Commands.ArchiveCalificacion
+{
+    public class ArchiveCalificacionCommand : IArchiveCalificacionCommand
+    {
+        private readonly IDataBaseService _db;
+        private readonly UserManager<UsuarioEntity> _userManager;
+
+        public ArchiveCalificacionCommand(IDataBaseService db, UserManager<UsuarioEntity> userManager)
+        {
+            _db = db;
+            _userManager = userManager;
+        }
+
+        public async Task<BaseResponseModel> Execute(
+            int cursoId,
+            int alumnoId,
+            int calificacionId,
+            int profesorUserId,
+            CancellationToken ct)
+        {
+            if (cursoId <= 0 || alumnoId <= 0 || calificacionId <= 0)
+                return ResponseApiService.Response(StatusCodes.Status400BadRequest, "Parámetros inválidos");
+
+            var profesor = await _userManager.FindByIdAsync(profesorUserId.ToString());
+            if (profesor == null)
+                return ResponseApiService.Response(StatusCodes.Status401Unauthorized, "No autenticado");
+
+            if (!profesor.Activo)
+                return ResponseApiService.Response(StatusCodes.Status403Forbidden, "Usuario inactivo");
+
+            if (!await _userManager.IsInRoleAsync(profesor, "Profesor"))
+                return ResponseApiService.Response(StatusCodes.Status403Forbidden, "No autorizado");
+
+            var profesorAsignado = await _db.CursoProfesores.AsNoTracking()
+                .AnyAsync(x => x.CursoId == cursoId && x.ProfesorId == profesorUserId, ct);
+
+            if (!profesorAsignado)
+                return ResponseApiService.Response(StatusCodes.Status403Forbidden, "Profesor no asignado a este curso");
+
+            var calificacion = await _db.Calificaciones
+                .FirstOrDefaultAsync(x =>
+                    x.Id == calificacionId &&
+                    x.CursoId == cursoId &&
+                    x.AlumnoId == alumnoId &&
+                    !x.Archivado, ct);
+
+            if (calificacion == null)
+                return ResponseApiService.Response(StatusCodes.Status404NotFound, "Calificación no encontrada");
+
+            calificacion.Archivado = true;
+            calificacion.UpdatedAtUtc = DateTime.UtcNow;
+
+            var ok = await _db.SaveAsync(ct);
+            if (!ok)
+                return ResponseApiService.Response(StatusCodes.Status500InternalServerError, "No se pudo archivar la calificación");
+
+            return ResponseApiService.Response(StatusCodes.Status200OK, "Calificación archivada correctamente");
+        }
+    }
+}

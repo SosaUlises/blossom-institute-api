@@ -1,4 +1,5 @@
-﻿using BlossomInstitute.Application.DataBase.Calificacion.Commands.CreateCalificacion;
+﻿using BlossomInstitute.Application.DataBase.Calificacion.Commands.ArchiveCalificacion;
+using BlossomInstitute.Application.DataBase.Calificacion.Commands.CreateCalificacion;
 using BlossomInstitute.Application.DataBase.Calificacion.Commands.UpdateCalificacion;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
@@ -51,6 +52,18 @@ namespace BlossomInstitute.Controllers
                 return BadRequest(ResponseApiService.Response(400, vr.Errors));
 
             var result = await command.Execute(cursoId, alumnoId, calificacionId, GetUserId(), model, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpPatch("{calificacionId:int}/archivar")]
+        public async Task<IActionResult> Archive(
+            [FromRoute] int cursoId,
+            [FromRoute] int alumnoId,
+            [FromRoute] int calificacionId,
+            [FromServices] IArchiveCalificacionCommand command,
+            CancellationToken ct)
+        {
+            var result = await command.Execute(cursoId, alumnoId, calificacionId, GetUserId(), ct);
             return StatusCode(result.StatusCode, result);
         }
     }

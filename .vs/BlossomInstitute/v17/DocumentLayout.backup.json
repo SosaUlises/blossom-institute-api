@@ -11,12 +11,20 @@
       "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\calificacion\\commands\\updatecalificacion\\updatecalificacionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\calificacion\\commands\\updatecalificacion\\updatecalificacionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\calificacion\\commands\\archivecalificacion\\iarchivecalificacioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\calificacion\\commands\\archivecalificacion\\iarchivecalificacioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\calificacion\\commands\\archivecalificacion\\archivecalificacioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\calificacion\\commands\\archivecalificacion\\archivecalificacioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\calificacion\\commands\\updatecalificacion\\updatecalificacioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\calificacion\\commands\\updatecalificacion\\updatecalificacioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\calificacion\\commands\\updatecalificacion\\updatecalificacionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\calificacion\\commands\\updatecalificacion\\updatecalificacionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\calificacion\\commands\\updatecalificacion\\iupdatecalificacioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 422,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,13 +46,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IArchiveCalificacionCommand.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\ArchiveCalificacion\\IArchiveCalificacionCommand.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\ArchiveCalificacion\\IArchiveCalificacionCommand.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\ArchiveCalificacion\\IArchiveCalificacionCommand.cs",
+              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\ArchiveCalificacion\\IArchiveCalificacionCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T15:43:55.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ArchiveCalificacionCommand.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\ArchiveCalificacion\\ArchiveCalificacionCommand.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\ArchiveCalificacion\\ArchiveCalificacionCommand.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\ArchiveCalificacion\\ArchiveCalificacionCommand.cs",
+              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\ArchiveCalificacion\\ArchiveCalificacionCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T15:43:42.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "CalificacionesController.cs",
               "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\CalificacionesController.cs",
               "RelativeDocumentMoniker": "BlossomInstitute\\Controllers\\CalificacionesController.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\CalificacionesController.cs*",
-              "RelativeToolTip": "BlossomInstitute\\Controllers\\CalificacionesController.cs*",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowCcAAAAwAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\CalificacionesController.cs",
+              "RelativeToolTip": "BlossomInstitute\\Controllers\\CalificacionesController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAowDwAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-06T15:37:33.896Z",
               "EditorCaption": ""
@@ -57,27 +91,27 @@
               "RelativeDocumentMoniker": "BlossomInstitute.Application\\InjeccionDependenciaService.cs",
               "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\InjeccionDependenciaService.cs",
               "RelativeToolTip": "BlossomInstitute.Application\\InjeccionDependenciaService.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAgwKcAAABfAAAAAAAAAA==",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAgwIwAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-06T15:36:25.773Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "UpdateCalificacionCommand.cs",
               "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\UpdateCalificacion\\UpdateCalificacionCommand.cs",
               "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\UpdateCalificacion\\UpdateCalificacionCommand.cs",
               "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\UpdateCalificacion\\UpdateCalificacionCommand.cs",
               "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\UpdateCalificacion\\UpdateCalificacionCommand.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABUAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwBUAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-06T15:31:57.332Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "IUpdateCalificacionCommand.cs",
               "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\UpdateCalificacion\\IUpdateCalificacionCommand.cs",
               "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\UpdateCalificacion\\IUpdateCalificacionCommand.cs",
@@ -85,12 +119,11 @@
               "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\UpdateCalificacion\\IUpdateCalificacionCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T15:31:50.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-06T15:31:50.964Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "UpdateCalificacionModel.cs",
               "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\UpdateCalificacion\\UpdateCalificacionModel.cs",
               "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\UpdateCalificacion\\UpdateCalificacionModel.cs",
@@ -98,8 +131,7 @@
               "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Calificacion\\Commands\\UpdateCalificacion\\UpdateCalificacionModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-06T15:31:39.415Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-06T15:31:39.415Z"
             }
           ]
         },
