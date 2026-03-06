@@ -9,6 +9,7 @@ using BlossomInstitute.Application.DataBase.Asistencia.Command.TomarAsistencia;
 using BlossomInstitute.Application.DataBase.Asistencia.Queries.GetAsistenciasByAlumno;
 using BlossomInstitute.Application.DataBase.Asistencia.Queries.GetAsistenciasByClase;
 using BlossomInstitute.Application.DataBase.Asistencia.Queries.GetMisAsistencias;
+using BlossomInstitute.Application.DataBase.Calificacion.Commands.CreateCalificacion;
 using BlossomInstitute.Application.DataBase.Clase.Command;
 using BlossomInstitute.Application.DataBase.Clase.Queries.GetClasesByCurso;
 using BlossomInstitute.Application.DataBase.Curso.Commands.ActivarCurso;
@@ -49,6 +50,7 @@ using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasByCurso;
 using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasById;
 using BlossomInstitute.Application.Validator.Alumno;
 using BlossomInstitute.Application.Validator.Asistencia;
+using BlossomInstitute.Application.Validator.Calificacion;
 using BlossomInstitute.Application.Validator.Curso;
 using BlossomInstitute.Application.Validator.Entrega;
 using BlossomInstitute.Application.Validator.Login;
@@ -131,6 +133,9 @@ namespace BlossomInstitute.Application
             services.AddTransient<IGetMiEntregaByTareaQuery, GetMiEntregaByTareaQuery>();
             services.AddTransient<IGetMisEntregasByCursoQuery, GetMisEntregasByCursoQuery>();
 
+            // Calificaciones
+            services.AddTransient<ICreateCalificacionCommand, CreateCalificacionCommand>();
+
 
             // Reportes
             services.AddTransient<IGetReporteEntregasByTareaQuery, GetReporteEntregasByTareaQuery>();
@@ -157,6 +162,7 @@ namespace BlossomInstitute.Application
             services.AddScoped<IValidator<UpsertEntregaAdjuntoModel>, UpsertEntregaAdjuntoValidator>();
             services.AddScoped<IValidator<UpsertEntregaAlumnoModel>, UpsertEntregaAlumnoValidator>();
             services.AddScoped<IValidator<CreateFeedbackEntregaModel>, CreateFeedbackEntregaValidator>();
+            services.AddScoped<IValidator<CreateCalificacionModel>, CreateCalificacionValidator>();
 
 
             return services;

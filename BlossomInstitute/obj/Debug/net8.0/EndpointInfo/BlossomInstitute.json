@@ -432,6 +432,57 @@
         }
       }
     },
+    "/api/v1/cursos/{cursoId}/alumnos/{alumnoId}/calificaciones": {
+      "post": {
+        "tags": [
+          "Calificaciones"
+        ],
+        "parameters": [
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "alumnoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCalificacionModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCalificacionModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCalificacionModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/cursos/{cursoId}/clases": {
       "get": {
         "tags": [
@@ -1908,6 +1959,41 @@
         },
         "additionalProperties": false
       },
+      "CreateCalificacionModel": {
+        "type": "object",
+        "properties": {
+          "tipo": {
+            "$ref": "#/components/schemas/TipoCalificacion"
+          },
+          "titulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "nota": {
+            "type": "number",
+            "format": "double"
+          },
+          "fecha": {
+            "type": "string",
+            "format": "date"
+          },
+          "tareaId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "entregaId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateCursoHorarioModel": {
         "type": "object",
         "properties": {
@@ -2160,6 +2246,17 @@
         "enum": [
           1,
           2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "TipoCalificacion": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
         ],
         "type": "integer",
         "format": "int32"
