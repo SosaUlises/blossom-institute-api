@@ -55,6 +55,7 @@ namespace BlossomInstitute.Application.DataBase.Calificacion.Commands.ArchiveCal
                 return ResponseApiService.Response(StatusCodes.Status404NotFound, "Calificación no encontrada");
 
             calificacion.Archivado = true;
+            calificacion.ArchivadoPorTarea = false;
             calificacion.UpdatedAtUtc = DateTime.UtcNow;
 
             var ok = await _db.SaveAsync(ct);

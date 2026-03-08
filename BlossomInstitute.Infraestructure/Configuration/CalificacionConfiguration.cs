@@ -38,6 +38,9 @@ namespace BlossomInstitute.Infraestructure.Configuration
             entity.Property(x => x.Archivado)
                 .IsRequired();
 
+            entity.Property(x => x.ArchivadoPorTarea)
+               .IsRequired();
+
             entity.Property(x => x.CreatedAtUtc)
                 .IsRequired();
 
