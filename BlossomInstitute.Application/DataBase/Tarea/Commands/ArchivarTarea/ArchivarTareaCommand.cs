@@ -49,19 +49,22 @@ namespace BlossomInstitute.Application.DataBase.Tarea.Commands.ArchivarTarea
             if (tarea.Estado == EstadoTarea.Archivada)
                 return ResponseApiService.Response(StatusCodes.Status400BadRequest, "La tarea ya está archivada");
 
+            var nowUtc = DateTime.UtcNow;
+
             await using var tx = await _db.BeginTransactionAsync(ct);
 
             try
             {
                 tarea.Estado = EstadoTarea.Archivada;
-                tarea.UpdatedAtUtc = DateTime.UtcNow;
+                tarea.UpdatedAtUtc = nowUtc;
 
                 // Archivar calificaciones asociadas a la tarea
                 await _db.Calificaciones
                     .Where(c => c.TareaId == tareaId && !c.Archivado)
                     .ExecuteUpdateAsync(s => s
                         .SetProperty(x => x.Archivado, true)
-                        .SetProperty(x => x.UpdatedAtUtc, DateTime.UtcNow), ct);
+                        .SetProperty(x => x.ArchivadoPorTarea, true)
+                        .SetProperty(x => x.UpdatedAtUtc, nowUtc), ct);
 
                 var ok = await _db.SaveAsync(ct);
                 if (!ok)

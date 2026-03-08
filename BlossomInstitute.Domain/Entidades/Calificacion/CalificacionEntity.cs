@@ -30,6 +30,7 @@ namespace BlossomInstitute.Domain.Entidades.Calificaciones
         public EntregaEntity? Entrega { get; set; }
 
         public bool Archivado { get; set; } = false;
+        public bool ArchivadoPorTarea { get; set; } = false;
         public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAtUtc { get; set; }
     }

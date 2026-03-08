@@ -46,6 +46,9 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.Property<bool>("Archivado")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("ArchivadoPorTarea")
+                        .HasColumnType("boolean");
+
                     b.Property<DateTime>("CreatedAtUtc")
                         .HasColumnType("timestamp with time zone");
 

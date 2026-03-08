@@ -129,6 +129,7 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
                             TareaId = tareaId,
                             EntregaId = entrega.Id,
                             Archivado = false,
+                            ArchivadoPorTarea = false,
                             CreatedAtUtc = nowUtc
                         };
 
@@ -140,6 +141,8 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
                         calificacion.Titulo = tarea.Titulo;
                         calificacion.Descripcion = "Calificación actualizada desde feedback de entrega";
                         calificacion.Nota = model.Nota.Value;
+                        calificacion.Archivado = false;
+                        calificacion.ArchivadoPorTarea = false;
                         calificacion.Fecha = DateOnly.FromDateTime(nowUtc);
                         calificacion.UpdatedAtUtc = nowUtc;
                     }

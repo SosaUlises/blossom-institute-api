@@ -35,7 +35,6 @@ namespace BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteEntregaB
             if (pageSize <= 0) pageSize = 10;
             if (pageSize > 100) pageSize = 100;
 
-            // Seguridad: prof asignado al curso
             if (!isAdmin)
             {
                 var profAsignado = await _db.CursoProfesores.AsNoTracking()
@@ -45,46 +44,61 @@ namespace BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteEntregaB
                     return ResponseApiService.Response(StatusCodes.Status403Forbidden, "Profesor no asignado a este curso");
             }
 
-            // Tarea existe y pertenece al curso
             var tareaOk = await _db.Tareas.AsNoTracking()
                 .AnyAsync(t => t.Id == tareaId && t.CursoId == cursoId, ct);
+
             if (!tareaOk)
                 return ResponseApiService.Response(StatusCodes.Status404NotFound, "Tarea no encontrada");
 
-            // LEFT JOIN a la entrega de ESA tarea (si existe)
             var q =
-            from m in _db.Matriculas.AsNoTracking()
-            where m.CursoId == cursoId
-            join e in _db.Entregas.AsNoTracking().Where(x => x.TareaId == tareaId)
-                on m.AlumnoId equals e.AlumnoId into entregas
-            from e in entregas.DefaultIfEmpty()
-            select new
-            {
-                m.AlumnoId,
-                AlumnoNombre = m.Alumno.Usuario.Nombre,
-                AlumnoApellido = m.Alumno.Usuario.Apellido,
-                AlumnoDni = m.Alumno.Usuario.Dni,
+                from m in _db.Matriculas.AsNoTracking()
+                where m.CursoId == cursoId
+                join e in _db.Entregas.AsNoTracking().Where(x => x.TareaId == tareaId)
+                    on m.AlumnoId equals e.AlumnoId into entregas
+                from e in entregas.DefaultIfEmpty()
+                select new
+                {
+                    m.AlumnoId,
+                    AlumnoNombre = m.Alumno.Usuario.Nombre,
+                    AlumnoApellido = m.Alumno.Usuario.Apellido,
+                    AlumnoDni = m.Alumno.Usuario.Dni,
 
-                EntregaId = (int?)e.Id,
-                FechaEntregaUtc = (DateTime?)e.FechaEntregaUtc,
-                EstadoEntrega = (EstadoEntrega?)e.Estado,
-                TieneAdjuntos = e != null && e.Adjuntos.Any(),
+                    EntregaId = (int?)e.Id,
+                    FechaEntregaUtc = (DateTime?)e.FechaEntregaUtc,
+                    EstadoEntrega = (EstadoEntrega?)e.Estado,
+                    TieneAdjuntos = e != null && e.Adjuntos.Any(),
 
-                TieneFeedbackVigente = e != null && e.Feedbacks.Any(f => f.EsVigente),
+                    TieneFeedbackVigente = e != null && e.Feedbacks.Any(f => f.EsVigente),
 
-                FeedbackVigente = e == null ? null : e.Feedbacks
-                    .Where(f => f.EsVigente)
-                    .Select(f => new FeedbackVigenteModel
-                    {
-                        FeedbackId = f.Id,
-                        Estado = (int)f.Estado,
-                        Nota = f.Nota,
-                        FechaCorreccionUtc = f.FechaCorreccionUtc
-                    })
-                    .FirstOrDefault()
-            };
+                    FeedbackVigente = e == null
+                        ? null
+                        : e.Feedbacks
+                            .Where(f => f.EsVigente)
+                            .Select(f => new
+                            {
+                                f.Id,
+                                Estado = (int)f.Estado,
+                                f.FechaCorreccionUtc
+                            })
+                            .FirstOrDefault(),
 
-            // Search
+                    CalificacionActiva = e == null
+                        ? null
+                        : _db.Calificaciones
+                            .Where(c =>
+                                c.CursoId == cursoId &&
+                                c.AlumnoId == m.AlumnoId &&
+                                c.TareaId == tareaId &&
+                                c.EntregaId == e.Id &&
+                                !c.Archivado)
+                            .Select(c => new
+                            {
+                                c.Id,
+                                c.Nota
+                            })
+                            .FirstOrDefault()
+                };
+
             if (!string.IsNullOrWhiteSpace(search))
             {
                 var s = search.Trim().ToLowerInvariant();
@@ -94,9 +108,6 @@ namespace BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteEntregaB
                     x.AlumnoDni.ToString().Contains(s));
             }
 
-            // Filtro "pendienteCorreccion"
-            // true: tiene entrega y NO tiene feedback vigente
-            // false: tiene entrega y sí tiene feedback vigente
             if (pendienteCorreccion.HasValue)
             {
                 if (pendienteCorreccion.Value)
@@ -125,7 +136,6 @@ namespace BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteEntregaB
 
             var total = await q.CountAsync(ct);
 
-            // Paginado + proyección final
             var items = await q
                 .OrderBy(x => x.AlumnoApellido).ThenBy(x => x.AlumnoNombre)
                 .Skip((pageNumber - 1) * pageSize)
@@ -146,7 +156,16 @@ namespace BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteEntregaB
                     EntregaId = x.EntregaId,
                     FechaEntregaUtc = x.FechaEntregaUtc,
                     TieneAdjuntos = x.TieneAdjuntos,
-                    FeedbackVigente = x.FeedbackVigente
+
+                    FeedbackVigente = x.FeedbackVigente == null
+                        ? null
+                        : new FeedbackVigenteModel
+                        {
+                            FeedbackId = x.FeedbackVigente.Id,
+                            Estado = x.FeedbackVigente.Estado,
+                            Nota = x.CalificacionActiva == null ? null : x.CalificacionActiva.Nota,
+                            FechaCorreccionUtc = x.FeedbackVigente.FechaCorreccionUtc
+                        }
                 })
                 .ToListAsync(ct);
 
