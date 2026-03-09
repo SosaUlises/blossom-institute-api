@@ -1,30 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\",
+  "WorkspaceRootPath": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulises\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\tarea\\commands\\archivartarea\\archivartareacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\tarea\\commands\\archivartarea\\archivartareacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\injecciondependenciaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulises\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\tarea\\commands\\updatetarea\\updatetareacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\tarea\\commands\\updatetarea\\updatetareacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\dashboard\\queries\\getalumnodashboard\\igetalumnodashboardquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\dashboard\\queries\\getalumnodashboard\\igetalumnodashboardquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulises\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\calificacion\\queries\\getcalificacionesbycurso\\getcalificacionesbycursoquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\calificacion\\queries\\getcalificacionesbycurso\\getcalificacionesbycursoquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|c:\\users\\ulises\\source\\repos\\blossom-institute-api\\blossominstitute\\controllers\\reportecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|solutionrelative:blossominstitute\\controllers\\reportecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulises\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\reportes\\queries\\reporteentregabytarea\\getreporteentregasbytareaquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\reportes\\queries\\reporteentregabytarea\\getreporteentregasbytareaquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulises\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\entregas\\commands\\createfeedbackentrega\\createfeedbackentregacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\entregas\\commands\\createfeedbackentrega\\createfeedbackentregacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\dashboard\\queries\\getalumnodashboard\\getalumnodashboardquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\dashboard\\queries\\getalumnodashboard\\getalumnodashboardquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -55,79 +43,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ArchivarTareaCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\ArchivarTarea\\ArchivarTareaCommand.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\ArchivarTarea\\ArchivarTareaCommand.cs",
-              "ToolTip": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\ArchivarTarea\\ArchivarTareaCommand.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\ArchivarTarea\\ArchivarTareaCommand.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAIwDUAAABFAAAAAAAAAA==",
+              "Title": "InjeccionDependenciaService.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\InjeccionDependenciaService.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Application\\InjeccionDependenciaService.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\InjeccionDependenciaService.cs",
+              "RelativeToolTip": "BlossomInstitute.Application\\InjeccionDependenciaService.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAgwJYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T15:36:22.788Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UpdateTareaCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\UpdateTarea\\UpdateTareaCommand.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\UpdateTarea\\UpdateTareaCommand.cs",
-              "ToolTip": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\UpdateTarea\\UpdateTareaCommand.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\UpdateTarea\\UpdateTareaCommand.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAowGkAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T15:17:46.061Z",
+              "WhenOpened": "2026-03-09T18:33:27.955Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GetCalificacionesByCursoQuery.cs",
-              "DocumentMoniker": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Calificacion\\Queries\\GetCalificacionesByCurso\\GetCalificacionesByCursoQuery.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Calificacion\\Queries\\GetCalificacionesByCurso\\GetCalificacionesByCursoQuery.cs",
-              "ToolTip": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Calificacion\\Queries\\GetCalificacionesByCurso\\GetCalificacionesByCursoQuery.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Calificacion\\Queries\\GetCalificacionesByCurso\\GetCalificacionesByCursoQuery.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAowHwAAAAFAAAAAAAAAA==",
+              "Title": "GetAlumnoDashboardQuery.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\GetAlumnoDashboardQuery.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\GetAlumnoDashboardQuery.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\GetAlumnoDashboardQuery.cs",
+              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\GetAlumnoDashboardQuery.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAABgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T15:08:28.15Z",
+              "WhenOpened": "2026-03-09T18:33:09.691Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ReporteController.cs",
-              "DocumentMoniker": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\ReporteController.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute\\Controllers\\ReporteController.cs",
-              "ToolTip": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\ReporteController.cs",
-              "RelativeToolTip": "BlossomInstitute\\Controllers\\ReporteController.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAIwEsAAAAuAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "IGetAlumnoDashboardQuery.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\IGetAlumnoDashboardQuery.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\IGetAlumnoDashboardQuery.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\IGetAlumnoDashboardQuery.cs",
+              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\IGetAlumnoDashboardQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T15:07:51.91Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateFeedbackEntregaCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\CreateFeedbackEntrega\\CreateFeedbackEntregaCommand.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\CreateFeedbackEntrega\\CreateFeedbackEntregaCommand.cs",
-              "ToolTip": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\CreateFeedbackEntrega\\CreateFeedbackEntregaCommand.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\CreateFeedbackEntrega\\CreateFeedbackEntregaCommand.cs",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAowFoAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T15:05:48.634Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GetReporteEntregasByTareaQuery.cs",
-              "DocumentMoniker": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Reportes\\Queries\\ReporteEntregaByTarea\\GetReporteEntregasByTareaQuery.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Reportes\\Queries\\ReporteEntregaByTarea\\GetReporteEntregasByTareaQuery.cs",
-              "ToolTip": "C:\\Users\\Ulises\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Reportes\\Queries\\ReporteEntregaByTarea\\GetReporteEntregasByTareaQuery.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Reportes\\Queries\\ReporteEntregaByTarea\\GetReporteEntregasByTareaQuery.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T14:39:18.678Z",
+              "WhenOpened": "2026-03-09T18:33:06.411Z",
               "EditorCaption": ""
             }
           ]

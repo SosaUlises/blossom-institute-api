@@ -29,6 +29,7 @@ using BlossomInstitute.Application.DataBase.Curso.Queries.GetAllCursos;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetCursoById;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Alumno;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Profesor;
+using BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashboard;
 using BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedbackEntrega;
 using BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaAlumno;
 using BlossomInstitute.Application.DataBase.Entregas.Queries.Alumno.GetMiEntregaByTarea;
@@ -143,6 +144,9 @@ namespace BlossomInstitute.Application
             services.AddTransient<IArchiveCalificacionCommand, ArchiveCalificacionCommand>();
             services.AddTransient<IGetCalificacionesByCursoQuery, GetCalificacionesByCursoQuery>();
             services.AddTransient<IGetCalificacionesByAlumnoQuery, GetCalificacionesByAlumnoQuery>();
+
+            // Dashboard
+            services.AddTransient<IGetAlumnoDashboardQuery, GetAlumnoDashboardQuery>();
 
 
             // Reportes
