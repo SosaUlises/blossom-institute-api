@@ -1022,6 +1022,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BlossomInstitute.Controllers.MeDashboardController",
+    "Method": "GetAlumnoDashboard",
+    "RelativePath": "api/v1/me/dashboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BlossomInstitute.Controllers.MeEntregasController",
     "Method": "GetMiEntregaByTarea",
     "RelativePath": "api/v1/me/tareas/{tareaId}/entrega",

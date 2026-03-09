@@ -17,6 +17,7 @@
 
         public List<DashboardCursoItemModel> Cursos { get; set; } = new();
         public List<DashboardProximaClaseItemModel> ProximasClases { get; set; } = new();
+        public List<DashboardUltimaClaseItemModel> UltimasClases { get; set; } = new();
         public List<DashboardTareaPendienteItemModel> TareasPendientes { get; set; } = new();
         public List<DashboardUltimaEntregaItemModel> UltimasEntregas { get; set; } = new();
         public List<DashboardUltimaCalificacionItemModel> UltimasCalificaciones { get; set; } = new();

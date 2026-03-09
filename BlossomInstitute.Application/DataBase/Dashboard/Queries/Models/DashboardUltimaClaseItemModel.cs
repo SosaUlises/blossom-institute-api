@@ -2,13 +2,13 @@
 
 namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.Models
 {
-    public class DashboardProximaClaseItemModel
+    public class DashboardUltimaClaseItemModel
     {
+        public int ClaseId { get; set; }
         public int CursoId { get; set; }
         public string CursoNombre { get; set; } = default!;
-        public DayOfWeek Dia { get; set; }
         public DateOnly Fecha { get; set; }
-        public TimeOnly HoraInicio { get; set; }
-        public TimeOnly HoraFin { get; set; }
+        public EstadoClase EstadoClase { get; set; }
+        public string? Descripcion { get; set; }
     }
 }

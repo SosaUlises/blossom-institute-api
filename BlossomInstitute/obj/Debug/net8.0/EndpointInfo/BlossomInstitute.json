@@ -1356,6 +1356,18 @@
         }
       }
     },
+    "/api/v1/me/dashboard": {
+      "get": {
+        "tags": [
+          "MeDashboard"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/v1/me/tareas/{tareaId}/entrega": {
       "get": {
         "tags": [

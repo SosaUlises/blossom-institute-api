@@ -51,7 +51,8 @@ namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashb
             if (alumno == null)
                 return ResponseApiService.Response(StatusCodes.Status404NotFound, "Alumno no encontrado");
 
-            var hoy = DateOnly.FromDateTime(DateTime.UtcNow);
+            var hoy = DateOnly.FromDateTime(DateTime.Now);
+            var ahoraLocal = DateTime.Now;
             var ahoraUtc = DateTime.UtcNow;
 
             var cursos = await _db.Matriculas
@@ -89,6 +90,7 @@ namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashb
                     PorcentajeAsistenciaGeneral = 0,
                     Cursos = new List<DashboardCursoItemModel>(),
                     ProximasClases = new List<DashboardProximaClaseItemModel>(),
+                    UltimasClases = new List<DashboardUltimaClaseItemModel>(),
                     TareasPendientes = new List<DashboardTareaPendienteItemModel>(),
                     UltimasEntregas = new List<DashboardUltimaEntregaItemModel>(),
                     UltimasCalificaciones = new List<DashboardUltimaCalificacionItemModel>(),
@@ -96,16 +98,50 @@ namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashb
                 });
             }
 
-            var proximasClases = await _db.Clases
+            var horarios = await _db.CursoHorarios
+                .AsNoTracking()
+                .Where(x => cursoIds.Contains(x.CursoId))
+                .Select(x => new
+                {
+                    x.CursoId,
+                    CursoNombre = x.Curso.Nombre,
+                    x.Dia,
+                    x.HoraInicio,
+                    x.HoraFin
+                })
+                .ToListAsync(ct);
+
+            var proximasClases = horarios
+                .Select(h =>
+                {
+                    var proximaFecha = ObtenerProximaFecha(h.Dia, hoy, h.HoraInicio, ahoraLocal);
+
+                    return new DashboardProximaClaseItemModel
+                    {
+                        CursoId = h.CursoId,
+                        CursoNombre = h.CursoNombre,
+                        Dia = h.Dia,
+                        Fecha = proximaFecha,
+                        HoraInicio = h.HoraInicio,
+                        HoraFin = h.HoraFin
+                    };
+                })
+                .OrderBy(x => x.Fecha)
+                .ThenBy(x => x.HoraInicio)
+                .ThenBy(x => x.CursoNombre)
+                .Take(5)
+                .ToList();
+
+            var ultimasClases = await _db.Clases
                 .AsNoTracking()
                 .Where(x =>
                     cursoIds.Contains(x.CursoId) &&
                     x.Estado != EstadoClase.Cancelada &&
-                    x.Fecha >= hoy)
-                .OrderBy(x => x.Fecha)
-                .ThenBy(x => x.Curso.Nombre)
+                    x.Fecha <= hoy)
+                .OrderByDescending(x => x.Fecha)
+                .ThenByDescending(x => x.Id)
                 .Take(5)
-                .Select(x => new DashboardProximaClaseItemModel
+                .Select(x => new DashboardUltimaClaseItemModel
                 {
                     ClaseId = x.Id,
                     CursoId = x.CursoId,
@@ -145,7 +181,9 @@ namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashb
 
             var ultimasEntregas = await _db.Entregas
                 .AsNoTracking()
-                .Where(x => x.AlumnoId == alumno.Id)
+                .Where(x =>
+                    x.AlumnoId == alumno.Id &&
+                    cursoIds.Contains(x.Tarea.CursoId))
                 .OrderByDescending(x => x.FechaEntregaUtc)
                 .Take(5)
                 .Select(x => new DashboardUltimaEntregaItemModel
@@ -162,11 +200,16 @@ namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashb
 
             var entregasRealizadasCount = await _db.Entregas
                 .AsNoTracking()
-                .CountAsync(x => x.AlumnoId == alumno.Id, ct);
+                .CountAsync(x =>
+                    x.AlumnoId == alumno.Id &&
+                    cursoIds.Contains(x.Tarea.CursoId), ct);
 
             var calificacionesBaseQuery = _db.Calificaciones
                 .AsNoTracking()
-                .Where(x => x.AlumnoId == alumno.Id && !x.Archivado);
+                .Where(x =>
+                    x.AlumnoId == alumno.Id &&
+                    cursoIds.Contains(x.CursoId) &&
+                    !x.Archivado);
 
             var ultimasCalificaciones = await calificacionesBaseQuery
                 .OrderByDescending(x => x.Fecha)
@@ -286,6 +329,7 @@ namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashb
                 PorcentajeAsistenciaGeneral = porcentajeAsistenciaGeneral,
                 Cursos = cursos,
                 ProximasClases = proximasClases,
+                UltimasClases = ultimasClases,
                 TareasPendientes = tareasPendientes,
                 UltimasEntregas = ultimasEntregas,
                 UltimasCalificaciones = ultimasCalificaciones,
@@ -293,6 +337,21 @@ namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashb
             };
 
             return ResponseApiService.Response(StatusCodes.Status200OK, response);
+        }
+
+        private static DateOnly ObtenerProximaFecha(
+            DayOfWeek diaClase,
+            DateOnly hoy,
+            TimeOnly horaInicio,
+            DateTime ahoraLocal)
+        {
+            var diasHasta = ((int)diaClase - (int)hoy.DayOfWeek + 7) % 7;
+            var fecha = hoy.AddDays(diasHasta);
+
+            if (diasHasta == 0 && horaInicio <= TimeOnly.FromDateTime(ahoraLocal))
+                fecha = fecha.AddDays(7);
+
+            return fecha;
         }
     }
 }
