@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute\\controllers\\medashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|solutionrelative:blossominstitute\\controllers\\medashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\idatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\idatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute\\controllers\\meentregascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38A96820-2DB8-4A03-9C44-04B614C84CF1}|BlossomInstitute\\BlossomInstitute.csproj|solutionrelative:blossominstitute\\controllers\\meentregascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.infraestructure\\database\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|solutionrelative:blossominstitute.infraestructure\\database\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\dashboard\\queries\\getalumnodashboard\\getalumnodashboardquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\dashboard\\queries\\getalumnodashboard\\getalumnodashboardquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.infraestructure\\configuration\\calificaciondetalleconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|solutionrelative:blossominstitute.infraestructure\\configuration\\calificaciondetalleconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.infraestructure\\configuration\\calificacionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{689E9456-2E8D-488F-A402-A034A4957B45}|BlossomInstitute.Infraestructure\\BlossomInstitute.Infraestructure.csproj|solutionrelative:blossominstitute.infraestructure\\configuration\\calificacionconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,40 +47,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MeDashboardController.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\MeDashboardController.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute\\Controllers\\MeDashboardController.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\MeDashboardController.cs",
-              "RelativeToolTip": "BlossomInstitute\\Controllers\\MeDashboardController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "IDataBaseService.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\IDataBaseService.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\IDataBaseService.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\IDataBaseService.cs",
+              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\IDataBaseService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA1wB0AAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T19:02:00.254Z",
+              "WhenOpened": "2026-03-09T19:42:24.013Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MeEntregasController.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\MeEntregasController.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute\\Controllers\\MeEntregasController.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute\\Controllers\\MeEntregasController.cs",
-              "RelativeToolTip": "BlossomInstitute\\Controllers\\MeEntregasController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "DataBaseService.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Infraestructure\\DataBase\\DataBaseService.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Infraestructure\\DataBase\\DataBaseService.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Infraestructure\\DataBase\\DataBaseService.cs",
+              "RelativeToolTip": "BlossomInstitute.Infraestructure\\DataBase\\DataBaseService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAA5wCMAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T19:01:56.546Z",
+              "WhenOpened": "2026-03-09T19:41:58.396Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GetAlumnoDashboardQuery.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\GetAlumnoDashboardQuery.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\GetAlumnoDashboardQuery.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\GetAlumnoDashboardQuery.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Dashboard\\Queries\\GetAlumnoDashboard\\GetAlumnoDashboardQuery.cs",
-              "ViewState": "AgIAAB0BAAAAAAAAAAAowM8AAAAfAAAAAAAAAA==",
+              "Title": "CalificacionDetalleConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Infraestructure\\Configuration\\CalificacionDetalleConfiguration.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Infraestructure\\Configuration\\CalificacionDetalleConfiguration.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Infraestructure\\Configuration\\CalificacionDetalleConfiguration.cs",
+              "RelativeToolTip": "BlossomInstitute.Infraestructure\\Configuration\\CalificacionDetalleConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-09T18:58:36.613Z",
+              "WhenOpened": "2026-03-09T19:41:08.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CalificacionConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Infraestructure\\Configuration\\CalificacionConfiguration.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Infraestructure\\Configuration\\CalificacionConfiguration.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Infraestructure\\Configuration\\CalificacionConfiguration.cs",
+              "RelativeToolTip": "BlossomInstitute.Infraestructure\\Configuration\\CalificacionConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T19:36:41.918Z",
               "EditorCaption": ""
             }
           ]

@@ -5,10 +5,10 @@ namespace BlossomInstitute.Application.DataBase.Calificacion.Commands.CreateCali
     public interface ICreateCalificacionCommand
     {
         Task<BaseResponseModel> Execute(
-            int cursoId,
-            int alumnoId,
-            int profesorUserId,
-            CreateCalificacionModel model,
-            CancellationToken ct);
+              int cursoId,
+              int alumnoId,
+              int profesorUserId,
+              CreateCalificacionModel model,
+              CancellationToken ct);
     }
 }

@@ -26,16 +26,16 @@ namespace BlossomInstitute.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Create(
-            [FromRoute] int cursoId,
-            [FromRoute] int alumnoId,
-            [FromBody] CreateCalificacionModel model,
-            [FromServices] ICreateCalificacionCommand command,
-            [FromServices] IValidator<CreateCalificacionModel> validator,
-            CancellationToken ct)
+             [FromRoute] int cursoId,
+             [FromRoute] int alumnoId,
+             [FromBody] CreateCalificacionModel model,
+             [FromServices] ICreateCalificacionCommand command,
+             [FromServices] IValidator<CreateCalificacionModel> validator,
+             CancellationToken ct)
         {
             var vr = await validator.ValidateAsync(model, ct);
             if (!vr.IsValid)
-                return BadRequest(ResponseApiService.Response(400, vr.Errors));
+                return BadRequest(ResponseApiService.Response(StatusCodes.Status400BadRequest, vr.Errors));
 
             var result = await command.Execute(cursoId, alumnoId, GetUserId(), model, ct);
             return StatusCode(result.StatusCode, result);
