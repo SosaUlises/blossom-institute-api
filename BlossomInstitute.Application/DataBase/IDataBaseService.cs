@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Domain.Entidades.Alumno;
+using BlossomInstitute.Domain.Entidades.Calificacion;
 using BlossomInstitute.Domain.Entidades.Calificaciones;
 using BlossomInstitute.Domain.Entidades.Clase;
 using BlossomInstitute.Domain.Entidades.Curso;
@@ -28,6 +29,7 @@ namespace BlossomInstitute.Application.DataBase
         DbSet<EntregaAdjuntoEntity> EntregaAdjuntos { get; set; }
         DbSet<FeedbackEntregaEntity> EntregaFeedbacks { get; set; }
         DbSet<CalificacionEntity> Calificaciones { get; set; }
+        DbSet<CalificacionDetalleEntity> CalificacionDetalles { get; set; }
 
 
         // Identity (solo lectura para queries)

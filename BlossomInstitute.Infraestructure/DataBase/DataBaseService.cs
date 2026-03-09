@@ -36,6 +36,7 @@ namespace BlossomInstitute.Infraestructure.DataBase
         public DbSet<EntregaAdjuntoEntity> EntregaAdjuntos { get; set; }
         public DbSet<FeedbackEntregaEntity> EntregaFeedbacks { get; set; }
         public DbSet<CalificacionEntity> Calificaciones { get; set; }
+        public DbSet<CalificacionDetalleConfiguration> CalificacionDetalles { get; set; }
 
         // Identity (solo lectura para queries)
         public IQueryable<UsuarioEntity> Usuarios => Users.AsNoTracking();
