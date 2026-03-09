@@ -53,7 +53,7 @@ namespace BlossomInstitute.Controllers
         {
             var vr = await validator.ValidateAsync(model, ct);
             if (!vr.IsValid)
-                return BadRequest(ResponseApiService.Response(400, vr.Errors));
+                return BadRequest(ResponseApiService.Response(StatusCodes.Status400BadRequest, vr.Errors));
 
             var result = await command.Execute(cursoId, alumnoId, calificacionId, GetUserId(), model, ct);
             return StatusCode(result.StatusCode, result);

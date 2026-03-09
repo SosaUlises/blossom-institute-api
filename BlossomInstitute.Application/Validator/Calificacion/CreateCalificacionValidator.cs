@@ -18,8 +18,9 @@ namespace BlossomInstitute.Application.Validator.Calificacion
                 .MaximumLength(500);
 
             RuleFor(x => x.Nota)
-                .InclusiveBetween(1, 10)
-                .WithMessage("La nota debe estar entre 1 y 10.");
+             .InclusiveBetween(0m, 100m)
+             .When(x => x.Nota.HasValue)
+             .WithMessage("La nota debe estar entre 0 y 100.");
 
             RuleFor(x => x.Fecha)
                 .NotEmpty()
