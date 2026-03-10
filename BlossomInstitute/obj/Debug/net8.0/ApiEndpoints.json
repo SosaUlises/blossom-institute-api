@@ -1024,7 +1024,17 @@
   {
     "ContainingType": "BlossomInstitute.Controllers.MeDashboardController",
     "Method": "GetAlumnoDashboard",
-    "RelativePath": "api/v1/me/dashboard",
+    "RelativePath": "api/v1/me/dashboard-alumno",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.MeDashboardController",
+    "Method": "GetProfesorDashboard",
+    "RelativePath": "api/v1/me/dashboard-profesor",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

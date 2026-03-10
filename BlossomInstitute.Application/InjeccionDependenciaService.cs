@@ -30,6 +30,7 @@ using BlossomInstitute.Application.DataBase.Curso.Queries.GetCursoById;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Alumno;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Profesor;
 using BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashboard;
+using BlossomInstitute.Application.DataBase.Dashboard.Queries.GetProfesorDashboard;
 using BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedbackEntrega;
 using BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaAlumno;
 using BlossomInstitute.Application.DataBase.Entregas.Queries.Alumno.GetMiEntregaByTarea;
@@ -147,6 +148,7 @@ namespace BlossomInstitute.Application
 
             // Dashboard
             services.AddTransient<IGetAlumnoDashboardQuery, GetAlumnoDashboardQuery>();
+            services.AddTransient<IGetProfesorDashboardQuery, GetProfesorDashboardQuery>();
 
 
             // Reportes

@@ -148,6 +148,21 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
                         });
                     }
 
+                    await _db.EntregaFeedbacks
+                        .Where(f => f.EntregaId == entrega.Id && f.EsVigente)
+                        .ExecuteUpdateAsync(s => s
+                            .SetProperty(x => x.EsVigente, false), ct);
+
+                    await _db.Calificaciones
+                        .Where(c =>
+                            c.TareaId == tareaId &&
+                            c.EntregaId == entrega.Id &&
+                            !c.Archivado)
+                        .ExecuteUpdateAsync(s => s
+                            .SetProperty(x => x.Archivado, true)
+                            .SetProperty(x => x.ArchivadoPorTarea, false)
+                            .SetProperty(x => x.UpdatedAtUtc, nowUtc), ct);
+
                     var saved = await _db.SaveAsync(ct);
                     if (!saved)
                     {

@@ -1356,7 +1356,19 @@
         }
       }
     },
-    "/api/v1/me/dashboard": {
+    "/api/v1/me/dashboard-alumno": {
+      "get": {
+        "tags": [
+          "MeDashboard"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/me/dashboard-profesor": {
       "get": {
         "tags": [
           "MeDashboard"
