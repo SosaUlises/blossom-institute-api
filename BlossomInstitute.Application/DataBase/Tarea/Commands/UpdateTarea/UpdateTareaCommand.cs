@@ -1,4 +1,5 @@
 ﻿using BlossomInstitute.Common.Features;
+using BlossomInstitute.Domain.Entidades.Curso;
 using BlossomInstitute.Domain.Entidades.Tarea;
 using BlossomInstitute.Domain.Entidades.Usuario;
 using BlossomInstitute.Domain.Model;
@@ -36,17 +37,36 @@ namespace BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea
                 return ResponseApiService.Response(StatusCodes.Status401Unauthorized, "No autenticado");
 
             var user = await _userManager.FindByIdAsync(profesorUserId.ToString());
-            if (user == null || !user.Activo)
+            if (user == null)
+                return ResponseApiService.Response(StatusCodes.Status401Unauthorized, "No autenticado");
+
+            if (!user.Activo)
                 return ResponseApiService.Response(StatusCodes.Status403Forbidden, "Usuario inválido o inactivo");
 
-            if (!await _userManager.IsInRoleAsync(user, "Profesor"))
+            var isProfesor = await _userManager.IsInRoleAsync(user, "Profesor");
+            var isAdmin = await _userManager.IsInRoleAsync(user, "Administrador");
+
+            if (!isProfesor && !isAdmin)
                 return ResponseApiService.Response(StatusCodes.Status403Forbidden, "Acceso denegado");
 
-            var profesorAsignado = await _db.CursoProfesores.AsNoTracking()
-                .AnyAsync(x => x.CursoId == cursoId && x.ProfesorId == profesorUserId, ct);
+            var curso = await _db.Cursos
+                .AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == cursoId, ct);
 
-            if (!profesorAsignado)
-                return ResponseApiService.Response(StatusCodes.Status403Forbidden, "No estás asignado a este curso");
+            if (curso == null)
+                return ResponseApiService.Response(StatusCodes.Status404NotFound, "Curso no encontrado");
+
+            if (curso.Estado != EstadoCurso.Activo)
+                return ResponseApiService.Response(StatusCodes.Status409Conflict, "El curso no se encuentra activo");
+
+            if (!isAdmin)
+            {
+                var profesorAsignado = await _db.CursoProfesores.AsNoTracking()
+                    .AnyAsync(x => x.CursoId == cursoId && x.ProfesorId == profesorUserId, ct);
+
+                if (!profesorAsignado)
+                    return ResponseApiService.Response(StatusCodes.Status403Forbidden, "No estás asignado a este curso");
+            }
 
             var tarea = await _db.Tareas
                 .Include(t => t.Recursos)
@@ -59,32 +79,37 @@ namespace BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea
             var estadoNuevo = model.Estado;
             var nowUtc = DateTime.UtcNow;
 
+            var recursos = model.Recursos ?? new List<UpdateTareaRecursoModel>();
+
+            recursos = recursos
+                .Where(r => !string.IsNullOrWhiteSpace(r.Url))
+                .GroupBy(r => r.Url!.Trim(), StringComparer.OrdinalIgnoreCase)
+                .Select(g => g.First())
+                .ToList();
+
             await using var tx = await _db.BeginTransactionAsync(ct);
 
             try
             {
                 tarea.Titulo = model.Titulo.Trim();
-                tarea.Consigna = model.Consigna?.Trim();
+                tarea.Consigna = string.IsNullOrWhiteSpace(model.Consigna) ? null : model.Consigna.Trim();
                 tarea.FechaEntregaUtc = model.FechaEntregaUtc;
                 tarea.Estado = estadoNuevo;
                 tarea.UpdatedAtUtc = nowUtc;
 
-                // Reemplazar recursos
-                tarea.Recursos.Clear();
-                if (model.Recursos != null && model.Recursos.Count > 0)
+                if (tarea.Recursos.Any())
+                    _db.TareaRecursos.RemoveRange(tarea.Recursos);
+
+                foreach (var r in recursos)
                 {
-                    foreach (var r in model.Recursos)
+                    tarea.Recursos.Add(new TareaRecursoEntity
                     {
-                        tarea.Recursos.Add(new TareaRecursoEntity
-                        {
-                            Tipo = r.Tipo,
-                            Url = r.Url.Trim(),
-                            Nombre = r.Nombre?.Trim()
-                        });
-                    }
+                        Tipo = r.Tipo,
+                        Url = r.Url!.Trim(),
+                        Nombre = string.IsNullOrWhiteSpace(r.Nombre) ? null : r.Nombre.Trim()
+                    });
                 }
 
-                // Si pasa a Archivada => archivar calificaciones asociadas por tarea
                 if (estadoAnterior != EstadoTarea.Archivada && estadoNuevo == EstadoTarea.Archivada)
                 {
                     await _db.Calificaciones
@@ -95,7 +120,6 @@ namespace BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea
                             .SetProperty(x => x.UpdatedAtUtc, nowUtc), ct);
                 }
 
-                // Si sale de Archivada => desarchivar SOLO las archivadas por tarea
                 if (estadoAnterior == EstadoTarea.Archivada && estadoNuevo != EstadoTarea.Archivada)
                 {
                     await _db.Calificaciones

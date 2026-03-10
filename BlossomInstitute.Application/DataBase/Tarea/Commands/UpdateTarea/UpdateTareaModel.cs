@@ -8,8 +8,6 @@ namespace BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea
         public string? Consigna { get; set; }
         public DateTime? FechaEntregaUtc { get; set; }
         public EstadoTarea Estado { get; set; }
-
-        // Para simplificar: reemplazamos recursos completos (delete + add).
         public List<UpdateTareaRecursoModel> Recursos { get; set; } = new();
     }
 }

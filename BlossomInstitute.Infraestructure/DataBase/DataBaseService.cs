@@ -1,5 +1,6 @@
 ﻿using BlossomInstitute.Application.DataBase;
 using BlossomInstitute.Domain.Entidades.Alumno;
+using BlossomInstitute.Domain.Entidades.Calificacion;
 using BlossomInstitute.Domain.Entidades.Calificaciones;
 using BlossomInstitute.Domain.Entidades.Clase;
 using BlossomInstitute.Domain.Entidades.Curso;
@@ -36,7 +37,7 @@ namespace BlossomInstitute.Infraestructure.DataBase
         public DbSet<EntregaAdjuntoEntity> EntregaAdjuntos { get; set; }
         public DbSet<FeedbackEntregaEntity> EntregaFeedbacks { get; set; }
         public DbSet<CalificacionEntity> Calificaciones { get; set; }
-        public DbSet<CalificacionDetalleConfiguration> CalificacionDetalles { get; set; }
+        public DbSet<CalificacionDetalleEntity> CalificacionDetalles { get; set; }
 
         // Identity (solo lectura para queries)
         public IQueryable<UsuarioEntity> Usuarios => Users.AsNoTracking();
@@ -68,6 +69,8 @@ namespace BlossomInstitute.Infraestructure.DataBase
             new EntregaAdjuntoConfiguration(modelBuilder.Entity<EntregaAdjuntoEntity>());
             new EntregaConfiguration(modelBuilder.Entity<EntregaEntity>());
             new FeedbackEntregaConfiguration(modelBuilder.Entity<FeedbackEntregaEntity>());
+            new CalificacionConfiguration(modelBuilder.Entity<CalificacionEntity>());
+            new CalificacionDetalleConfiguration(modelBuilder.Entity<CalificacionDetalleEntity>());
 
         }
 

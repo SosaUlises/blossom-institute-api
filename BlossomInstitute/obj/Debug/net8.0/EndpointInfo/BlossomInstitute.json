@@ -2184,6 +2184,23 @@
         },
         "additionalProperties": false
       },
+      "CreateCalificacionDetalleModel": {
+        "type": "object",
+        "properties": {
+          "skill": {
+            "$ref": "#/components/schemas/SkillEvaluada"
+          },
+          "puntajeObtenido": {
+            "type": "number",
+            "format": "double"
+          },
+          "puntajeMaximo": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateCalificacionModel": {
         "type": "object",
         "properties": {
@@ -2198,10 +2215,6 @@
             "type": "string",
             "nullable": true
           },
-          "nota": {
-            "type": "number",
-            "format": "double"
-          },
           "fecha": {
             "type": "string",
             "format": "date"
@@ -2214,6 +2227,18 @@
           "entregaId": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          },
+          "nota": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "detalles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateCalificacionDetalleModel"
+            },
             "nullable": true
           }
         },
@@ -2467,6 +2492,17 @@
         },
         "additionalProperties": false
       },
+      "SkillEvaluada": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "TipoAdjunto": {
         "enum": [
           1,
@@ -2554,6 +2590,23 @@
         },
         "additionalProperties": false
       },
+      "UpdateCalificacionDetalleModel": {
+        "type": "object",
+        "properties": {
+          "skill": {
+            "$ref": "#/components/schemas/SkillEvaluada"
+          },
+          "puntajeObtenido": {
+            "type": "number",
+            "format": "double"
+          },
+          "puntajeMaximo": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateCalificacionModel": {
         "type": "object",
         "properties": {
@@ -2568,10 +2621,6 @@
             "type": "string",
             "nullable": true
           },
-          "nota": {
-            "type": "number",
-            "format": "double"
-          },
           "fecha": {
             "type": "string",
             "format": "date"
@@ -2584,6 +2633,18 @@
           "entregaId": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          },
+          "nota": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "detalles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateCalificacionDetalleModel"
+            },
             "nullable": true
           }
         },
