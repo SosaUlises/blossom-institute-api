@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\tarea\\commands\\createtarea\\createtarearecursomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\tarea\\commands\\createtarea\\createtarearecursomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\tarea\\commands\\createtarea\\createtareacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\tarea\\commands\\createtarea\\createtareacommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\entregas\\commands\\upsertentregaalumno\\upsertentregaalumnocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\entregas\\commands\\upsertentregaalumno\\upsertentregaalumnocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,27 +35,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CreateTareaRecursoModel.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\CreateTarea\\CreateTareaRecursoModel.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\CreateTarea\\CreateTareaRecursoModel.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\CreateTarea\\CreateTareaRecursoModel.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\CreateTarea\\CreateTareaRecursoModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAArAAAAAAAAAA==",
+              "Title": "UpsertEntregaAlumnoCommand.cs",
+              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\UpsertEntregaAlumno\\UpsertEntregaAlumnoCommand.cs",
+              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\UpsertEntregaAlumno\\UpsertEntregaAlumnoCommand.cs",
+              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\UpsertEntregaAlumno\\UpsertEntregaAlumnoCommand.cs",
+              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\UpsertEntregaAlumno\\UpsertEntregaAlumnoCommand.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAowFUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T01:56:57.036Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CreateTareaCommand.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\CreateTarea\\CreateTareaCommand.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\CreateTarea\\CreateTareaCommand.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\CreateTarea\\CreateTareaCommand.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Tarea\\Commands\\CreateTarea\\CreateTareaCommand.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAowFcAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T01:55:53.707Z",
+              "WhenOpened": "2026-03-10T02:08:07.505Z",
               "EditorCaption": ""
             }
           ]

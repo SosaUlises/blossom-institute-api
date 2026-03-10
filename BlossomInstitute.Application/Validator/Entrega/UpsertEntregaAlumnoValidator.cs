@@ -10,12 +10,14 @@ namespace BlossomInstitute.Application.Validator.Entrega
             RuleFor(x => x.Texto)
                 .MaximumLength(8000);
 
+            RuleFor(x => x)
+                .Must(x =>
+                    !string.IsNullOrWhiteSpace(x.Texto) ||
+                    (x.Adjuntos != null && x.Adjuntos.Any(a => !string.IsNullOrWhiteSpace(a.Url))))
+                .WithMessage("La entrega debe tener texto o al menos un adjunto.");
+
             RuleForEach(x => x.Adjuntos)
                 .SetValidator(new UpsertEntregaAdjuntoValidator());
-
-            RuleFor(x => x.Adjuntos)
-                .Must(list => list == null || list.Count <= 10)
-                .WithMessage("Máximo 10 adjuntos por entrega.");
         }
     }
 }

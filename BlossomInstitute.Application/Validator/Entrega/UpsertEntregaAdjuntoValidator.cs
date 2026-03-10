@@ -7,19 +7,23 @@ namespace BlossomInstitute.Application.Validator.Entrega
     {
         public UpsertEntregaAdjuntoValidator()
         {
-            RuleFor(x => x.Tipo).IsInEnum();
+            When(x =>
+                !string.IsNullOrWhiteSpace(x.Url) ||
+                !string.IsNullOrWhiteSpace(x.Nombre),
+            () =>
+            {
+                RuleFor(x => x.Tipo)
+                    .IsInEnum();
 
-            RuleFor(x => x.Url)
-                .NotEmpty().WithMessage("Url es obligatoria.")
-                .MaximumLength(2000);
+                RuleFor(x => x.Url)
+                    .NotEmpty()
+                    .MaximumLength(2000)
+                    .Must(url => Uri.TryCreate(url, UriKind.Absolute, out _))
+                    .WithMessage("La URL del adjunto es inválida.");
 
-            RuleFor(x => x.Nombre)
-                .MaximumLength(200);
-
-            RuleFor(x => x.Url)
-                .Must(url => Uri.TryCreate(url, UriKind.Absolute, out _))
-                .When(x => !string.IsNullOrWhiteSpace(x.Url))
-                .WithMessage("Url inválida.");
+                RuleFor(x => x.Nombre)
+                    .MaximumLength(200);
+            });
         }
     }
 }
