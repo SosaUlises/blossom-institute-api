@@ -12,6 +12,9 @@
         public int TareasPendientesCount { get; set; }
         public int EntregasRealizadasCount { get; set; }
 
+        public int FeedbacksRehacerCount { get; set; }
+        public int FeedbacksPendientesAccionCount { get; set; }
+
         public decimal? PromedioGeneral { get; set; }
         public decimal PorcentajeAsistenciaGeneral { get; set; }
 

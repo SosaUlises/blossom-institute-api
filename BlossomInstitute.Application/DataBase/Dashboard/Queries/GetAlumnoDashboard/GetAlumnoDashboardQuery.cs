@@ -1,6 +1,7 @@
 ﻿using BlossomInstitute.Application.DataBase.Dashboard.Queries.Models;
 using BlossomInstitute.Common.Features;
 using BlossomInstitute.Domain.Entidades.Clase;
+using BlossomInstitute.Domain.Entidades.Entrega;
 using BlossomInstitute.Domain.Entidades.Tarea;
 using BlossomInstitute.Domain.Entidades.Usuario;
 using BlossomInstitute.Domain.Model;
@@ -86,6 +87,8 @@ namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashb
                     CantidadCursos = 0,
                     TareasPendientesCount = 0,
                     EntregasRealizadasCount = 0,
+                    FeedbacksRehacerCount = 0,
+                    FeedbacksPendientesAccionCount = 0,
                     PromedioGeneral = null,
                     PorcentajeAsistenciaGeneral = 0,
                     Cursos = new List<DashboardCursoItemModel>(),
@@ -203,6 +206,29 @@ namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashb
                 .CountAsync(x =>
                     x.AlumnoId == alumno.Id &&
                     cursoIds.Contains(x.Tarea.CursoId), ct);
+
+            var feedbacksVigentesPendientes = await _db.EntregaFeedbacks
+                .AsNoTracking()
+                .Where(x =>
+                    x.EsVigente &&
+                    x.Entrega.AlumnoId == alumno.Id &&
+                    cursoIds.Contains(x.Entrega.Tarea.CursoId) &&
+                    (x.Estado == EstadoCorreccion.Rehacer))
+                .GroupBy(x => x.Estado)
+                .Select(g => new
+                {
+                    Estado = g.Key,
+                    Cantidad = g.Count()
+                })
+                .ToListAsync(ct);
+
+
+            var feedbacksRehacerCount = feedbacksVigentesPendientes
+                .Where(x => x.Estado == EstadoCorreccion.Rehacer)
+                .Select(x => x.Cantidad)
+                .FirstOrDefault();
+
+            var feedbacksPendientesAccionCount = feedbacksRehacerCount;
 
             var calificacionesBaseQuery = _db.Calificaciones
                 .AsNoTracking()
@@ -325,6 +351,8 @@ namespace BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashb
                 CantidadCursos = cursos.Count,
                 TareasPendientesCount = tareasPendientesCount,
                 EntregasRealizadasCount = entregasRealizadasCount,
+                FeedbacksRehacerCount = feedbacksRehacerCount,
+                FeedbacksPendientesAccionCount = feedbacksPendientesAccionCount,
                 PromedioGeneral = promedioGeneral.HasValue ? Math.Round(promedioGeneral.Value, 2) : null,
                 PorcentajeAsistenciaGeneral = porcentajeAsistenciaGeneral,
                 Cursos = cursos,

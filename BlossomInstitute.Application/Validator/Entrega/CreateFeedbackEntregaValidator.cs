@@ -35,7 +35,7 @@ namespace BlossomInstitute.Application.Validator.Entrega
 
             RuleFor(x => x.Nota)
                 .Null()
-                .When(x => x.Estado == EstadoCorreccion.Rehacer || x.Estado == EstadoCorreccion.Revisar)
+                .When(x => x.Estado == EstadoCorreccion.Rehacer)
                 .WithMessage("Solo los feedbacks aprobados pueden incluir nota.");
         }
     }
