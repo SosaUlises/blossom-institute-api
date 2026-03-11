@@ -1,6 +1,7 @@
 ﻿using BlossomInstitute.Application.DataBase.Calificacion.Queries.GetCalificacionesByCurso;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteAsistenciaByClase;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteEntregaByTarea;
+using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteHomeworkByCursoAndTerm;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteMarksByCursoAndTerm;
 using BlossomInstitute.Common.Features;
 using Microsoft.AspNetCore.Authorization;
@@ -89,6 +90,31 @@ namespace BlossomInstitute.Controllers.Reportes
             [FromRoute] int year,
             [FromRoute] int term,
             [FromServices] IGetReporteMarksByCursoAndTermQuery query,
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber,
+                pageSize,
+                search,
+                ct);
+
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/homework")]
+        public async Task<IActionResult> GetReporteHomeworkByCursoAndTerm(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteHomeworkByCursoAndTermQuery query,
             [FromQuery] int pageNumber = 1,
             [FromQuery] int pageSize = 10,
             [FromQuery] string? search = null,
