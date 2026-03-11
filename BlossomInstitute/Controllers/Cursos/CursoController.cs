@@ -108,58 +108,5 @@ namespace BlossomInstitute.Controllers.Cursos
             var result = await query.Execute(cursoId);
             return StatusCode(result.StatusCode, result);
         }
-
-
-        [HttpPost("{id:int}/profesores")]
-        public async Task<IActionResult> AssignProfesores(
-            [FromRoute] int id,
-            [FromBody] AssignProfesoresToCursoModel model,
-            [FromServices] IAssignProfesoresToCursoCommand command,
-            [FromServices] IValidator<AssignProfesoresToCursoModel> validator,
-            CancellationToken ct)
-        {
-            var vr = await validator.ValidateAsync(model, ct);
-            if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
-
-            var result = await command.Execute(id, model, ct);
-            return StatusCode(result.StatusCode, result);
-        }
-
-        [HttpDelete("{id:int}/profesores/{profesorId:int}")]
-        public async Task<IActionResult> RemoveProfesor(
-            [FromRoute] int id,
-            [FromRoute] int profesorId,
-            [FromServices] IRemoveProfesorFromCursoCommand command,
-            CancellationToken ct)
-        {
-            var result = await command.Execute(id, profesorId, ct);
-            return StatusCode(result.StatusCode, result);
-        }
-
-        [HttpPost("{id:int}/alumnos")]
-        public async Task<IActionResult> MatricularAlumnos(
-            [FromRoute] int id,
-            [FromBody] MatricularAlumnosModel model,
-            [FromServices] IMatricularAlumnosCommand command,
-            [FromServices] IValidator<MatricularAlumnosModel> validator,
-            CancellationToken ct)
-        {
-            var vr = await validator.ValidateAsync(model, ct);
-            if (!vr.IsValid) return BadRequest(ResponseApiService.Response(400, vr.Errors));
-
-            var result = await command.Execute(id, model, ct);
-            return StatusCode(result.StatusCode, result);
-        }
-
-        [HttpDelete("{id:int}/alumnos/{alumnoId:int}")]
-        public async Task<IActionResult> RemoveAlumno(
-            [FromRoute] int id,
-            [FromRoute] int alumnoId,
-            [FromServices] IRemoveAlumnoFromCursoCommand command,
-            CancellationToken ct)
-        {
-            var result = await command.Execute(id, alumnoId, ct);
-            return StatusCode(result.StatusCode, result);
-        }
     }
 }

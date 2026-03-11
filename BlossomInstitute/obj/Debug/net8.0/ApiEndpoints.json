@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.AlumnoController",
     "Method": "Create",
     "RelativePath": "api/v1/alumnos",
     "HttpMethod": "POST",
@@ -16,7 +16,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.AlumnoController",
     "Method": "GetAll",
     "RelativePath": "api/v1/alumnos",
     "HttpMethod": "GET",
@@ -42,7 +42,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.AlumnoController",
     "Method": "Update",
     "RelativePath": "api/v1/alumnos/{userId}",
     "HttpMethod": "PUT",
@@ -63,7 +63,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.AlumnoController",
     "Method": "GetById",
     "RelativePath": "api/v1/alumnos/{userId}",
     "HttpMethod": "GET",
@@ -79,7 +79,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.AlumnoController",
     "Method": "Activate",
     "RelativePath": "api/v1/alumnos/{userId}/activar",
     "HttpMethod": "PATCH",
@@ -95,7 +95,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AlumnoController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.AlumnoController",
     "Method": "Deactivate",
     "RelativePath": "api/v1/alumnos/{userId}/desactivar",
     "HttpMethod": "PATCH",
@@ -111,7 +111,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AuthController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.AuthController",
     "Method": "ForgotPassword",
     "RelativePath": "api/v1/auth/forgot-password",
     "HttpMethod": "POST",
@@ -127,7 +127,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AuthController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.AuthController",
     "Method": "Login",
     "RelativePath": "api/v1/auth/login",
     "HttpMethod": "POST",
@@ -143,7 +143,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AuthController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.AuthController",
     "Method": "ResetPassword",
     "RelativePath": "api/v1/auth/reset-password",
     "HttpMethod": "POST",
@@ -159,7 +159,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursosController",
     "Method": "Create",
     "RelativePath": "api/v1/cursos",
     "HttpMethod": "POST",
@@ -175,7 +175,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursosController",
     "Method": "GetAll",
     "RelativePath": "api/v1/cursos",
     "HttpMethod": "GET",
@@ -211,7 +211,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursosController",
     "Method": "Update",
     "RelativePath": "api/v1/cursos/{cursoId}",
     "HttpMethod": "PUT",
@@ -232,7 +232,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursosController",
     "Method": "GetById",
     "RelativePath": "api/v1/cursos/{cursoId}",
     "HttpMethod": "GET",
@@ -248,7 +248,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursosController",
     "Method": "Activate",
     "RelativePath": "api/v1/cursos/{cursoId}/activar",
     "HttpMethod": "PUT",
@@ -264,9 +264,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AsistenciasController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.AsistenciasController",
     "Method": "GetAsistenciasByAlumno",
-    "RelativePath": "api/v1/cursos/{cursoId}/alumnos/{alumnoId}/asistencias",
+    "RelativePath": "api/v1/cursos/{cursoId}/alumno/{alumnoId}/asistencias",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -295,7 +295,38 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CalificacionesController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoPersonasController",
+    "Method": "GetAlumnosByCurso",
+    "RelativePath": "api/v1/cursos/{cursoId}/alumnos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoCalificacionesController",
     "Method": "Create",
     "RelativePath": "api/v1/cursos/{cursoId}/alumnos/{alumnoId}/calificaciones",
     "HttpMethod": "POST",
@@ -321,7 +352,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CalificacionesController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoCalificacionesController",
     "Method": "GetByAlumno",
     "RelativePath": "api/v1/cursos/{cursoId}/alumnos/{alumnoId}/calificaciones",
     "HttpMethod": "GET",
@@ -352,7 +383,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CalificacionesController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoCalificacionesController",
     "Method": "Update",
     "RelativePath": "api/v1/cursos/{cursoId}/alumnos/{alumnoId}/calificaciones/{calificacionId}",
     "HttpMethod": "PUT",
@@ -383,7 +414,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CalificacionesController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoCalificacionesController",
     "Method": "Archive",
     "RelativePath": "api/v1/cursos/{cursoId}/alumnos/{alumnoId}/calificaciones/{calificacionId}/archivar",
     "HttpMethod": "PATCH",
@@ -409,7 +440,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursosController",
     "Method": "Archive",
     "RelativePath": "api/v1/cursos/{cursoId}/archivar",
     "HttpMethod": "PUT",
@@ -425,7 +456,106 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ClaseController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoPersonasController",
+    "Method": "MatricularAlumnos",
+    "RelativePath": "api/v1/cursos/{cursoId}/assign/alumnos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "model",
+        "Type": "BlossomInstitute.Application.DataBase.Curso.Commands.AsignarAlumnos.MatricularAlumnosModel",
+        "IsRequired": true
+      },
+      {
+        "Name": "cursoId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoPersonasController",
+    "Method": "AssignProfesores",
+    "RelativePath": "api/v1/cursos/{cursoId}/assign/profesores",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "model",
+        "Type": "BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores.AssignProfesoresToCursoModel",
+        "IsRequired": true
+      },
+      {
+        "Name": "cursoId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.AsistenciasController",
+    "Method": "TomarAsistencia",
+    "RelativePath": "api/v1/cursos/{cursoId}/clase/{fecha}/asistencias",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "fecha",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "BlossomInstitute.Application.DataBase.Asistencia.Command.TomarAsistencia.TomarAsistenciaModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.AsistenciasController",
+    "Method": "GetAsistenciasByFecha",
+    "RelativePath": "api/v1/cursos/{cursoId}/clase/{fecha}/asistencias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "fecha",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoClaseController",
     "Method": "GetClasesByCurso",
     "RelativePath": "api/v1/cursos/{cursoId}/clases",
     "HttpMethod": "GET",
@@ -461,54 +591,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.AsistenciasController",
-    "Method": "TomarAsistencia",
-    "RelativePath": "api/v1/cursos/{cursoId}/clases/{fecha}/asistencias",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "cursoId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "fecha",
-        "Type": "System.String",
-        "IsRequired": true
-      },
-      {
-        "Name": "model",
-        "Type": "BlossomInstitute.Application.DataBase.Asistencia.Command.TomarAsistencia.TomarAsistenciaModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BlossomInstitute.Controllers.ClaseController",
-    "Method": "GetAsistenciasByFecha",
-    "RelativePath": "api/v1/cursos/{cursoId}/clases/{fecha}/asistencias",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "cursoId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "fecha",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BlossomInstitute.Controllers.AsistenciasController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoClaseController",
     "Method": "CancelarClase",
     "RelativePath": "api/v1/cursos/{cursoId}/clases/{fecha}/cancelar",
     "HttpMethod": "PATCH",
@@ -529,7 +612,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursosController",
     "Method": "Desactivate",
     "RelativePath": "api/v1/cursos/{cursoId}/desactivar",
     "HttpMethod": "PUT",
@@ -545,7 +628,90 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.TareaController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoPersonasController",
+    "Method": "GetProfesoresByCurso",
+    "RelativePath": "api/v1/cursos/{cursoId}/profesores",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoPersonasController",
+    "Method": "RemoveAlumno",
+    "RelativePath": "api/v1/cursos/{cursoId}/remove/alumnos/{alumnoId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "alumnoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "cursoId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoPersonasController",
+    "Method": "RemoveProfesor",
+    "RelativePath": "api/v1/cursos/{cursoId}/remove/profesores/{profesorId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "profesorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "cursoId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoTareaController",
     "Method": "Create",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas",
     "HttpMethod": "POST",
@@ -566,7 +732,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.TareaController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoTareaController",
     "Method": "GetAll",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas",
     "HttpMethod": "GET",
@@ -597,7 +763,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.TareaController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoTareaController",
     "Method": "Update",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}",
     "HttpMethod": "PUT",
@@ -623,7 +789,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.TareaController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoTareaController",
     "Method": "GetById",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}",
     "HttpMethod": "GET",
@@ -644,7 +810,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.TareaController",
+    "ContainingType": "BlossomInstitute.Controllers.Cursos.CursoTareaController",
     "Method": "Archivar",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}/archivar",
     "HttpMethod": "PATCH",
@@ -665,7 +831,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ProfesorEntregasController",
+    "ContainingType": "BlossomInstitute.Controllers.Entregas.ProfesorEntregasController",
     "Method": "GetEntregasByTarea",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}/entregas",
     "HttpMethod": "GET",
@@ -721,7 +887,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ProfesorEntregasController",
+    "ContainingType": "BlossomInstitute.Controllers.Entregas.ProfesorEntregasController",
     "Method": "GetDetail",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}/entregas/{alumnoId}",
     "HttpMethod": "GET",
@@ -747,7 +913,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.EntregasController",
+    "ContainingType": "BlossomInstitute.Controllers.Entregas.FeedbackEntregasController",
     "Method": "CreateFeedback",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}/entregas/{alumnoId}/feedbacks",
     "HttpMethod": "POST",
@@ -778,7 +944,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ProfesorEntregasController",
+    "ContainingType": "BlossomInstitute.Controllers.Entregas.ProfesorEntregasController",
     "Method": "GetFeedbacks",
     "RelativePath": "api/v1/cursos/{cursoId}/tareas/{tareaId}/entregas/{alumnoId}/feedbacks",
     "HttpMethod": "GET",
@@ -804,93 +970,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
-    "Method": "MatricularAlumnos",
-    "RelativePath": "api/v1/cursos/{id}/alumnos",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "model",
-        "Type": "BlossomInstitute.Application.DataBase.Curso.Commands.AsignarAlumnos.MatricularAlumnosModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
-    "Method": "RemoveAlumno",
-    "RelativePath": "api/v1/cursos/{id}/alumnos/{alumnoId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "alumnoId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
-    "Method": "AssignProfesores",
-    "RelativePath": "api/v1/cursos/{id}/profesores",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "model",
-        "Type": "BlossomInstitute.Application.DataBase.Curso.Commands.AsignarProfesores.AssignProfesoresToCursoModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BlossomInstitute.Controllers.CursosController",
-    "Method": "RemoveProfesor",
-    "RelativePath": "api/v1/cursos/{id}/profesores/{profesorId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "profesorId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BlossomInstitute.Controllers.MeController",
+    "ContainingType": "BlossomInstitute.Controllers.Me.Alumnos.MeAlumnoAsistenciasController",
     "Method": "GetMisAsistencias",
-    "RelativePath": "api/v1/me/asistencias",
+    "RelativePath": "api/v1/me/alumno/asistencias",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -924,9 +1006,71 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.MeEntregasController",
+    "ContainingType": "BlossomInstitute.Controllers.Me.Alumno.MeAlumnoCalificacionController",
+    "Method": "GetMisCalificaciones",
+    "RelativePath": "api/v1/me/alumno/calificaciones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Me.Alumnos.MeAlumnoCursosController",
+    "Method": "GetMyCursosAlumno",
+    "RelativePath": "api/v1/me/alumno/cursos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "anio",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "estado",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Me.Alumnos.MeAlumnoEntregasController",
     "Method": "GetMisEntregasByCurso",
-    "RelativePath": "api/v1/me/cursos/{cursoId}/entregas",
+    "RelativePath": "api/v1/me/alumno/cursos/{cursoId}/entregas",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -950,81 +1094,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.MeController",
-    "Method": "GetMyCursosAlumno",
-    "RelativePath": "api/v1/me/cursos/alumno",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "pageNumber",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "pageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "search",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "anio",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "estado",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BlossomInstitute.Controllers.MeController",
-    "Method": "GetMyCursosProfesor",
-    "RelativePath": "api/v1/me/cursos/profesor",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "pageNumber",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "pageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "search",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "anio",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      },
-      {
-        "Name": "estado",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BlossomInstitute.Controllers.MeDashboardController",
+    "ContainingType": "BlossomInstitute.Controllers.Me.Alumnos.MeAlumnoDashboardController",
     "Method": "GetAlumnoDashboard",
-    "RelativePath": "api/v1/me/dashboard-alumno",
+    "RelativePath": "api/v1/me/alumno/dashboard",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1032,19 +1104,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.MeDashboardController",
-    "Method": "GetProfesorDashboard",
-    "RelativePath": "api/v1/me/dashboard-profesor",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "BlossomInstitute.Controllers.MeEntregasController",
+    "ContainingType": "BlossomInstitute.Controllers.Me.Alumnos.MeAlumnoEntregasController",
     "Method": "GetMiEntregaByTarea",
-    "RelativePath": "api/v1/me/tareas/{tareaId}/entrega",
+    "RelativePath": "api/v1/me/alumno/tareas/{tareaId}/entrega",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -1058,7 +1120,53 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
+    "ContainingType": "BlossomInstitute.Controllers.Me.Profesor.MeProfesorCursosController",
+    "Method": "GetMyCursosProfesor",
+    "RelativePath": "api/v1/me/profesor/cursos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "anio",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "estado",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Me.Profesor.MeProfesorDashboardController",
+    "Method": "GetProfesorDashboard",
+    "RelativePath": "api/v1/me/profesor/dashboard",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.ProfesorController",
     "Method": "Create",
     "RelativePath": "api/v1/profesores",
     "HttpMethod": "POST",
@@ -1074,7 +1182,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.ProfesorController",
     "Method": "GetAll",
     "RelativePath": "api/v1/profesores",
     "HttpMethod": "GET",
@@ -1100,7 +1208,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.ProfesorController",
     "Method": "Update",
     "RelativePath": "api/v1/profesores/{userId}",
     "HttpMethod": "PUT",
@@ -1121,7 +1229,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.ProfesorController",
     "Method": "GetById",
     "RelativePath": "api/v1/profesores/{userId}",
     "HttpMethod": "GET",
@@ -1137,7 +1245,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.ProfesorController",
     "Method": "Activate",
     "RelativePath": "api/v1/profesores/{userId}/activar",
     "HttpMethod": "PATCH",
@@ -1153,7 +1261,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ProfesorController",
+    "ContainingType": "BlossomInstitute.Controllers.Usuarios.ProfesorController",
     "Method": "Deactivate",
     "RelativePath": "api/v1/profesores/{userId}/desactivar",
     "HttpMethod": "PATCH",
@@ -1169,7 +1277,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ReporteController",
+    "ContainingType": "BlossomInstitute.Controllers.Reportes.ReporteController",
     "Method": "GetReporteAsistenciasByCurso",
     "RelativePath": "api/v1/reportes/cursos/{cursoId}/asistencias",
     "HttpMethod": "GET",
@@ -1210,7 +1318,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ReporteController",
+    "ContainingType": "BlossomInstitute.Controllers.Reportes.ReporteController",
     "Method": "GetCalificacionesByCurso",
     "RelativePath": "api/v1/reportes/cursos/{cursoId}/calificaciones",
     "HttpMethod": "GET",
@@ -1251,7 +1359,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.ReporteController",
+    "ContainingType": "BlossomInstitute.Controllers.Reportes.ReporteController",
     "Method": "GetReporteEntregasByTarea",
     "RelativePath": "api/v1/reportes/cursos/{cursoId}/tareas/{tareaId}/entregas",
     "HttpMethod": "GET",
@@ -1297,9 +1405,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "BlossomInstitute.Controllers.EntregasController",
+    "ContainingType": "BlossomInstitute.Controllers.Entregas.AlumnoEntregasController",
     "Method": "Upsert",
-    "RelativePath": "api/v1/tareas/{tareaId}/mi-entrega",
+    "RelativePath": "api/v1/tareas/{tareaId}/entrega",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
