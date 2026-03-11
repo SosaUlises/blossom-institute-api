@@ -1,6 +1,7 @@
 ﻿using BlossomInstitute.Application.DataBase.Calificacion.Queries.GetCalificacionesByCurso;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteAsistenciaByClase;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteEntregaByTarea;
+using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteMarksByCursoAndTerm;
 using BlossomInstitute.Common.Features;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -79,6 +80,31 @@ namespace BlossomInstitute.Controllers.Reportes
             CancellationToken ct = default)
         {
             var result = await query.Execute(cursoId, GetUserId(), IsAdmin(), pageNumber, pageSize, search, alumnoId, tipo, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/marks")]
+        public async Task<IActionResult> GetReporteMarksByCursoAndTerm(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteMarksByCursoAndTermQuery query,
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber,
+                pageSize,
+                search,
+                ct);
+
             return StatusCode(result.StatusCode, result);
         }
     }
