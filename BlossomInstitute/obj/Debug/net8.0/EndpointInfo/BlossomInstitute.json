@@ -183,7 +183,49 @@
         }
       }
     },
-    "/api/v1/cursos/{cursoId}/clases/{fecha}/asistencias": {
+    "/api/v1/tareas/{tareaId}/entrega": {
+      "put": {
+        "tags": [
+          "AlumnoEntregas"
+        ],
+        "parameters": [
+          {
+            "name": "tareaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertEntregaAlumnoModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertEntregaAlumnoModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertEntregaAlumnoModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{cursoId}/clase/{fecha}/asistencias": {
       "put": {
         "tags": [
           "Asistencias"
@@ -234,37 +276,6 @@
       },
       "get": {
         "tags": [
-          "Clase"
-        ],
-        "parameters": [
-          {
-            "name": "cursoId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "fecha",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/cursos/{cursoId}/clases/{fecha}/cancelar": {
-      "patch": {
-        "tags": [
           "Asistencias"
         ],
         "parameters": [
@@ -293,7 +304,7 @@
         }
       }
     },
-    "/api/v1/cursos/{cursoId}/alumnos/{alumnoId}/asistencias": {
+    "/api/v1/cursos/{cursoId}/alumno/{alumnoId}/asistencias": {
       "get": {
         "tags": [
           "Asistencias"
@@ -435,7 +446,7 @@
     "/api/v1/cursos/{cursoId}/alumnos/{alumnoId}/calificaciones": {
       "post": {
         "tags": [
-          "Calificaciones"
+          "CursoCalificaciones"
         ],
         "parameters": [
           {
@@ -484,7 +495,7 @@
       },
       "get": {
         "tags": [
-          "Calificaciones"
+          "CursoCalificaciones"
         ],
         "parameters": [
           {
@@ -534,7 +545,7 @@
     "/api/v1/cursos/{cursoId}/alumnos/{alumnoId}/calificaciones/{calificacionId}": {
       "put": {
         "tags": [
-          "Calificaciones"
+          "CursoCalificaciones"
         ],
         "parameters": [
           {
@@ -594,7 +605,7 @@
     "/api/v1/cursos/{cursoId}/alumnos/{alumnoId}/calificaciones/{calificacionId}/archivar": {
       "patch": {
         "tags": [
-          "Calificaciones"
+          "CursoCalificaciones"
         ],
         "parameters": [
           {
@@ -635,7 +646,7 @@
     "/api/v1/cursos/{cursoId}/clases": {
       "get": {
         "tags": [
-          "Clase"
+          "CursoClase"
         ],
         "parameters": [
           {
@@ -677,6 +688,313 @@
               "type": "integer",
               "format": "int32",
               "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{cursoId}/clases/{fecha}/cancelar": {
+      "patch": {
+        "tags": [
+          "CursoClase"
+        ],
+        "parameters": [
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "fecha",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{cursoId}/alumnos": {
+      "get": {
+        "tags": [
+          "CursoPersonas"
+        ],
+        "parameters": [
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{cursoId}/profesores": {
+      "get": {
+        "tags": [
+          "CursoPersonas"
+        ],
+        "parameters": [
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{cursoId}/assign/profesores": {
+      "post": {
+        "tags": [
+          "CursoPersonas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignProfesoresToCursoModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignProfesoresToCursoModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssignProfesoresToCursoModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{cursoId}/remove/profesores/{profesorId}": {
+      "delete": {
+        "tags": [
+          "CursoPersonas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "profesorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{cursoId}/assign/alumnos": {
+      "post": {
+        "tags": [
+          "CursoPersonas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatricularAlumnosModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatricularAlumnosModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MatricularAlumnosModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{cursoId}/remove/alumnos/{alumnoId}": {
+      "delete": {
+        "tags": [
+          "CursoPersonas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "alumnoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -903,14 +1221,14 @@
         }
       }
     },
-    "/api/v1/cursos/{id}/profesores": {
+    "/api/v1/cursos/{cursoId}/tareas": {
       "post": {
         "tags": [
-          "Cursos"
+          "CursoTarea"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "cursoId",
             "in": "path",
             "required": true,
             "schema": {
@@ -923,17 +1241,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AssignProfesoresToCursoModel"
+                "$ref": "#/components/schemas/CreateTareaModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AssignProfesoresToCursoModel"
+                "$ref": "#/components/schemas/CreateTareaModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AssignProfesoresToCursoModel"
+                "$ref": "#/components/schemas/CreateTareaModel"
               }
             }
           }
@@ -943,16 +1261,14 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/api/v1/cursos/{id}/profesores/{profesorId}": {
-      "delete": {
+      },
+      "get": {
         "tags": [
-          "Cursos"
+          "CursoTarea"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "cursoId",
             "in": "path",
             "required": true,
             "schema": {
@@ -961,86 +1277,28 @@
             }
           },
           {
-            "name": "profesorId",
-            "in": "path",
-            "required": true,
+            "name": "estado",
+            "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/cursos/{id}/alumnos": {
-      "post": {
-        "tags": [
-          "Cursos"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MatricularAlumnosModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/MatricularAlumnosModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/MatricularAlumnosModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/cursos/{id}/alumnos/{alumnoId}": {
-      "delete": {
-        "tags": [
-          "Cursos"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
+              "$ref": "#/components/schemas/EstadoTarea"
             }
           },
           {
-            "name": "alumnoId",
-            "in": "path",
-            "required": true,
+            "name": "pageNumber",
+            "in": "query",
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
             }
           }
         ],
@@ -1051,12 +1309,21 @@
         }
       }
     },
-    "/api/v1/tareas/{tareaId}/mi-entrega": {
+    "/api/v1/cursos/{cursoId}/tareas/{tareaId}": {
       "put": {
         "tags": [
-          "Entregas"
+          "CursoTarea"
         ],
         "parameters": [
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
           {
             "name": "tareaId",
             "in": "path",
@@ -1071,21 +1338,83 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpsertEntregaAlumnoModel"
+                "$ref": "#/components/schemas/UpdateTareaModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UpsertEntregaAlumnoModel"
+                "$ref": "#/components/schemas/UpdateTareaModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UpsertEntregaAlumnoModel"
+                "$ref": "#/components/schemas/UpdateTareaModel"
               }
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "CursoTarea"
+        ],
+        "parameters": [
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "tareaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/cursos/{cursoId}/tareas/{tareaId}/archivar": {
+      "patch": {
+        "tags": [
+          "CursoTarea"
+        ],
+        "parameters": [
+          {
+            "name": "cursoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "tareaId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -1096,7 +1425,7 @@
     "/api/v1/cursos/{cursoId}/tareas/{tareaId}/entregas/{alumnoId}/feedbacks": {
       "post": {
         "tags": [
-          "Entregas"
+          "FeedbackEntregas"
         ],
         "parameters": [
           {
@@ -1192,120 +1521,10 @@
         }
       }
     },
-    "/api/v1/me/cursos/profesor": {
+    "/api/v1/me/alumno/asistencias": {
       "get": {
         "tags": [
-          "Me"
-        ],
-        "parameters": [
-          {
-            "name": "pageNumber",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 10
-            }
-          },
-          {
-            "name": "search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "anio",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "estado",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/me/cursos/alumno": {
-      "get": {
-        "tags": [
-          "Me"
-        ],
-        "parameters": [
-          {
-            "name": "pageNumber",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 10
-            }
-          },
-          {
-            "name": "search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "anio",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "estado",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/me/asistencias": {
-      "get": {
-        "tags": [
-          "Me"
+          "MeAlumnoAsistencias"
         ],
         "parameters": [
           {
@@ -1356,10 +1575,117 @@
         }
       }
     },
-    "/api/v1/me/tareas/{tareaId}/entrega": {
+    "/api/v1/me/alumno/calificaciones": {
       "get": {
         "tags": [
-          "MeEntregas"
+          "MeAlumnoCalificacion"
+        ],
+        "parameters": [
+          {
+            "name": "cursoId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/me/alumno/cursos": {
+      "get": {
+        "tags": [
+          "MeAlumnoCursos"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "anio",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "estado",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/me/alumno/dashboard": {
+      "get": {
+        "tags": [
+          "MeAlumnoDashboard"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/me/alumno/tareas/{tareaId}/entrega": {
+      "get": {
+        "tags": [
+          "MeAlumnoEntregas"
         ],
         "parameters": [
           {
@@ -1379,10 +1705,10 @@
         }
       }
     },
-    "/api/v1/me/cursos/{cursoId}/entregas": {
+    "/api/v1/me/alumno/cursos/{cursoId}/entregas": {
       "get": {
         "tags": [
-          "MeEntregas"
+          "MeAlumnoEntregas"
         ],
         "parameters": [
           {
@@ -1412,6 +1738,73 @@
               "default": 10
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/me/profesor/cursos": {
+      "get": {
+        "tags": [
+          "MeProfesorCursos"
+        ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "anio",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "estado",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/me/profesor/dashboard": {
+      "get": {
+        "tags": [
+          "MeProfesorDashboard"
         ],
         "responses": {
           "200": {
@@ -1923,207 +2316,6 @@
           }
         }
       }
-    },
-    "/api/v1/cursos/{cursoId}/tareas": {
-      "post": {
-        "tags": [
-          "Tarea"
-        ],
-        "parameters": [
-          {
-            "name": "cursoId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTareaModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTareaModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTareaModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Tarea"
-        ],
-        "parameters": [
-          {
-            "name": "cursoId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "estado",
-            "in": "query",
-            "schema": {
-              "$ref": "#/components/schemas/EstadoTarea"
-            }
-          },
-          {
-            "name": "pageNumber",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 20
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/cursos/{cursoId}/tareas/{tareaId}": {
-      "put": {
-        "tags": [
-          "Tarea"
-        ],
-        "parameters": [
-          {
-            "name": "cursoId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "tareaId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateTareaModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateTareaModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateTareaModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Tarea"
-        ],
-        "parameters": [
-          {
-            "name": "cursoId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "tareaId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/cursos/{cursoId}/tareas/{tareaId}/archivar": {
-      "patch": {
-        "tags": [
-          "Tarea"
-        ],
-        "parameters": [
-          {
-            "name": "cursoId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "tareaId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
     }
   },
   "components": {
@@ -2172,6 +2364,23 @@
         },
         "additionalProperties": false
       },
+      "CreateCalificacionDetalleModel": {
+        "type": "object",
+        "properties": {
+          "skill": {
+            "$ref": "#/components/schemas/SkillEvaluada"
+          },
+          "puntajeObtenido": {
+            "type": "number",
+            "format": "double"
+          },
+          "puntajeMaximo": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateCalificacionModel": {
         "type": "object",
         "properties": {
@@ -2186,10 +2395,6 @@
             "type": "string",
             "nullable": true
           },
-          "nota": {
-            "type": "number",
-            "format": "double"
-          },
           "fecha": {
             "type": "string",
             "format": "date"
@@ -2202,6 +2407,18 @@
           "entregaId": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          },
+          "nota": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "detalles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CreateCalificacionDetalleModel"
+            },
             "nullable": true
           }
         },
@@ -2367,8 +2584,7 @@
       "EstadoCorreccion": {
         "enum": [
           1,
-          2,
-          3
+          2
         ],
         "type": "integer",
         "format": "int32"
@@ -2454,6 +2670,17 @@
           }
         },
         "additionalProperties": false
+      },
+      "SkillEvaluada": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "format": "int32"
       },
       "TipoAdjunto": {
         "enum": [
@@ -2542,6 +2769,23 @@
         },
         "additionalProperties": false
       },
+      "UpdateCalificacionDetalleModel": {
+        "type": "object",
+        "properties": {
+          "skill": {
+            "$ref": "#/components/schemas/SkillEvaluada"
+          },
+          "puntajeObtenido": {
+            "type": "number",
+            "format": "double"
+          },
+          "puntajeMaximo": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateCalificacionModel": {
         "type": "object",
         "properties": {
@@ -2556,10 +2800,6 @@
             "type": "string",
             "nullable": true
           },
-          "nota": {
-            "type": "number",
-            "format": "double"
-          },
           "fecha": {
             "type": "string",
             "format": "date"
@@ -2572,6 +2812,18 @@
           "entregaId": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          },
+          "nota": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "detalles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpdateCalificacionDetalleModel"
+            },
             "nullable": true
           }
         },

@@ -2,10 +2,10 @@
 {
     public enum TipoCalificacion
     {
-        Test = 1,
-        Oral = 2,
-        Tarea = 3,
-        Participacion = 4,
-        Otro = 5
+        Homework = 1,
+        Quiz = 2,
+        Test = 3,
+        Participation = 4,
+        Behaviour = 5
     }
 }

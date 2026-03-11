@@ -26,7 +26,6 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
             if (tareaId <= 0)
                 return ResponseApiService.Response(StatusCodes.Status400BadRequest, "TareaId inválido");
 
-            // Usuario + rol Alumno + activo
             var user = await _userManager.FindByIdAsync(userId.ToString());
             if (user == null)
                 return ResponseApiService.Response(StatusCodes.Status401Unauthorized, "No autenticado");
@@ -39,7 +38,6 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
 
             var alumnoId = user.Id;
 
-            // Validar tarea existe + publicada
             var tarea = await _db.Tareas
                 .AsNoTracking()
                 .FirstOrDefaultAsync(t => t.Id == tareaId, ct);
@@ -53,7 +51,6 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
             if (tarea.Estado != EstadoTarea.Publicada)
                 return ResponseApiService.Response(StatusCodes.Status409Conflict, "La tarea no está publicada");
 
-            // Validar matricula
             var estaMatriculado = await _db.Matriculas
                 .AsNoTracking()
                 .AnyAsync(m => m.CursoId == tarea.CursoId && m.AlumnoId == alumnoId, ct);
@@ -61,100 +58,117 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
             if (!estaMatriculado)
                 return ResponseApiService.Response(StatusCodes.Status403Forbidden, "No estás matriculado en este curso");
 
-            // Estado entrega (en termino / fuera de termino)
-            DateTime nowUtc = DateTime.UtcNow;
-            DateTime? deadlineUtc = tarea.FechaEntregaUtc;
+            var nowUtc = DateTime.UtcNow;
+            var deadlineUtc = tarea.FechaEntregaUtc;
 
             var estadoEntrega = (deadlineUtc.HasValue && nowUtc > deadlineUtc.Value)
                 ? EstadoEntrega.FueraDeTermino
                 : EstadoEntrega.EntregadaEnTermino;
 
-            // Sanitizar adjuntos (evitar nulls)
             var adjuntos = model.Adjuntos ?? new List<UpsertEntregaAdjuntoModel>();
-            // Eliminar duplicados por URL
+
             adjuntos = adjuntos
                 .Where(a => !string.IsNullOrWhiteSpace(a.Url))
-                .GroupBy(a => a.Url.Trim())
+                .GroupBy(a => a.Url!.Trim(), StringComparer.OrdinalIgnoreCase)
                 .Select(g => g.First())
                 .ToList();
 
             await using var tx = await _db.BeginTransactionAsync(ct);
 
-            // Upsert: buscar entrega existente (única por tarea+alumno)
-            var entrega = await _db.Entregas
-                .Include(e => e.Adjuntos)
-                .FirstOrDefaultAsync(e => e.TareaId == tareaId && e.AlumnoId == alumnoId, ct);
-
-            var created = false;
-
-            if (entrega == null)
-            {
-                created = true;
-
-                entrega = new EntregaEntity
-                {
-                    TareaId = tareaId,
-                    AlumnoId = alumnoId,
-                    Texto = string.IsNullOrWhiteSpace(model.Texto) ? null : model.Texto.Trim(),
-                    FechaEntregaUtc = nowUtc,
-                    Estado = estadoEntrega,
-                    CreatedAtUtc = nowUtc
-                };
-
-                _db.Entregas.Add(entrega);
-                // Guardar para tener Entrega.Id y poder adjuntar
-                var ok = await _db.SaveAsync(ct);
-                if (!ok)
-                {
-                    await tx.RollbackAsync(ct);
-                    return ResponseApiService.Response(StatusCodes.Status500InternalServerError, "No se pudo registrar la entrega");
-                }
-
-                // Adjuntos
-                foreach (var a in adjuntos)
-                {
-                    _db.EntregaAdjuntos.Add(new EntregaAdjuntoEntity
-                    {
-                        EntregaId = entrega.Id,
-                        Tipo = a.Tipo,
-                        Url = a.Url.Trim(),
-                        Nombre = string.IsNullOrWhiteSpace(a.Nombre) ? null : a.Nombre.Trim()
-                    });
-                }
-            }
-            else
-            {
-                // Update (re-entrega)
-                entrega.Texto = string.IsNullOrWhiteSpace(model.Texto) ? null : model.Texto.Trim();
-                entrega.FechaEntregaUtc = nowUtc;
-                entrega.Estado = estadoEntrega;
-                entrega.UpdatedAtUtc = nowUtc;
-
-                // Reemplazar adjuntos
-                if (entrega.Adjuntos != null && entrega.Adjuntos.Count > 0)
-                {
-                    _db.EntregaAdjuntos.RemoveRange(entrega.Adjuntos);
-                }
-
-                foreach (var a in adjuntos)
-                {
-                    _db.EntregaAdjuntos.Add(new EntregaAdjuntoEntity
-                    {
-                        EntregaId = entrega.Id,
-                        Tipo = a.Tipo,
-                        Url = a.Url.Trim(),
-                        Nombre = string.IsNullOrWhiteSpace(a.Nombre) ? null : a.Nombre.Trim()
-                    });
-                }
-            }
-
             try
             {
-                var saved = await _db.SaveAsync(ct);
-                if (!saved)
+                var entrega = await _db.Entregas
+                    .Include(e => e.Adjuntos)
+                    .FirstOrDefaultAsync(e => e.TareaId == tareaId && e.AlumnoId == alumnoId, ct);
+
+                var created = false;
+
+                if (entrega == null)
                 {
-                    await tx.RollbackAsync(ct);
-                    return ResponseApiService.Response(StatusCodes.Status500InternalServerError, "No se pudo guardar la entrega");
+                    created = true;
+
+                    entrega = new EntregaEntity
+                    {
+                        TareaId = tareaId,
+                        AlumnoId = alumnoId,
+                        Texto = string.IsNullOrWhiteSpace(model.Texto) ? null : model.Texto.Trim(),
+                        FechaEntregaUtc = nowUtc,
+                        Estado = estadoEntrega,
+                        CreatedAtUtc = nowUtc
+                    };
+
+                    _db.Entregas.Add(entrega);
+
+                    var ok = await _db.SaveAsync(ct);
+                    if (!ok)
+                    {
+                        await tx.RollbackAsync(ct);
+                        return ResponseApiService.Response(StatusCodes.Status500InternalServerError, "No se pudo registrar la entrega");
+                    }
+
+                    foreach (var a in adjuntos)
+                    {
+                        _db.EntregaAdjuntos.Add(new EntregaAdjuntoEntity
+                        {
+                            EntregaId = entrega.Id,
+                            Tipo = a.Tipo,
+                            Url = a.Url!.Trim(),
+                            Nombre = string.IsNullOrWhiteSpace(a.Nombre) ? null : a.Nombre.Trim()
+                        });
+                    }
+
+                    if (adjuntos.Count > 0)
+                    {
+                        var okAdjuntos = await _db.SaveAsync(ct);
+                        if (!okAdjuntos)
+                        {
+                            await tx.RollbackAsync(ct);
+                            return ResponseApiService.Response(StatusCodes.Status500InternalServerError, "No se pudieron guardar los adjuntos de la entrega");
+                        }
+                    }
+                }
+                else
+                {
+                    entrega.Texto = string.IsNullOrWhiteSpace(model.Texto) ? null : model.Texto.Trim();
+                    entrega.FechaEntregaUtc = nowUtc;
+                    entrega.Estado = estadoEntrega;
+                    entrega.UpdatedAtUtc = nowUtc;
+
+                    if (entrega.Adjuntos != null && entrega.Adjuntos.Count > 0)
+                        _db.EntregaAdjuntos.RemoveRange(entrega.Adjuntos);
+
+                    foreach (var a in adjuntos)
+                    {
+                        _db.EntregaAdjuntos.Add(new EntregaAdjuntoEntity
+                        {
+                            EntregaId = entrega.Id,
+                            Tipo = a.Tipo,
+                            Url = a.Url!.Trim(),
+                            Nombre = string.IsNullOrWhiteSpace(a.Nombre) ? null : a.Nombre.Trim()
+                        });
+                    }
+
+                    await _db.EntregaFeedbacks
+                        .Where(f => f.EntregaId == entrega.Id && f.EsVigente)
+                        .ExecuteUpdateAsync(s => s
+                            .SetProperty(x => x.EsVigente, false), ct);
+
+                    await _db.Calificaciones
+                        .Where(c =>
+                            c.TareaId == tareaId &&
+                            c.EntregaId == entrega.Id &&
+                            !c.Archivado)
+                        .ExecuteUpdateAsync(s => s
+                            .SetProperty(x => x.Archivado, true)
+                            .SetProperty(x => x.ArchivadoPorTarea, false)
+                            .SetProperty(x => x.UpdatedAtUtc, nowUtc), ct);
+
+                    var saved = await _db.SaveAsync(ct);
+                    if (!saved)
+                    {
+                        await tx.RollbackAsync(ct);
+                        return ResponseApiService.Response(StatusCodes.Status500InternalServerError, "No se pudo guardar la entrega");
+                    }
                 }
 
                 await tx.CommitAsync(ct);
@@ -182,6 +196,11 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
                     ex.Message,
                     "Conflicto al guardar la entrega. Intentá nuevamente."
                 );
+            }
+            catch
+            {
+                await tx.RollbackAsync(ct);
+                throw;
             }
         }
     }

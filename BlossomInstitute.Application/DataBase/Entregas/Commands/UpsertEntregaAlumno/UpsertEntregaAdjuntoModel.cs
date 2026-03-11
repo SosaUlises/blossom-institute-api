@@ -5,7 +5,7 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
     public class UpsertEntregaAdjuntoModel
     {
         public TipoAdjunto Tipo { get; set; }
-        public string Url { get; set; } = default!;
+        public string? Url { get; set; }
         public string? Nombre { get; set; }
     }
 }

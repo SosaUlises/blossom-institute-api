@@ -33,7 +33,9 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
             if (cursoId <= 0 || tareaId <= 0 || alumnoId <= 0)
                 return ResponseApiService.Response(StatusCodes.Status400BadRequest, "Parámetros inválidos");
 
-            // Auth profesor
+            if (model.Nota.HasValue && (model.Nota.Value < 0 || model.Nota.Value > 100))
+                return ResponseApiService.Response(StatusCodes.Status400BadRequest, "La nota debe estar entre 0 y 100");
+
             var profesorUser = await _userManager.FindByIdAsync(profesorUserId.ToString());
             if (profesorUser == null)
                 return ResponseApiService.Response(StatusCodes.Status401Unauthorized, "No autenticado");
@@ -44,7 +46,6 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
             if (!await _userManager.IsInRoleAsync(profesorUser, "Profesor"))
                 return ResponseApiService.Response(StatusCodes.Status403Forbidden, "No autorizado");
 
-            // Tarea pertenece al curso + está publicada
             var tarea = await _db.Tareas
                 .AsNoTracking()
                 .FirstOrDefaultAsync(t => t.Id == tareaId && t.CursoId == cursoId, ct);
@@ -55,7 +56,6 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
             if (tarea.Estado != EstadoTarea.Publicada)
                 return ResponseApiService.Response(StatusCodes.Status409Conflict, "La tarea no está publicada");
 
-            // Validar profesor asignado al curso
             var profAsignado = await _db.CursoProfesores
                 .AsNoTracking()
                 .AnyAsync(x => x.CursoId == cursoId && x.ProfesorId == profesorUserId, ct);
@@ -63,7 +63,6 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
             if (!profAsignado)
                 return ResponseApiService.Response(StatusCodes.Status403Forbidden, "Profesor no asignado a este curso");
 
-            // Entrega existe
             var entrega = await _db.Entregas
                 .FirstOrDefaultAsync(e => e.TareaId == tareaId && e.AlumnoId == alumnoId, ct);
 
@@ -76,12 +75,10 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
 
             try
             {
-                // Marcar feedback vigente anterior como no vigente
                 await _db.EntregaFeedbacks
                     .Where(f => f.EntregaId == entrega.Id && f.EsVigente)
                     .ExecuteUpdateAsync(s => s.SetProperty(x => x.EsVigente, false), ct);
 
-                // Crear nuevo feedback vigente
                 var feedback = new FeedbackEntregaEntity
                 {
                     EntregaId = entrega.Id,
@@ -97,37 +94,31 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
                 _db.EntregaFeedbacks.Add(feedback);
                 entrega.UpdatedAtUtc = nowUtc;
 
-                var ok = await _db.SaveAsync(ct);
-                if (!ok)
-                {
-                    await tx.RollbackAsync(ct);
-                    return ResponseApiService.Response(StatusCodes.Status500InternalServerError, "No se pudo guardar el feedback");
-                }
+                var calificacion = await _db.Calificaciones
+                    .Include(c => c.Detalles)
+                    .FirstOrDefaultAsync(c =>
+                        c.CursoId == cursoId &&
+                        c.AlumnoId == alumnoId &&
+                        c.TareaId == tareaId &&
+                        c.EntregaId == entrega.Id &&
+                        !c.Archivado, ct);
 
-                // Si el feedback trae nota, crear o actualizar calificación
                 if (model.Nota.HasValue)
                 {
-                    var calificacion = await _db.Calificaciones
-                        .FirstOrDefaultAsync(c =>
-                            c.CursoId == cursoId &&
-                            c.AlumnoId == alumnoId &&
-                            c.TareaId == tareaId &&
-                            c.EntregaId == entrega.Id &&
-                            !c.Archivado, ct);
-
                     if (calificacion == null)
                     {
                         calificacion = new CalificacionEntity
                         {
                             CursoId = cursoId,
                             AlumnoId = alumnoId,
-                            Tipo = TipoCalificacion.Tarea,
+                            Tipo = TipoCalificacion.Homework,
                             Titulo = tarea.Titulo,
-                            Descripcion = "Calificación generada desde feedback de entrega",
+                            Descripcion = "Calificación generada desde el último feedback vigente",
                             Nota = model.Nota.Value,
                             Fecha = DateOnly.FromDateTime(nowUtc),
                             TareaId = tareaId,
                             EntregaId = entrega.Id,
+                            TieneDetalleSkills = false,
                             Archivado = false,
                             ArchivadoPorTarea = false,
                             CreatedAtUtc = nowUtc
@@ -137,22 +128,40 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
                     }
                     else
                     {
-                        calificacion.Tipo = TipoCalificacion.Tarea;
+                        if (calificacion.Detalles.Any())
+                            _db.CalificacionDetalles.RemoveRange(calificacion.Detalles);
+
+                        calificacion.Tipo = TipoCalificacion.Homework;
                         calificacion.Titulo = tarea.Titulo;
-                        calificacion.Descripcion = "Calificación actualizada desde feedback de entrega";
+                        calificacion.Descripcion = "Calificación actualizada desde el último feedback vigente";
                         calificacion.Nota = model.Nota.Value;
+                        calificacion.Fecha = DateOnly.FromDateTime(nowUtc);
+                        calificacion.TareaId = tareaId;
+                        calificacion.EntregaId = entrega.Id;
+                        calificacion.TieneDetalleSkills = false;
                         calificacion.Archivado = false;
                         calificacion.ArchivadoPorTarea = false;
-                        calificacion.Fecha = DateOnly.FromDateTime(nowUtc);
                         calificacion.UpdatedAtUtc = nowUtc;
                     }
-
-                    var okCalificacion = await _db.SaveAsync(ct);
-                    if (!okCalificacion)
+                }
+                else
+                {
+                    if (calificacion != null)
                     {
-                        await tx.RollbackAsync(ct);
-                        return ResponseApiService.Response(StatusCodes.Status500InternalServerError, "No se pudo guardar la calificación asociada al feedback");
+                        if (calificacion.Detalles.Any())
+                            _db.CalificacionDetalles.RemoveRange(calificacion.Detalles);
+
+                        calificacion.Archivado = true;
+                        calificacion.ArchivadoPorTarea = false;
+                        calificacion.UpdatedAtUtc = nowUtc;
                     }
+                }
+
+                var ok = await _db.SaveAsync(ct);
+                if (!ok)
+                {
+                    await tx.RollbackAsync(ct);
+                    return ResponseApiService.Response(StatusCodes.Status500InternalServerError, "No se pudo guardar el feedback");
                 }
 
                 await tx.CommitAsync(ct);

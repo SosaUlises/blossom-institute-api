@@ -1,5 +1,6 @@
 ﻿using BlossomInstitute.Application.DataBase.Calificacion.Queries.Model;
 using BlossomInstitute.Common.Features;
+using BlossomInstitute.Domain.Entidades.Calificaciones;
 using BlossomInstitute.Domain.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -32,21 +33,66 @@ namespace BlossomInstitute.Application.DataBase.Calificacion.Queries.GetCalifica
             if (pageSize <= 0) pageSize = 10;
             if (pageSize > 100) pageSize = 100;
 
-            // Si no es admin/profesor, solo puede ver las propias
             if (!isAdmin && !isProfesor && alumnoId != userId)
                 return ResponseApiService.Response(StatusCodes.Status403Forbidden, "No autorizado");
 
-            var alumnoExiste = await _db.Alumnos.AsNoTracking()
+            var alumnoExiste = await _db.Alumnos
+                .AsNoTracking()
                 .AnyAsync(x => x.Id == alumnoId, ct);
 
             if (!alumnoExiste)
                 return ResponseApiService.Response(StatusCodes.Status404NotFound, "Alumno no encontrado");
 
-            var q = _db.Calificaciones.AsNoTracking()
+            IQueryable<CalificacionEntity> q = _db.Calificaciones
+                .AsNoTracking()
                 .Where(x => x.AlumnoId == alumnoId && !x.Archivado);
 
-            if (cursoId.HasValue)
-                q = q.Where(x => x.CursoId == cursoId.Value);
+            if (isAdmin)
+            {
+                if (cursoId.HasValue)
+                    q = q.Where(x => x.CursoId == cursoId.Value);
+            }
+            else if (isProfesor)
+            {
+                if (cursoId.HasValue)
+                {
+                    var profesorAsignado = await _db.CursoProfesores
+                        .AsNoTracking()
+                        .AnyAsync(x => x.CursoId == cursoId.Value && x.ProfesorId == userId, ct);
+
+                    if (!profesorAsignado)
+                        return ResponseApiService.Response(StatusCodes.Status403Forbidden, "No autorizado para ver calificaciones de este curso");
+
+                    q = q.Where(x => x.CursoId == cursoId.Value);
+                }
+                else
+                {
+                    var cursoIdsProfesor = await _db.CursoProfesores
+                        .AsNoTracking()
+                        .Where(x => x.ProfesorId == userId)
+                        .Select(x => x.CursoId)
+                        .Distinct()
+                        .ToListAsync(ct);
+
+                    if (cursoIdsProfesor.Count == 0)
+                    {
+                        return ResponseApiService.Response(StatusCodes.Status200OK, new
+                        {
+                            pageNumber,
+                            pageSize,
+                            total = 0,
+                            items = new List<CalificacionListItemModel>()
+                        });
+                    }
+
+                    q = q.Where(x => cursoIdsProfesor.Contains(x.CursoId));
+                }
+            }
+            else
+            {
+                if (cursoId.HasValue)
+                    q = q.Where(x => x.CursoId == cursoId.Value);
+            }
 
             var total = await q.CountAsync(ct);
 
@@ -59,6 +105,7 @@ namespace BlossomInstitute.Application.DataBase.Calificacion.Queries.GetCalifica
                 {
                     Id = x.Id,
                     CursoId = x.CursoId,
+                    CursoNombre = x.Curso.Nombre,
                     AlumnoId = x.AlumnoId,
                     AlumnoNombre = x.Alumno.Usuario.Nombre,
                     AlumnoApellido = x.Alumno.Usuario.Apellido,

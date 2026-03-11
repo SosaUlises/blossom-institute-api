@@ -26,9 +26,13 @@ using BlossomInstitute.Application.DataBase.Curso.Commands.RemoveAlumno;
 using BlossomInstitute.Application.DataBase.Curso.Commands.RemoveProfesores;
 using BlossomInstitute.Application.DataBase.Curso.Commands.UpdateCurso;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetAllCursos;
+using BlossomInstitute.Application.DataBase.Curso.Queries.GetAlumnosByCurso;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetCursoById;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Alumno;
 using BlossomInstitute.Application.DataBase.Curso.Queries.GetMyCursos.Profesor;
+using BlossomInstitute.Application.DataBase.Curso.Queries.GetProfesoresByCurso;
+using BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashboard;
+using BlossomInstitute.Application.DataBase.Dashboard.Queries.GetProfesorDashboard;
 using BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedbackEntrega;
 using BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaAlumno;
 using BlossomInstitute.Application.DataBase.Entregas.Queries.Alumno.GetMiEntregaByTarea;
@@ -110,6 +114,9 @@ namespace BlossomInstitute.Application
             services.AddTransient<IRemoveProfesorFromCursoCommand, RemoveProfesorFromCursoCommand>();
             services.AddTransient<IMatricularAlumnosCommand, MatricularAlumnosCommand>();
             services.AddTransient<IRemoveAlumnoFromCursoCommand, RemoveAlumnoFromCursoCommand>();
+            services.AddTransient<IGetAlumnosByCursoQuery, GetAlumnosByCursoQuery>();
+            services.AddTransient<IGetProfesoresByCursoQuery, GetProfesoresByCursoQuery>();
+
 
             // Asistencia
             services.AddTransient<ITomarAsistenciaCommand, TomarAsistenciaCommand>();
@@ -143,6 +150,10 @@ namespace BlossomInstitute.Application
             services.AddTransient<IArchiveCalificacionCommand, ArchiveCalificacionCommand>();
             services.AddTransient<IGetCalificacionesByCursoQuery, GetCalificacionesByCursoQuery>();
             services.AddTransient<IGetCalificacionesByAlumnoQuery, GetCalificacionesByAlumnoQuery>();
+
+            // Dashboard
+            services.AddTransient<IGetAlumnoDashboardQuery, GetAlumnoDashboardQuery>();
+            services.AddTransient<IGetProfesorDashboardQuery, GetProfesorDashboardQuery>();
 
 
             // Reportes

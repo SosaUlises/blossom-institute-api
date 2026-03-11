@@ -25,7 +25,7 @@ namespace BlossomInstitute.Infraestructure.Configuration
                 .HasMaxLength(500);
 
             entity.Property(x => x.Nota)
-                .HasPrecision(4, 2)
+                .HasPrecision(5, 2)
                 .IsRequired();
 
             entity.Property(x => x.Fecha)
@@ -35,11 +35,14 @@ namespace BlossomInstitute.Infraestructure.Configuration
                 .HasColumnType("date")
                 .IsRequired();
 
+            entity.Property(x => x.TieneDetalleSkills)
+                .IsRequired();
+
             entity.Property(x => x.Archivado)
                 .IsRequired();
 
             entity.Property(x => x.ArchivadoPorTarea)
-               .IsRequired();
+                .IsRequired();
 
             entity.Property(x => x.CreatedAtUtc)
                 .IsRequired();
@@ -66,10 +69,19 @@ namespace BlossomInstitute.Infraestructure.Configuration
                 .HasForeignKey(x => x.EntregaId)
                 .OnDelete(DeleteBehavior.SetNull);
 
+            entity.HasMany(x => x.Detalles)
+                .WithOne(x => x.Calificacion)
+                .HasForeignKey(x => x.CalificacionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             entity.HasIndex(x => new { x.CursoId, x.AlumnoId, x.Archivado });
 
+            entity.HasIndex(x => new { x.CursoId, x.AlumnoId, x.Fecha });
+
+            entity.HasIndex(x => new { x.CursoId, x.AlumnoId, x.Tipo, x.Archivado });
+
             entity.HasIndex(x => new { x.CursoId, x.AlumnoId, x.TareaId, x.EntregaId, x.Archivado })
-            .IsUnique();
+                .IsUnique();
         }
     }
 }

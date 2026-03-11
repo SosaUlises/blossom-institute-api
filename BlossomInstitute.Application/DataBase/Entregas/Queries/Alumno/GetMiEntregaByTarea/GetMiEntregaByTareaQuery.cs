@@ -68,7 +68,7 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Queries.Alumno.GetMiEnt
                         {
                             FeedbackId = f.Id,
                             EsVigente = f.EsVigente,
-                            Estado = (int)f.Estado,
+                            Estado = f.Estado,
                             Nota = f.Nota,
                             Comentario = f.Comentario,
                             FechaCorreccionUtc = f.FechaCorreccionUtc,

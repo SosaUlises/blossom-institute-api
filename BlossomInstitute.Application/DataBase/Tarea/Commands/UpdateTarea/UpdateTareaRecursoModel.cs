@@ -5,7 +5,7 @@ namespace BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea
     public class UpdateTareaRecursoModel
     {
         public TipoRecursoTarea Tipo { get; set; }
-        public string Url { get; set; } = default!;
+        public string? Url { get; set; }
         public string? Nombre { get; set; }
     }
 }

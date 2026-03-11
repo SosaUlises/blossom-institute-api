@@ -32,6 +32,36 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.ToTable("Alumnos", (string)null);
                 });
 
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Calificacion.CalificacionDetalleEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CalificacionId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("PuntajeMaximo")
+                        .HasPrecision(5, 2)
+                        .HasColumnType("numeric(5,2)");
+
+                    b.Property<decimal>("PuntajeObtenido")
+                        .HasPrecision(5, 2)
+                        .HasColumnType("numeric(5,2)");
+
+                    b.Property<int>("Skill")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CalificacionId", "Skill")
+                        .IsUnique();
+
+                    b.ToTable("CalificacionDetalles", (string)null);
+                });
+
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Calificaciones.CalificacionEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -56,26 +86,32 @@ namespace BlossomInstitute.Infraestructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Descripcion")
-                        .HasColumnType("text");
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.Property<int?>("EntregaId")
                         .HasColumnType("integer");
 
-                    b.Property<DateOnly>("Fecha")
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("date");
 
                     b.Property<decimal>("Nota")
-                        .HasColumnType("numeric");
+                        .HasPrecision(5, 2)
+                        .HasColumnType("numeric(5,2)");
 
                     b.Property<int?>("TareaId")
                         .HasColumnType("integer");
+
+                    b.Property<bool>("TieneDetalleSkills")
+                        .HasColumnType("boolean");
 
                     b.Property<int>("Tipo")
                         .HasColumnType("integer");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<DateTime?>("UpdatedAtUtc")
                         .HasColumnType("timestamp with time zone");
@@ -84,13 +120,20 @@ namespace BlossomInstitute.Infraestructure.Migrations
 
                     b.HasIndex("AlumnoId");
 
-                    b.HasIndex("CursoId");
-
                     b.HasIndex("EntregaId");
 
                     b.HasIndex("TareaId");
 
-                    b.ToTable("Calificaciones");
+                    b.HasIndex("CursoId", "AlumnoId", "Archivado");
+
+                    b.HasIndex("CursoId", "AlumnoId", "Fecha");
+
+                    b.HasIndex("CursoId", "AlumnoId", "Tipo", "Archivado");
+
+                    b.HasIndex("CursoId", "AlumnoId", "TareaId", "EntregaId", "Archivado")
+                        .IsUnique();
+
+                    b.ToTable("Calificaciones", (string)null);
                 });
 
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Clase.AsistenciaEntity", b =>
@@ -661,27 +704,40 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.Navigation("Usuario");
                 });
 
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Calificacion.CalificacionDetalleEntity", b =>
+                {
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Calificaciones.CalificacionEntity", "Calificacion")
+                        .WithMany("Detalles")
+                        .HasForeignKey("CalificacionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Calificacion");
+                });
+
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Calificaciones.CalificacionEntity", b =>
                 {
                     b.HasOne("BlossomInstitute.Domain.Entidades.Alumno.AlumnoEntity", "Alumno")
                         .WithMany()
                         .HasForeignKey("AlumnoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BlossomInstitute.Domain.Entidades.Curso.CursoEntity", "Curso")
                         .WithMany()
                         .HasForeignKey("CursoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BlossomInstitute.Domain.Entidades.Entrega.EntregaEntity", "Entrega")
                         .WithMany()
-                        .HasForeignKey("EntregaId");
+                        .HasForeignKey("EntregaId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("BlossomInstitute.Domain.Entidades.Tarea.TareaEntity", "Tarea")
                         .WithMany()
-                        .HasForeignKey("TareaId");
+                        .HasForeignKey("TareaId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Alumno");
 
@@ -902,6 +958,11 @@ namespace BlossomInstitute.Infraestructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Calificaciones.CalificacionEntity", b =>
+                {
+                    b.Navigation("Detalles");
                 });
 
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Clase.ClaseEntity", b =>
