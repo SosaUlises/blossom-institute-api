@@ -1406,6 +1406,47 @@
   },
   {
     "ContainingType": "BlossomInstitute.Controllers.Reportes.ReporteController",
+    "Method": "GetReporteAttendanceByCursoAndTerm",
+    "RelativePath": "api/v1/reportes/cursos/{cursoId}/years/{year}/terms/{term}/attendance",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "term",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Reportes.ReporteController",
     "Method": "GetReporteHomeworkByCursoAndTerm",
     "RelativePath": "api/v1/reportes/cursos/{cursoId}/years/{year}/terms/{term}/homework",
     "HttpMethod": "GET",
