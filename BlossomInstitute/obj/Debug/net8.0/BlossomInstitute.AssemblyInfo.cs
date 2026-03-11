@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlossomInstitute")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7aa9eb209042103bcab7ca079b967ab4de17f2d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+526deada04cddb2c52e51f3b0abcbef2c40dec36")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlossomInstitute")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlossomInstitute")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

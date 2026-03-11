@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{004BB8D1-4AA1-4217-B83D-127265CE479E}|BlossomInstitute.Domain\\BlossomInstitute.Domain.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.domain\\entidades\\entrega\\estadoentrega.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{004BB8D1-4AA1-4217-B83D-127265CE479E}|BlossomInstitute.Domain\\BlossomInstitute.Domain.csproj|solutionrelative:blossominstitute.domain\\entidades\\entrega\\estadoentrega.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{004BB8D1-4AA1-4217-B83D-127265CE479E}|BlossomInstitute.Domain\\BlossomInstitute.Domain.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.domain\\entidades\\entrega\\estadocorreccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{004BB8D1-4AA1-4217-B83D-127265CE479E}|BlossomInstitute.Domain\\BlossomInstitute.Domain.csproj|solutionrelative:blossominstitute.domain\\entidades\\entrega\\estadocorreccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|c:\\users\\ulipv\\source\\repos\\blossom-institute-api\\blossominstitute.application\\database\\entregas\\commands\\upsertentregaalumno\\upsertentregaalumnocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{54F7C6AA-E084-418E-85CB-ACD92439FDD4}|BlossomInstitute.Application\\BlossomInstitute.Application.csproj|solutionrelative:blossominstitute.application\\database\\entregas\\commands\\upsertentregaalumno\\upsertentregaalumnocommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 422,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,45 +26,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "EstadoEntrega.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Domain\\Entidades\\Entrega\\EstadoEntrega.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Domain\\Entidades\\Entrega\\EstadoEntrega.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Domain\\Entidades\\Entrega\\EstadoEntrega.cs",
-              "RelativeToolTip": "BlossomInstitute.Domain\\Entidades\\Entrega\\EstadoEntrega.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T19:07:09.419Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EstadoCorreccion.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Domain\\Entidades\\Entrega\\EstadoCorreccion.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Domain\\Entidades\\Entrega\\EstadoCorreccion.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Domain\\Entidades\\Entrega\\EstadoCorreccion.cs",
-              "RelativeToolTip": "BlossomInstitute.Domain\\Entidades\\Entrega\\EstadoCorreccion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T19:02:20.215Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UpsertEntregaAlumnoCommand.cs",
-              "DocumentMoniker": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\UpsertEntregaAlumno\\UpsertEntregaAlumnoCommand.cs",
-              "RelativeDocumentMoniker": "BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\UpsertEntregaAlumno\\UpsertEntregaAlumnoCommand.cs",
-              "ToolTip": "C:\\Users\\ulipv\\source\\repos\\blossom-institute-api\\BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\UpsertEntregaAlumno\\UpsertEntregaAlumnoCommand.cs",
-              "RelativeToolTip": "BlossomInstitute.Application\\DataBase\\Entregas\\Commands\\UpsertEntregaAlumno\\UpsertEntregaAlumnoCommand.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAowJcAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-10T18:56:31.829Z",
-              "EditorCaption": ""
             }
           ]
         }

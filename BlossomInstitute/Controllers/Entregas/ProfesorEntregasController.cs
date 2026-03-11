@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace BlossomInstitute.Controllers
+namespace BlossomInstitute.Controllers.Entregas
 {
     [ApiController]
     [Authorize(Roles = "Profesor")]

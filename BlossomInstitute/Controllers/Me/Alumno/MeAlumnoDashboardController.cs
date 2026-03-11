@@ -1,14 +1,14 @@
 ﻿using BlossomInstitute.Application.DataBase.Dashboard.Queries.GetAlumnoDashboard;
-using BlossomInstitute.Application.DataBase.Dashboard.Queries.GetProfesorDashboard;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace BlossomInstitute.Controllers
+namespace BlossomInstitute.Controllers.Me.Alumnos
 {
     [ApiController]
+    [Authorize(Roles = "Alumno")]
     [Route("api/v1/me")]
-    public class MeDashboardController : ControllerBase
+    public class MeAlumnoDashboardController : ControllerBase
     {
         private int GetUserId()
         {
@@ -16,20 +16,9 @@ namespace BlossomInstitute.Controllers
             return int.TryParse(v, out var id) ? id : 0;
         }
 
-        [Authorize(Roles = "Alumno")]
-        [HttpGet("dashboard-alumno")]
+        [HttpGet("alumno/dashboard")]
         public async Task<IActionResult> GetAlumnoDashboard(
             [FromServices] IGetAlumnoDashboardQuery query,
-            CancellationToken ct)
-        {
-            var result = await query.Execute(GetUserId(), ct);
-            return StatusCode(result.StatusCode, result);
-        }
-
-        [Authorize(Roles = "Profesor")]
-        [HttpGet("dashboard-profesor")]
-        public async Task<IActionResult> GetProfesorDashboard(
-            [FromServices] IGetProfesorDashboardQuery query,
             CancellationToken ct)
         {
             var result = await query.Execute(GetUserId(), ct);

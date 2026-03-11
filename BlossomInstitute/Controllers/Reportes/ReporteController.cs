@@ -5,7 +5,7 @@ using BlossomInstitute.Common.Features;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlossomInstitute.Controllers
+namespace BlossomInstitute.Controllers.Reportes
 {
     [ApiController]
     [Route("api/v1/reportes")]

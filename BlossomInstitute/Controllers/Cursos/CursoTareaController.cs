@@ -10,12 +10,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace BlossomInstitute.Controllers
+namespace BlossomInstitute.Controllers.Cursos
 {
     [Route("api/v1/cursos/{cursoId:int}/tareas")]
     [ApiController]
     [Authorize(Roles = "Profesor,Administrador")]
-    public class TareaController : ControllerBase
+    public class CursoTareaController : ControllerBase
     {
         private int GetUserId()
         {

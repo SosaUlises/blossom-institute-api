@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace BlossomInstitute.Controllers
+namespace BlossomInstitute.Controllers.Me.Alumnos
 {
     [ApiController]
     [Authorize(Roles = "Alumno")]
     [Route("api/v1/me")]
-    public class MeEntregasController : ControllerBase
+    public class MeAlumnoEntregasController : ControllerBase
     {
         private int GetUserId()
         {
@@ -17,7 +17,7 @@ namespace BlossomInstitute.Controllers
             return int.TryParse(v, out var id) ? id : 0;
         }
 
-        [HttpGet("tareas/{tareaId:int}/entrega")]
+        [HttpGet("alumno/tareas/{tareaId:int}/entrega")]
         public async Task<IActionResult> GetMiEntregaByTarea(
             [FromRoute] int tareaId,
             [FromServices] IGetMiEntregaByTareaQuery query,
@@ -27,7 +27,7 @@ namespace BlossomInstitute.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
-        [HttpGet("cursos/{cursoId:int}/entregas")]
+        [HttpGet("alumno/cursos/{cursoId:int}/entregas")]
         public async Task<IActionResult> GetMisEntregasByCurso(
             [FromServices] IGetMisEntregasByCursoQuery query,
             CancellationToken ct,
@@ -38,6 +38,5 @@ namespace BlossomInstitute.Controllers
             var result = await query.Execute(cursoId, GetUserId(), pageNumber, pageSize, ct);
             return StatusCode(result.StatusCode, result);
         }
-
     }
 }

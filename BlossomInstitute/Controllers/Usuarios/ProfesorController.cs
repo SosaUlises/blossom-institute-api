@@ -1,26 +1,27 @@
-﻿using BlossomInstitute.Application.DataBase.Alumno.Command.ActivarAlumno;
-using BlossomInstitute.Application.DataBase.Alumno.Command.CreateAlumno;
-using BlossomInstitute.Application.DataBase.Alumno.Command.DesactivarAlumno;
-using BlossomInstitute.Application.DataBase.Alumno.Command.UpdateAlumno;
-using BlossomInstitute.Application.DataBase.Alumno.Queries.GetAll;
-using BlossomInstitute.Application.DataBase.Alumno.Queries.GetById;
+﻿using BlossomInstitute.Application.DataBase.Profesor.Command.ActivarProfesor;
+using BlossomInstitute.Application.DataBase.Profesor.Command.CreateProfesor;
+using BlossomInstitute.Application.DataBase.Profesor.Command.DeleteProfesor;
+using BlossomInstitute.Application.DataBase.Profesor.Command.UpdateProfesor;
+using BlossomInstitute.Application.DataBase.Profesor.Queries.GetAllProfesores;
+using BlossomInstitute.Application.DataBase.Profesor.Queries.GetById;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlossomInstitute.Controllers
+namespace BlossomInstitute.Controllers.Usuarios
 {
-    [Route("api/v1/alumnos")]
+    [Route("api/v1/profesores")]
     [Authorize(Roles = "Administrador")]
     [ApiController]
-    public class AlumnoController : ControllerBase
+    public class ProfesorController : ControllerBase
     {
+
         [HttpPost]
         public async Task<IActionResult> Create(
-             [FromBody] CreateAlumnoModel model,
-             [FromServices] ICreateAlumnoCommand createAlumnoCommand,
-             [FromServices] IValidator<CreateAlumnoModel> validator)
+             [FromBody] CreateProfesorModel model,
+             [FromServices] ICreateProfesorCommand createProfesorCommand,
+             [FromServices] IValidator<CreateProfesorModel> validator)
         {
             var validationResult = await validator.ValidateAsync(model);
             if (!validationResult.IsValid)
@@ -30,16 +31,16 @@ namespace BlossomInstitute.Controllers
                     validationResult.Errors));
             }
 
-            var result = await createAlumnoCommand.Execute(model);
+            var result = await createProfesorCommand.Execute(model);
             return StatusCode(result.StatusCode, result);
         }
 
         [HttpPut("{userId:int}")]
         public async Task<IActionResult> Update(
             [FromRoute] int userId,
-            [FromBody] UpdateAlumnoModel model,
-            [FromServices] IUpdateAlumnoCommand command,
-            [FromServices] IValidator<UpdateAlumnoModel> validator)
+            [FromBody] UpdateProfesorModel model,
+            [FromServices] IUpdateProfesorCommand command,
+            [FromServices] IValidator<UpdateProfesorModel> validator)
         {
             if (userId <= 0) return BadRequest(ResponseApiService.Response(400, "Id inválido"));
             var vr = await validator.ValidateAsync(model);
@@ -51,8 +52,8 @@ namespace BlossomInstitute.Controllers
 
         [HttpPatch("{userId:int}/desactivar")]
         public async Task<IActionResult> Deactivate(
-         [FromRoute] int userId,
-         [FromServices] IDesactivarAlumnoCommand command)
+            int userId,
+            [FromServices] IDesactivarProfesorCommand command)
         {
             if (userId <= 0)
                 return BadRequest(ResponseApiService.Response(StatusCodes.Status400BadRequest, "Id inválido"));
@@ -64,7 +65,7 @@ namespace BlossomInstitute.Controllers
         [HttpPatch("{userId:int}/activar")]
         public async Task<IActionResult> Activate(
          [FromRoute] int userId,
-         [FromServices] IActivarAlumnoCommand command)
+         [FromServices] IActivarProfesorCommand command)
         {
             if (userId <= 0)
                 return BadRequest(ResponseApiService.Response(StatusCodes.Status400BadRequest, "Id inválido"));
@@ -75,7 +76,7 @@ namespace BlossomInstitute.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAll(
-             [FromServices] IGetAllAlumnosQuery query,
+             [FromServices] IGetAllProfesoresQuery query,
              [FromQuery] int pageNumber = 1,
              [FromQuery] int pageSize = 10,
              [FromQuery] string? search = null)
@@ -91,7 +92,7 @@ namespace BlossomInstitute.Controllers
         [HttpGet("{userId:int}")]
         public async Task<IActionResult> GetById(
             [FromRoute] int userId,
-            [FromServices] IGetAlumnoByIdQuery query)
+            [FromServices] IGetProfesorByIdQuery query)
         {
             if (userId <= 0) return BadRequest(ResponseApiService.Response(400, "Id inválido"));
             var result = await query.Execute(userId);

@@ -1,20 +1,20 @@
 ﻿using BlossomInstitute.Application.DataBase.Asistencia.Command.TomarAsistencia;
 using BlossomInstitute.Application.DataBase.Asistencia.Queries.GetAsistenciasByAlumno;
-using BlossomInstitute.Application.DataBase.Clase.Command;
+using BlossomInstitute.Application.DataBase.Asistencia.Queries.GetAsistenciasByClase;
 using BlossomInstitute.Common.Features;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlossomInstitute.Controllers
+namespace BlossomInstitute.Controllers.Cursos
 {
     [Route("api/v1/cursos/{cursoId:int}")]
     [ApiController]
     [Authorize(Roles = "Administrador,Profesor")]
     public class AsistenciasController : ControllerBase
     {
-        
-        [HttpPut("clases/{fecha}/asistencias")]
+
+        [HttpPut("clase/{fecha}/asistencias")]
         public async Task<IActionResult> TomarAsistencia(
             [FromRoute] int cursoId,
             [FromRoute] string fecha,
@@ -37,24 +37,7 @@ namespace BlossomInstitute.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
-        [HttpPatch("clases/{fecha}/cancelar")]
-        public async Task<IActionResult> CancelarClase(
-            [FromRoute] int cursoId,
-            [FromRoute] string fecha,
-            [FromServices] ICancelarClaseCommand command,
-            CancellationToken ct)
-        {
-            if (cursoId <= 0)
-                return BadRequest(ResponseApiService.Response(400, "CursoId inválido"));
-
-            if (!DateOnly.TryParse(fecha, out var date))
-                return BadRequest(ResponseApiService.Response(400, "Fecha inválida. Formato esperado: yyyy-MM-dd"));
-
-            var result = await command.Execute(cursoId, date, ct);
-            return StatusCode(result.StatusCode, result);
-        }
-
-        [HttpGet("alumnos/{alumnoId:int}/asistencias")]
+        [HttpGet("alumno/{alumnoId:int}/asistencias")]
         public async Task<IActionResult> GetAsistenciasByAlumno(
             [FromRoute] int alumnoId,
             [FromRoute] int cursoId,
@@ -90,6 +73,23 @@ namespace BlossomInstitute.Controllers
                 return BadRequest(ResponseApiService.Response(400, "El rango de fechas es inválido (from > to)"));
 
             var result = await query.Execute(alumnoId, cursoId, fromDate, toDate, ct);
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("clase/{fecha}/asistencias")]
+        public async Task<IActionResult> GetAsistenciasByFecha(
+            [FromRoute] int cursoId,
+            [FromRoute] string fecha,
+            [FromServices] IGetAsistenciasByClaseQuery query,
+            CancellationToken ct = default)
+        {
+            if (cursoId <= 0)
+                return BadRequest(ResponseApiService.Response(400, "CursoId inválido"));
+
+            if (!DateOnly.TryParse(fecha, out var date))
+                return BadRequest(ResponseApiService.Response(400, "Fecha inválida. Formato esperado: yyyy-MM-dd"));
+
+            var result = await query.Execute(cursoId, date, ct);
             return StatusCode(result.StatusCode, result);
         }
     }

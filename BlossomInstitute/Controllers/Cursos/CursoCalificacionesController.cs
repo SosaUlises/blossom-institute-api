@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace BlossomInstitute.Controllers
+namespace BlossomInstitute.Controllers.Cursos
 {
     [ApiController]
     [Route("api/v1/cursos/{cursoId:int}/alumnos/{alumnoId:int}/calificaciones")]
     [Authorize(Roles = "Profesor,Administrador")]
-    public class CalificacionesController : ControllerBase
+    public class CursoCalificacionesController : ControllerBase
     {
         private int GetUserId()
         {
@@ -72,7 +72,6 @@ namespace BlossomInstitute.Controllers
         }
 
 
-        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetByAlumno(
             [FromRoute] int cursoId,

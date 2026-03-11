@@ -37,4 +37,8 @@
     <ProjectReference Include="..\BlossomInstitute.Infraestructure\BlossomInstitute.Infraestructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Clases\" />
+  </ItemGroup>
+
 </Project>

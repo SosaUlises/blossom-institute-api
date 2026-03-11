@@ -14,7 +14,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlossomInstitute.Controllers
+namespace BlossomInstitute.Controllers.Cursos
 {
     [Route("api/v1/cursos")]
     [Authorize(Roles = "Administrador")]

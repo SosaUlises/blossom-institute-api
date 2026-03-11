@@ -6,7 +6,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlossomInstitute.Controllers
+namespace BlossomInstitute.Controllers.Usuarios
 {
     [Route("api/v1/auth")]
     [ApiController]
