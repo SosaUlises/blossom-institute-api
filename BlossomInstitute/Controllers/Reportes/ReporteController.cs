@@ -405,6 +405,38 @@ namespace BlossomInstitute.Controllers.Reportes
 
             return File(bytes, "application/pdf", fileName);
         }
+
+
+        [HttpGet("cursos/{cursoId:int}/alumnos/{alumnoId:int}/years/{year:int}/terms/{term:int}/summary/export/pdf")]
+        public async Task<IActionResult> ExportReporteStudentSummaryByCursoAndTermPdf(
+            [FromRoute] int cursoId,
+            [FromRoute] int alumnoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteStudentSummaryByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                alumnoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteStudentSummaryByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportStudentSummaryByCourseTermToPdf(data);
+
+            var fileName = $"student-summary-course-{cursoId}-student-{alumnoId}-year-{year}-term-{term}.pdf";
+
+            return File(bytes, "application/pdf", fileName);
+        }
     }
 }
 
