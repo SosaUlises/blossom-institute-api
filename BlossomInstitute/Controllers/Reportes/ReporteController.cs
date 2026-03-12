@@ -81,9 +81,27 @@ namespace BlossomInstitute.Controllers.Reportes
             [FromQuery] string? search = null,
             [FromQuery] int? alumnoId = null,
             [FromQuery] int? tipo = null,
+            [FromQuery] DateOnly? from = null,
+            [FromQuery] DateOnly? to = null,
+            [FromQuery] int? year = null,
+            [FromQuery] int? term = null,
             CancellationToken ct = default)
         {
-            var result = await query.Execute(cursoId, GetUserId(), IsAdmin(), pageNumber, pageSize, search, alumnoId, tipo, ct);
+            var result = await query.Execute(
+                cursoId,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber,
+                pageSize,
+                search,
+                alumnoId,
+                tipo,
+                from,
+                to,
+                year,
+                term,
+                ct);
+
             return StatusCode(result.StatusCode, result);
         }
 

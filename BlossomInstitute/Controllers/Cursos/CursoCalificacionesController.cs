@@ -71,7 +71,6 @@ namespace BlossomInstitute.Controllers.Cursos
             return StatusCode(result.StatusCode, result);
         }
 
-
         [HttpGet]
         public async Task<IActionResult> GetByAlumno(
             [FromRoute] int cursoId,
