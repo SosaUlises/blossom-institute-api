@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using QuestPDF.Infrastructure;
 using System.Security.Claims;
 using System.Text;
 
@@ -94,6 +95,7 @@ namespace BlossomInstitute.Infraestructure
             services.AddScoped<IGetTokenJWTService, GetTokenJWTService>();
             services.Configure<EmailSettings>(configuration.GetSection("Email"));
             services.AddScoped<IEmailService, SmtpEmailService>();
+            QuestPDF.Settings.License = LicenseType.Community;
 
             return services;
         }

@@ -60,6 +60,7 @@ using BlossomInstitute.Application.DataBase.Tarea.Commands.CreateTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasByCurso;
 using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasById;
+using BlossomInstitute.Application.Services.Export;
 using BlossomInstitute.Application.Validator.Alumno;
 using BlossomInstitute.Application.Validator.Asistencia;
 using BlossomInstitute.Application.Validator.Calificacion;
@@ -167,6 +168,7 @@ namespace BlossomInstitute.Application
             services.AddTransient<IGetReporteHomeworkByCursoAndTermQuery, GetReporteHomeworkByCursoAndTermQuery>();
             services.AddTransient<IGetReporteAttendanceByCursoAndTermQuery, GetReporteAttendanceByCursoAndTermQuery>();
             services.AddTransient<IGetReporteStudentSummaryByCursoAndTermQuery, GetReporteStudentSummaryByCursoAndTermQuery>();
+            services.AddScoped<IReporteExportService, ReporteExportService>();
 
 
             // Validators

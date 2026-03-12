@@ -5,6 +5,7 @@ using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteEntregaByTar
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteHomeworkByCursoAndTerm;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteMarksByCursoAndTerm;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteStudentSummaryByCursoAndTerm;
+using BlossomInstitute.Application.Services.Export;
 using BlossomInstitute.Common.Features;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -180,6 +181,79 @@ namespace BlossomInstitute.Controllers.Reportes
                 ct);
 
             return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/marks/export/excel")]
+        public async Task<IActionResult> ExportReporteMarksByCursoAndTermExcel(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteMarksByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteMarksByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportMarksByCourseTermToExcel(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"marks-course-{cursoId}-year-{year}-term-{term}.xlsx";
+
+            return File(
+                bytes,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                fileName);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/marks/export/pdf")]
+        public async Task<IActionResult> ExportReporteMarksByCursoAndTermPdf(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteMarksByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteMarksByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportMarksByCourseTermToPdf(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"marks-course-{cursoId}-year-{year}-term-{term}.pdf";
+
+            return File(bytes, "application/pdf", fileName);
         }
     }
 }

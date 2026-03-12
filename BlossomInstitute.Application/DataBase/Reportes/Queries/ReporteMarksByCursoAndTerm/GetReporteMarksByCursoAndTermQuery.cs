@@ -193,14 +193,16 @@ namespace BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteMarksByC
                 PromedioGeneralCurso = marksCurso.Count > 0 ? Math.Round(marksCurso.Average(x => x.Nota), 2) : null
             };
 
-            return ResponseApiService.Response(StatusCodes.Status200OK, new
+            var response = new ReporteMarksByCursoAndTermResponseModel
             {
-                pageNumber,
-                pageSize,
-                total,
-                resumen,
-                items
-            });
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                Total = total,
+                Resumen = resumen,
+                Items = items
+            };
+
+            return ResponseApiService.Response(StatusCodes.Status200OK, response);
         }
 
         private static (DateOnly from, DateOnly to) GetTermRange(int year, int term)
