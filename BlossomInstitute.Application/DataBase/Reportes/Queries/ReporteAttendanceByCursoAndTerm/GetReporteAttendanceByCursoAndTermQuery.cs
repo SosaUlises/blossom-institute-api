@@ -203,14 +203,16 @@ namespace BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteAttendan
                 PorcentajeAsistenciaCurso = porcentajeAsistenciaCurso
             };
 
-            return ResponseApiService.Response(StatusCodes.Status200OK, new
+            var response = new ReporteAttendanceByCursoAndTermResponseModel
             {
-                pageNumber,
-                pageSize,
-                total,
-                resumen,
-                items
-            });
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                Total = total,
+                Resumen = resumen,
+                Items = items
+            };
+
+            return ResponseApiService.Response(StatusCodes.Status200OK, response);
         }
 
         private static (DateOnly from, DateOnly to) GetTermRange(int year, int term)

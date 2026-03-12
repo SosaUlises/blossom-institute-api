@@ -255,6 +255,80 @@ namespace BlossomInstitute.Controllers.Reportes
 
             return File(bytes, "application/pdf", fileName);
         }
+
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/attendance/export/excel")]
+        public async Task<IActionResult> ExportReporteAttendanceByCursoAndTermExcel(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteAttendanceByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteAttendanceByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportAttendanceByCourseTermToExcel(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"attendance-course-{cursoId}-year-{year}-term-{term}.xlsx";
+
+            return File(
+                bytes,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                fileName);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/attendance/export/pdf")]
+        public async Task<IActionResult> ExportReporteAttendanceByCursoAndTermPdf(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteAttendanceByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteAttendanceByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportAttendanceByCourseTermToPdf(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"attendance-course-{cursoId}-year-{year}-term-{term}.pdf";
+
+            return File(bytes, "application/pdf", fileName);
+        }
     }
 }
 
