@@ -295,6 +295,7 @@ namespace BlossomInstitute.Controllers.Reportes
                 fileName);
         }
 
+
         [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/attendance/export/pdf")]
         public async Task<IActionResult> ExportReporteAttendanceByCursoAndTermPdf(
             [FromRoute] int cursoId,
@@ -326,6 +327,81 @@ namespace BlossomInstitute.Controllers.Reportes
                 data.Items);
 
             var fileName = $"attendance-course-{cursoId}-year-{year}-term-{term}.pdf";
+
+            return File(bytes, "application/pdf", fileName);
+        }
+
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/homework/export/excel")]
+        public async Task<IActionResult> ExportReporteHomeworkByCursoAndTermExcel(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteHomeworkByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteHomeworkByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportHomeworkByCourseTermToExcel(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"homework-course-{cursoId}-year-{year}-term-{term}.xlsx";
+
+            return File(
+                bytes,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                fileName);
+        }
+
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/homework/export/pdf")]
+        public async Task<IActionResult> ExportReporteHomeworkByCursoAndTermPdf(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteHomeworkByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteHomeworkByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportHomeworkByCourseTermToPdf(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"homework-course-{cursoId}-year-{year}-term-{term}.pdf";
 
             return File(bytes, "application/pdf", fileName);
         }

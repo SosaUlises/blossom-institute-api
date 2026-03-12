@@ -1581,6 +1581,68 @@
   },
   {
     "ContainingType": "BlossomInstitute.Controllers.Reportes.ReporteController",
+    "Method": "ExportReporteHomeworkByCursoAndTermExcel",
+    "RelativePath": "api/v1/reportes/cursos/{cursoId}/years/{year}/terms/{term}/homework/export/excel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "term",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Reportes.ReporteController",
+    "Method": "ExportReporteHomeworkByCursoAndTermPdf",
+    "RelativePath": "api/v1/reportes/cursos/{cursoId}/years/{year}/terms/{term}/homework/export/pdf",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cursoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "term",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BlossomInstitute.Controllers.Reportes.ReporteController",
     "Method": "GetReporteMarksByCursoAndTerm",
     "RelativePath": "api/v1/reportes/cursos/{cursoId}/years/{year}/terms/{term}/marks",
     "HttpMethod": "GET",
