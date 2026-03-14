@@ -71,9 +71,7 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Queries.Alumno.GetMiEnt
                             Estado = f.Estado,
                             Nota = f.Nota,
                             Comentario = f.Comentario,
-                            FechaCorreccionUtc = f.FechaCorreccionUtc,
-                            ArchivoCorregidoUrl = f.ArchivoCorregidoUrl,
-                            ArchivoCorregidoNombre = f.ArchivoCorregidoNombre
+                            FechaCorreccionUtc = f.FechaCorreccionUtc
                         }).ToList()
                 })
                 .FirstOrDefaultAsync(ct);

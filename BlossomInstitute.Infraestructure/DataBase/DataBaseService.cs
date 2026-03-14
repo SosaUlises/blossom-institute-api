@@ -36,6 +36,7 @@ namespace BlossomInstitute.Infraestructure.DataBase
         public DbSet<EntregaEntity> Entregas { get; set; }
         public DbSet<EntregaAdjuntoEntity> EntregaAdjuntos { get; set; }
         public DbSet<FeedbackEntregaEntity> EntregaFeedbacks { get; set; }
+        public DbSet<FeedbackEntregaAdjuntoEntity> FeedbackEntregaAdjuntos { get; set; }
         public DbSet<CalificacionEntity> Calificaciones { get; set; }
         public DbSet<CalificacionDetalleEntity> CalificacionDetalles { get; set; }
 
@@ -71,6 +72,7 @@ namespace BlossomInstitute.Infraestructure.DataBase
             new FeedbackEntregaConfiguration(modelBuilder.Entity<FeedbackEntregaEntity>());
             new CalificacionConfiguration(modelBuilder.Entity<CalificacionEntity>());
             new CalificacionDetalleConfiguration(modelBuilder.Entity<CalificacionDetalleEntity>());
+            new FeedbackEntregaAdjuntoConfiguration(modelBuilder.Entity<FeedbackEntregaAdjuntoEntity>());
 
         }
 

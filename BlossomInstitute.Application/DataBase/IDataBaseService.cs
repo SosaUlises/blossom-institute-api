@@ -28,6 +28,7 @@ namespace BlossomInstitute.Application.DataBase
         DbSet<EntregaEntity> Entregas { get; set; }
         DbSet<EntregaAdjuntoEntity> EntregaAdjuntos { get; set; }
         DbSet<FeedbackEntregaEntity> EntregaFeedbacks { get; set; }
+        DbSet<FeedbackEntregaAdjuntoEntity> FeedbackEntregaAdjuntos { get; set; }
         DbSet<CalificacionEntity> Calificaciones { get; set; }
         DbSet<CalificacionDetalleEntity> CalificacionDetalles { get; set; }
 

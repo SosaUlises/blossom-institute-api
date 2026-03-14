@@ -65,6 +65,10 @@
               "target": "Package",
               "version": "[12.0.0, )"
             },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.105.0, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[12.1.1, )"
@@ -104,6 +108,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2026.2.3, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
@@ -196,6 +204,10 @@
               "target": "Package",
               "version": "[12.0.0, )"
             },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.105.0, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[12.1.1, )"
@@ -235,6 +247,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2026.2.3, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
@@ -323,6 +339,10 @@
               "target": "Package",
               "version": "[12.0.0, )"
             },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.105.0, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[12.1.1, )"
@@ -362,6 +382,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2026.2.3, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

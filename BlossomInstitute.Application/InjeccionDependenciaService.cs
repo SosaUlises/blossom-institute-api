@@ -50,12 +50,17 @@ using BlossomInstitute.Application.DataBase.Profesor.Command.UpdateProfesor;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetAllProfesores;
 using BlossomInstitute.Application.DataBase.Profesor.Queries.GetById;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteAsistenciaByClase;
+using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteAttendanceByCursoAndTerm;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteEntregaByTarea;
+using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteHomeworkByCursoAndTerm;
+using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteMarksByCursoAndTerm;
+using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteStudentSummaryByCursoAndTerm;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.ArchivarTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.CreateTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Commands.UpdateTarea;
 using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasByCurso;
 using BlossomInstitute.Application.DataBase.Tarea.Queries.GetTareasById;
+using BlossomInstitute.Application.Services.Export;
 using BlossomInstitute.Application.Validator.Alumno;
 using BlossomInstitute.Application.Validator.Asistencia;
 using BlossomInstitute.Application.Validator.Calificacion;
@@ -159,6 +164,11 @@ namespace BlossomInstitute.Application
             // Reportes
             services.AddTransient<IGetReporteEntregasByTareaQuery, GetReporteEntregasByTareaQuery>();
             services.AddTransient<IGetReporteAsistenciasByCursoQuery, GetReporteAsistenciasByCursoQuery>();
+            services.AddTransient<IGetReporteMarksByCursoAndTermQuery, GetReporteMarksByCursoAndTermQuery>();
+            services.AddTransient<IGetReporteHomeworkByCursoAndTermQuery, GetReporteHomeworkByCursoAndTermQuery>();
+            services.AddTransient<IGetReporteAttendanceByCursoAndTermQuery, GetReporteAttendanceByCursoAndTermQuery>();
+            services.AddTransient<IGetReporteStudentSummaryByCursoAndTermQuery, GetReporteStudentSummaryByCursoAndTermQuery>();
+            services.AddScoped<IReporteExportService, ReporteExportService>();
 
 
             // Validators

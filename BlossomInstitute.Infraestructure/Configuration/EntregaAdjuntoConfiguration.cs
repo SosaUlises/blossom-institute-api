@@ -1,11 +1,6 @@
 ﻿using BlossomInstitute.Domain.Entidades.Entrega;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlossomInstitute.Infraestructure.Configuration
 {
@@ -14,6 +9,7 @@ namespace BlossomInstitute.Infraestructure.Configuration
         public EntregaAdjuntoConfiguration(EntityTypeBuilder<EntregaAdjuntoEntity> b)
         {
             b.ToTable("EntregaAdjuntos");
+
             b.HasKey(x => x.Id);
 
             b.Property(x => x.Tipo)
@@ -27,7 +23,30 @@ namespace BlossomInstitute.Infraestructure.Configuration
             b.Property(x => x.Nombre)
                 .HasMaxLength(200);
 
+            b.Property(x => x.StorageProvider)
+                .HasConversion<int>();
+
+            b.Property(x => x.StorageKey)
+                .HasMaxLength(500);
+
+            b.Property(x => x.ContentType)
+                .HasMaxLength(200);
+
+            b.Property(x => x.SizeBytes);
+
+            b.Property(x => x.CreatedAtUtc)
+                .IsRequired();
+
+            b.HasOne(x => x.Entrega)
+                .WithMany(e => e.Adjuntos)
+                .HasForeignKey(x => x.EntregaId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             b.HasIndex(x => new { x.EntregaId, x.Tipo });
+
+            b.HasIndex(x => new { x.EntregaId, x.StorageKey });
+
+            b.HasIndex(x => x.StorageKey);
         }
     }
 }

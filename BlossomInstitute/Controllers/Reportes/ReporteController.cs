@@ -1,6 +1,11 @@
 ﻿using BlossomInstitute.Application.DataBase.Calificacion.Queries.GetCalificacionesByCurso;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteAsistenciaByClase;
+using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteAttendanceByCursoAndTerm;
 using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteEntregaByTarea;
+using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteHomeworkByCursoAndTerm;
+using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteMarksByCursoAndTerm;
+using BlossomInstitute.Application.DataBase.Reportes.Queries.ReporteStudentSummaryByCursoAndTerm;
+using BlossomInstitute.Application.Services.Export;
 using BlossomInstitute.Common.Features;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -76,10 +81,379 @@ namespace BlossomInstitute.Controllers.Reportes
             [FromQuery] string? search = null,
             [FromQuery] int? alumnoId = null,
             [FromQuery] int? tipo = null,
+            [FromQuery] DateOnly? from = null,
+            [FromQuery] DateOnly? to = null,
+            [FromQuery] int? year = null,
+            [FromQuery] int? term = null,
             CancellationToken ct = default)
         {
-            var result = await query.Execute(cursoId, GetUserId(), IsAdmin(), pageNumber, pageSize, search, alumnoId, tipo, ct);
+            var result = await query.Execute(
+                cursoId,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber,
+                pageSize,
+                search,
+                alumnoId,
+                tipo,
+                from,
+                to,
+                year,
+                term,
+                ct);
+
             return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/marks")]
+        public async Task<IActionResult> GetReporteMarksByCursoAndTerm(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteMarksByCursoAndTermQuery query,
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber,
+                pageSize,
+                search,
+                ct);
+
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/homework")]
+        public async Task<IActionResult> GetReporteHomeworkByCursoAndTerm(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteHomeworkByCursoAndTermQuery query,
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber,
+                pageSize,
+                search,
+                ct);
+
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/attendance")]
+        public async Task<IActionResult> GetReporteAttendanceByCursoAndTerm(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteAttendanceByCursoAndTermQuery query,
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber,
+                pageSize,
+                search,
+                ct);
+
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/alumnos/{alumnoId:int}/years/{year:int}/terms/{term:int}/summary")]
+        public async Task<IActionResult> GetReporteStudentSummaryByCursoAndTerm(
+            [FromRoute] int cursoId,
+            [FromRoute] int alumnoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteStudentSummaryByCursoAndTermQuery query,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                alumnoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                ct);
+
+            return StatusCode(result.StatusCode, result);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/marks/export/excel")]
+        public async Task<IActionResult> ExportReporteMarksByCursoAndTermExcel(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteMarksByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteMarksByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportMarksByCourseTermToExcel(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"marks-course-{cursoId}-year-{year}-term-{term}.xlsx";
+
+            return File(
+                bytes,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                fileName);
+        }
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/marks/export/pdf")]
+        public async Task<IActionResult> ExportReporteMarksByCursoAndTermPdf(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteMarksByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteMarksByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportMarksByCourseTermToPdf(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"marks-course-{cursoId}-year-{year}-term-{term}.pdf";
+
+            return File(bytes, "application/pdf", fileName);
+        }
+
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/attendance/export/excel")]
+        public async Task<IActionResult> ExportReporteAttendanceByCursoAndTermExcel(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteAttendanceByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteAttendanceByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportAttendanceByCourseTermToExcel(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"attendance-course-{cursoId}-year-{year}-term-{term}.xlsx";
+
+            return File(
+                bytes,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                fileName);
+        }
+
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/attendance/export/pdf")]
+        public async Task<IActionResult> ExportReporteAttendanceByCursoAndTermPdf(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteAttendanceByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteAttendanceByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportAttendanceByCourseTermToPdf(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"attendance-course-{cursoId}-year-{year}-term-{term}.pdf";
+
+            return File(bytes, "application/pdf", fileName);
+        }
+
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/homework/export/excel")]
+        public async Task<IActionResult> ExportReporteHomeworkByCursoAndTermExcel(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteHomeworkByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteHomeworkByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportHomeworkByCourseTermToExcel(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"homework-course-{cursoId}-year-{year}-term-{term}.xlsx";
+
+            return File(
+                bytes,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                fileName);
+        }
+
+
+        [HttpGet("cursos/{cursoId:int}/years/{year:int}/terms/{term:int}/homework/export/pdf")]
+        public async Task<IActionResult> ExportReporteHomeworkByCursoAndTermPdf(
+            [FromRoute] int cursoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteHomeworkByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            [FromQuery] string? search = null,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                pageNumber: 1,
+                pageSize: 5000,
+                search: search,
+                ct: ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteHomeworkByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportHomeworkByCourseTermToPdf(
+                data.Resumen,
+                data.Items);
+
+            var fileName = $"homework-course-{cursoId}-year-{year}-term-{term}.pdf";
+
+            return File(bytes, "application/pdf", fileName);
+        }
+
+
+        [HttpGet("cursos/{cursoId:int}/alumnos/{alumnoId:int}/years/{year:int}/terms/{term:int}/summary/export/pdf")]
+        public async Task<IActionResult> ExportReporteStudentSummaryByCursoAndTermPdf(
+            [FromRoute] int cursoId,
+            [FromRoute] int alumnoId,
+            [FromRoute] int year,
+            [FromRoute] int term,
+            [FromServices] IGetReporteStudentSummaryByCursoAndTermQuery query,
+            [FromServices] IReporteExportService exportService,
+            CancellationToken ct = default)
+        {
+            var result = await query.Execute(
+                cursoId,
+                alumnoId,
+                year,
+                term,
+                GetUserId(),
+                IsAdmin(),
+                ct);
+
+            if (result.StatusCode != StatusCodes.Status200OK)
+                return StatusCode(result.StatusCode, result);
+
+            var data = (ReporteStudentSummaryByCursoAndTermResponseModel)result.Data;
+
+            var bytes = exportService.ExportStudentSummaryByCourseTermToPdf(data);
+
+            var fileName = $"student-summary-course-{cursoId}-student-{alumnoId}-year-{year}-term-{term}.pdf";
+
+            return File(bytes, "application/pdf", fileName);
         }
     }
 }

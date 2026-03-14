@@ -78,9 +78,7 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Queries.GetFeedbacksByE
                     Estado = f.Estado,
                     Nota = f.Nota,
                     Comentario = f.Comentario,
-                    FechaCorreccionUtc = f.FechaCorreccionUtc,
-                    ArchivoCorregidoUrl = f.ArchivoCorregidoUrl,
-                    ArchivoCorregidoNombre = f.ArchivoCorregidoNombre
+                    FechaCorreccionUtc = f.FechaCorreccionUtc
                 })
                 .ToListAsync(ct);
 

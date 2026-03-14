@@ -15,7 +15,6 @@
 
         public DateTime FechaCorreccionUtc { get; set; } = DateTime.UtcNow;
 
-        public string? ArchivoCorregidoUrl { get; set; }
-        public string? ArchivoCorregidoNombre { get; set; }
+        public List<FeedbackEntregaAdjuntoEntity> Adjuntos { get; set; } = new();
     }
 }

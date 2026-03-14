@@ -226,13 +226,16 @@ namespace BlossomInstitute.Application.DataBase.Calificacion.Commands.CreateCali
                 return ResponseApiService.Response(StatusCodes.Status400BadRequest, "Los tests deben incluir detalle por skills");
 
             if ((model.Tipo == TipoCalificacion.Participation || model.Tipo == TipoCalificacion.Behaviour) &&
-                (model.TareaId.HasValue || model.EntregaId.HasValue))
+             (model.TareaId.HasValue || model.EntregaId.HasValue))
             {
                 return ResponseApiService.Response(StatusCodes.Status400BadRequest, "Participation y Behaviour no pueden vincularse a tarea o entrega");
             }
 
             if ((model.Tipo == TipoCalificacion.Participation || model.Tipo == TipoCalificacion.Behaviour) && tieneDetalles)
                 return ResponseApiService.Response(StatusCodes.Status400BadRequest, "Participation y Behaviour no admiten detalle por skills");
+
+            if ((model.Tipo == TipoCalificacion.Participation || model.Tipo == TipoCalificacion.Behaviour) && !model.Nota.HasValue)
+                return ResponseApiService.Response(StatusCodes.Status400BadRequest, "Participation y Behaviour requieren una nota");
 
             if (model.EntregaId.HasValue && !model.TareaId.HasValue && model.Tipo == TipoCalificacion.Homework)
                 return ResponseApiService.Response(StatusCodes.Status400BadRequest, "Si se informa una entrega de homework, también debe informarse la tarea");
