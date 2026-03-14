@@ -1,5 +1,4 @@
 ﻿using BlossomInstitute.Common.Features;
-using BlossomInstitute.Domain.Entidades.Curso;
 using BlossomInstitute.Domain.Entidades.Entrega;
 using BlossomInstitute.Domain.Entidades.Tarea;
 using BlossomInstitute.Domain.Entidades.Usuario;
@@ -69,7 +68,10 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
 
             adjuntos = adjuntos
                 .Where(a => !string.IsNullOrWhiteSpace(a.Url))
-                .GroupBy(a => a.Url!.Trim(), StringComparer.OrdinalIgnoreCase)
+                .GroupBy(a =>
+                    a.Tipo == TipoAdjunto.Archivo
+                        ? (a.StorageKey ?? a.Url)!.Trim().ToLowerInvariant()
+                        : a.Url!.Trim().ToLowerInvariant())
                 .Select(g => g.First())
                 .ToList();
 
@@ -113,7 +115,12 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
                             EntregaId = entrega.Id,
                             Tipo = a.Tipo,
                             Url = a.Url!.Trim(),
-                            Nombre = string.IsNullOrWhiteSpace(a.Nombre) ? null : a.Nombre.Trim()
+                            Nombre = string.IsNullOrWhiteSpace(a.Nombre) ? null : a.Nombre.Trim(),
+                            StorageProvider = a.Tipo == TipoAdjunto.Archivo ? a.StorageProvider : null,
+                            StorageKey = a.Tipo == TipoAdjunto.Archivo ? a.StorageKey?.Trim() : null,
+                            ContentType = a.Tipo == TipoAdjunto.Archivo ? a.ContentType?.Trim() : null,
+                            SizeBytes = a.Tipo == TipoAdjunto.Archivo ? a.SizeBytes : null,
+                            CreatedAtUtc = nowUtc
                         });
                     }
 
@@ -134,7 +141,7 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
                     entrega.Estado = estadoEntrega;
                     entrega.UpdatedAtUtc = nowUtc;
 
-                    if (entrega.Adjuntos != null && entrega.Adjuntos.Count > 0)
+                    if (entrega.Adjuntos.Count > 0)
                         _db.EntregaAdjuntos.RemoveRange(entrega.Adjuntos);
 
                     foreach (var a in adjuntos)
@@ -144,15 +151,21 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.UpsertEntregaA
                             EntregaId = entrega.Id,
                             Tipo = a.Tipo,
                             Url = a.Url!.Trim(),
-                            Nombre = string.IsNullOrWhiteSpace(a.Nombre) ? null : a.Nombre.Trim()
+                            Nombre = string.IsNullOrWhiteSpace(a.Nombre) ? null : a.Nombre.Trim(),
+                            StorageProvider = a.Tipo == TipoAdjunto.Archivo ? a.StorageProvider : null,
+                            StorageKey = a.Tipo == TipoAdjunto.Archivo ? a.StorageKey?.Trim() : null,
+                            ContentType = a.Tipo == TipoAdjunto.Archivo ? a.ContentType?.Trim() : null,
+                            SizeBytes = a.Tipo == TipoAdjunto.Archivo ? a.SizeBytes : null,
+                            CreatedAtUtc = nowUtc
                         });
                     }
 
+                    // Reentrega => deja sin vigencia el feedback anterior
                     await _db.EntregaFeedbacks
                         .Where(f => f.EntregaId == entrega.Id && f.EsVigente)
-                        .ExecuteUpdateAsync(s => s
-                            .SetProperty(x => x.EsVigente, false), ct);
+                        .ExecuteUpdateAsync(s => s.SetProperty(x => x.EsVigente, false), ct);
 
+                    // Reentrega => archiva la calificación homework activa ligada a esa entrega
                     await _db.Calificaciones
                         .Where(c =>
                             c.TareaId == tareaId &&

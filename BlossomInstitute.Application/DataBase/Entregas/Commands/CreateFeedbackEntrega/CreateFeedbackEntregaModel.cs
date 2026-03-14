@@ -11,8 +11,9 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
     {
         public string? Comentario { get; set; }
         public EstadoCorreccion Estado { get; set; } // Aprobado / Rehacer / Revisar
-        public decimal? Nota { get; set; }   
-        public string? ArchivoCorregidoUrl { get; set; }
-        public string? ArchivoCorregidoNombre { get; set; }
+        public decimal? Nota { get; set; }
+
+        public List<CreateFeedbackEntregaAdjuntoModel> Adjuntos { get; set; } = new();
+
     }
 }

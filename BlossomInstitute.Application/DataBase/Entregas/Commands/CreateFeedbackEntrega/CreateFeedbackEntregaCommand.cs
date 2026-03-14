@@ -71,6 +71,17 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
 
             var nowUtc = DateTime.UtcNow;
 
+            var adjuntos = model.Adjuntos ?? new List<CreateFeedbackEntregaAdjuntoModel>();
+
+            adjuntos = adjuntos
+                .Where(a => !string.IsNullOrWhiteSpace(a.Url))
+                .GroupBy(a =>
+                    a.Tipo == TipoAdjunto.Archivo
+                        ? (a.StorageKey ?? a.Url)!.Trim().ToLowerInvariant()
+                        : a.Url!.Trim().ToLowerInvariant())
+                .Select(g => g.First())
+                .ToList();
+
             await using var tx = await _db.BeginTransactionAsync(ct);
 
             try
@@ -86,10 +97,23 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
                     Comentario = string.IsNullOrWhiteSpace(model.Comentario) ? null : model.Comentario.Trim(),
                     Estado = model.Estado,
                     Nota = model.Nota,
-                    FechaCorreccionUtc = nowUtc,
-                    ArchivoCorregidoUrl = string.IsNullOrWhiteSpace(model.ArchivoCorregidoUrl) ? null : model.ArchivoCorregidoUrl.Trim(),
-                    ArchivoCorregidoNombre = string.IsNullOrWhiteSpace(model.ArchivoCorregidoNombre) ? null : model.ArchivoCorregidoNombre.Trim(),
+                    FechaCorreccionUtc = nowUtc
                 };
+
+                foreach (var a in adjuntos)
+                {
+                    feedback.Adjuntos.Add(new FeedbackEntregaAdjuntoEntity
+                    {
+                        Tipo = a.Tipo,
+                        Url = a.Url!.Trim(),
+                        Nombre = string.IsNullOrWhiteSpace(a.Nombre) ? null : a.Nombre.Trim(),
+                        StorageProvider = a.Tipo == TipoAdjunto.Archivo ? a.StorageProvider : null,
+                        StorageKey = a.Tipo == TipoAdjunto.Archivo ? a.StorageKey?.Trim() : null,
+                        ContentType = a.Tipo == TipoAdjunto.Archivo ? a.ContentType?.Trim() : null,
+                        SizeBytes = a.Tipo == TipoAdjunto.Archivo ? a.SizeBytes : null,
+                        CreatedAtUtc = nowUtc
+                    });
+                }
 
                 _db.EntregaFeedbacks.Add(feedback);
                 entrega.UpdatedAtUtc = nowUtc;
@@ -173,7 +197,18 @@ namespace BlossomInstitute.Application.DataBase.Entregas.Commands.CreateFeedback
                     feedback.Estado,
                     feedback.Nota,
                     feedback.EsVigente,
-                    feedback.FechaCorreccionUtc
+                    feedback.FechaCorreccionUtc,
+                    adjuntos = feedback.Adjuntos.Select(a => new
+                    {
+                        a.Id,
+                        a.Tipo,
+                        a.Url,
+                        a.Nombre,
+                        a.StorageProvider,
+                        a.StorageKey,
+                        a.ContentType,
+                        a.SizeBytes
+                    })
                 }, "Feedback registrado correctamente");
             }
             catch (DbUpdateException ex)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BlossomInstitute.Domain.Entidades.Common;
 
 namespace BlossomInstitute.Domain.Entidades.Entrega
 {
@@ -15,8 +11,18 @@ namespace BlossomInstitute.Domain.Entidades.Entrega
 
         public TipoAdjunto Tipo { get; set; }
 
-        // Si es Link: URL. Si es Archivo: URL/path al storage.
+        // Link: URL externa
+        // Archivo: URL del storage
         public string Url { get; set; } = default!;
+
         public string? Nombre { get; set; }
+
+        // Solo aplica si Tipo = Archivo
+        public StorageProviderType? StorageProvider { get; set; }
+        public string? StorageKey { get; set; }
+        public string? ContentType { get; set; }
+        public long? SizeBytes { get; set; }
+
+        public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
     }
 }

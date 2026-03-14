@@ -14,15 +14,6 @@ namespace BlossomInstitute.Application.Validator.Entrega
             RuleFor(x => x.Comentario)
                 .MaximumLength(8000);
 
-            RuleFor(x => x.ArchivoCorregidoUrl)
-                .MaximumLength(2000)
-                .Must(url => Uri.TryCreate(url, UriKind.Absolute, out _))
-                .When(x => !string.IsNullOrWhiteSpace(x.ArchivoCorregidoUrl))
-                .WithMessage("ArchivoCorregidoUrl inválida.");
-
-            RuleFor(x => x.ArchivoCorregidoNombre)
-                .MaximumLength(200);
-
             RuleFor(x => x.Nota)
                 .InclusiveBetween(0m, 100m)
                 .When(x => x.Nota.HasValue)
@@ -37,6 +28,9 @@ namespace BlossomInstitute.Application.Validator.Entrega
                 .Null()
                 .When(x => x.Estado == EstadoCorreccion.Rehacer)
                 .WithMessage("Solo los feedbacks aprobados pueden incluir nota.");
+
+            RuleForEach(x => x.Adjuntos)
+                .SetValidator(new CreateFeedbackEntregaAdjuntoValidator());
         }
     }
 }

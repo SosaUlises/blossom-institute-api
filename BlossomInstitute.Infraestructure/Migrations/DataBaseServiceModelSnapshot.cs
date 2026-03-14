@@ -285,12 +285,29 @@ namespace BlossomInstitute.Infraestructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ContentType")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<int>("EntregaId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Nombre")
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
+
+                    b.Property<long?>("SizeBytes")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("StorageKey")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<int?>("StorageProvider")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Tipo")
                         .HasColumnType("integer");
@@ -301,6 +318,10 @@ namespace BlossomInstitute.Infraestructure.Migrations
                         .HasColumnType("character varying(2000)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("StorageKey");
+
+                    b.HasIndex("EntregaId", "StorageKey");
 
                     b.HasIndex("EntregaId", "Tipo");
 
@@ -349,7 +370,7 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.ToTable("Entregas", (string)null);
                 });
 
-            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Entrega.FeedbackEntregaEntity", b =>
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Entrega.FeedbackEntregaAdjuntoEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -357,13 +378,56 @@ namespace BlossomInstitute.Infraestructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ArchivoCorregidoNombre")
+                    b.Property<string>("ContentType")
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 
-                    b.Property<string>("ArchivoCorregidoUrl")
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("FeedbackEntregaId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Nombre")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<long?>("SizeBytes")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("StorageKey")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<int?>("StorageProvider")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Tipo")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
                         .HasMaxLength(2000)
                         .HasColumnType("character varying(2000)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StorageKey");
+
+                    b.HasIndex("FeedbackEntregaId", "StorageKey");
+
+                    b.HasIndex("FeedbackEntregaId", "Tipo");
+
+                    b.ToTable("FeedbackEntregaAdjuntos", (string)null);
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Entrega.FeedbackEntregaEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Comentario")
                         .HasMaxLength(8000)
@@ -390,8 +454,6 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.HasIndex("EntregaId")
                         .IsUnique()
                         .HasFilter("\"EsVigente\" = true");
-
-                    b.HasIndex("EntregaId", "EsVigente");
 
                     b.ToTable("EntregaFeedbacks", (string)null);
                 });
@@ -857,6 +919,17 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.Navigation("Tarea");
                 });
 
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Entrega.FeedbackEntregaAdjuntoEntity", b =>
+                {
+                    b.HasOne("BlossomInstitute.Domain.Entidades.Entrega.FeedbackEntregaEntity", "FeedbackEntrega")
+                        .WithMany("Adjuntos")
+                        .HasForeignKey("FeedbackEntregaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FeedbackEntrega");
+                });
+
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Entrega.FeedbackEntregaEntity", b =>
                 {
                     b.HasOne("BlossomInstitute.Domain.Entidades.Entrega.EntregaEntity", "Entrega")
@@ -986,6 +1059,11 @@ namespace BlossomInstitute.Infraestructure.Migrations
                     b.Navigation("Adjuntos");
 
                     b.Navigation("Feedbacks");
+                });
+
+            modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Entrega.FeedbackEntregaEntity", b =>
+                {
+                    b.Navigation("Adjuntos");
                 });
 
             modelBuilder.Entity("BlossomInstitute.Domain.Entidades.Tarea.TareaEntity", b =>
